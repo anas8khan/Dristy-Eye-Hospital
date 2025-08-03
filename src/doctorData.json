@@ -1,0 +1,50 @@
+{
+    "doctors": [
+      {
+        "name": "Dr. Sudhanshu Kumar",
+        "qualification": "MBBS, MS (OPHTHALMOLOGY)",
+        "specialization": "Cataract & Glaucoma Surgeon",
+        "hospital": "Dristy Eye Hospital",
+        "description": "Dr. Sudhanshu Kumar is a highly skilled and compassionate cataract surgeon dedicated to transforming lives through exceptional eye care. He focuses on advanced cataract surgeries using the latest advancements in ophthalmology.",
+        "experience": "Extensive experience in diagnosing and treating a wide range of eye conditions.",
+        "image": "https://i.ibb.co/DPsw7HMv/Dr-sudhanshu-1-removebg-preview-1.jpg"
+      },
+      {
+        "name": "Dr. Ranjan Kumar",
+        "qualification": "MBBS, MS (OPHTHALMOLOGY)",
+        "specialization": "Cataract & Oculoplasty Surgeon",
+        "hospital": "Dristy Eye Hospital",
+        "description": "Dr. Ranjan Kumar is a skilled cataract and oculoplasty surgeon, addressing both functional and aesthetic needs with precision and innovation, committed to restoring vision and improving the quality of life for his patients.",
+        "experience": "Years of expertise and dedication to the field of ophthalmology.",
+        "image": "https://i.ibb.co/Vpb2wmwx/Dr-Ranjan-removebg-preview-1-1.png"
+      },
+      {
+        "name": "Dr. Deepak Kumar",
+        "qualification": "MBBS, MS (OPHTHALMOLOGY)",
+        "specialization": "Cataract & Refractive Surgeon",
+        "hospital": "Dristy Eye Hospital",
+        "description": "Dr. Deepak Kumar is an accomplished cataract and refractive surgeon, restoring and enhancing vision through advanced techniques. His patient-centric approach ensures exceptional outcomes and improved quality of life for patients.",
+        "experience": "Extensive expertise in advanced surgical techniques and patient care.",
+        "image": "https://i.ibb.co/43x6hS6/Whats-App-Image-2024-12-21-at-19-28-09-71d2b624-removebg-preview.png"
+      },
+      {
+        "name": "Dr. Abhay Kumar",
+        "qualification": "MBBS",
+        "specialization": "General Eye Care",
+        "hospital": "Dristy Eye Hospital",
+        "description": "Dr. Abhay Kumar is a dedicated medical professional committed to providing exceptional care and improving the eye health of his patients. He brings a strong foundation in medical knowledge and a passion for excellence in healthcare.",
+        "experience": "Skilled in diagnosing and managing a variety of eye conditions.",
+        "image": "https://i.ibb.co/GfKdcQpH/Dr-Abhay-removebg-preview-1.png"
+      },
+      {
+        "name": "Dr. Wasiullah",
+        "qualification": "MBBS, MS ( Ophthalmology)",
+        "specialization": "Cataract & Refractive surgeon",
+        "hospital": "Dristy Eye Hospital",
+        "description": "Dr. Wasiullah is an accomplished cataract and refractive surgeon, restoring and enhancing vision through advanced techniques. His patient-centric approach ensures exceptional outcomes and improved quality of life for patients.",
+        "experience": "Extensive expertise in advanced surgical techniques and patient care.",
+        "image": "https://i.ibb.co/HLmn2V8h/dr-wasim-removebg-preview-2-1.jpg"
+      }
+    ]
+  }
+  

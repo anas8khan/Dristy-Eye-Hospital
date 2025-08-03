@@ -1,0 +1,177 @@
+[
+  {
+    "name": "One Eye One Tree",
+    "description": "Promoting Vision and Sustainability, One Tree at a Time",
+    "bannerImg": "/ProjectImg/OneEye/banner.jpg",
+    "title": "Every Surgery Brings New Vision, Every Tree Brings New Life",
+    "about": {
+      "heading": "About the Initiative",
+      "content": "In 2017, Dristy Eye Hospital embarked on a transformative mission to give back to the environment through its pioneering initiative, 'One Eye One Tree.' This remarkable program symbolizes our commitment to both improving lives and nurturing the planet. With every successful cataract surgery performed at our hospital, we mark a significant step toward a healthier future—not just for our patients, but for the environment as well. Each surgery is celebrated by planting a tree, creating a lasting legacy of care and sustainability. The 'One Eye One Tree' initiative is our heartfelt effort to intertwine healthcare with environmental stewardship. We believe in the profound connection between a thriving planet and thriving lives, emphasizing that the health of our world and its people are deeply intertwined. Together, we aim to foster a greener, healthier future for generations to come."
+    },
+    "slider": [
+      "/ProjectImg/OneEye/1.jpg",
+      "/ProjectImg/OneEye/2.jpg",
+      "/ProjectImg/OneEye/3.jpg",
+      "/ProjectImg/OneEye/4.jpg"
+    ],
+    "keyHighlights": [
+      "Over 10,000 trees planted since 2017.",
+      "Personalized certificates for patients contributing to the green mission.",
+      "Community engagement in nurturing and sustaining these trees."
+    ],
+    "impactStories": [
+      {
+        "title": "A Farmer’s Journey to New Vision and New Roots",
+        "image": "/ProjectImg/OneEye/Ramesh.jpg",
+        "name": "Ramesh's Journey",
+        "description": "Regaining my sight not only changed my life but allowed me to plant a tree that now shades my farm."
+      },
+      {
+        "title": "A Grandmother’s Green Legacy",
+        "image": "/ProjectImg/OneEye/Rekha.jpg",
+        "name": "Rekha Devi's Legacy",
+        "description": "This tree will outlive me and provide for my grandchildren—a gift of sight and nature."
+      }
+    ]
+  },
+  {
+    "name": "Blanket of Light Mission",
+    "description": "Bringing Comfort and Care to Our Community This Winter",
+    "bannerImg": "/ProjectImg/Blanket/banner.png",
+    "title": "Every gesture of care lights up lives during the coldest of days. Be part of our mission to spread warmth and compassion.",
+    "about": {
+      "heading": "About the Initiative",
+      "content": "The 'Blanket of Light Mission' was initiated by Dristy Eye Hospital in 2019 to extend warmth to its customers and the underprivileged during harsh winters. Recognizing the struggles faced by many during the cold season, the hospital donates high-quality blankets to its patients and members of the community. This mission represents the hospital’s belief in holistic care—caring not just for vision but also for overall well-being. Since its launch, thousands of blankets have been distributed, symbolizing the hospital’s commitment to spreading light, warmth, and hope."
+    },
+    "slider": [
+      "/ProjectImg/Blanket/1.jpg",
+      "/ProjectImg/Blanket/2.jpg",
+      "/ProjectImg/Blanket/3.jpg",
+      "/ProjectImg/Blanket/4.jpg",
+      "/ProjectImg/Blanket/5.jpg"
+    ],
+    "keyHighlights": [
+      "Blankets distributed to 10,000+ people since 2019.",
+      "Special focus on underprivileged families in rural and urban areas.",
+      "Personalized notes of encouragement and care included with every blanket."
+    ],
+    "impactStories": [
+      {
+        "title": "Asha Devi’s Story",
+        "image": "/ProjectImg/Blanket/Asha.jpg",
+        "name": "Asha Devi",
+        "description": "The blanket I received from Dristy Eye Hospital not only kept my family warm during the coldest nights but also reminded me of their genuine care."
+      },
+      {
+        "title": "Ramesh Singh's Journey",
+        "image": "/ProjectImg/Blanket/Ramesh.jpg",
+        "name": "Ramesh Singh",
+        "description": "I had cataract surgery at Dristy Eye Hospital, and receiving a warm blanket made me feel cared for in ways I didn’t expect. It was like a hug from the hospital team."
+      }
+    ]
+  },
+  {
+    "name": "School Eye Screening",
+    "description": "Clear Vision for a Bright Future",
+    "bannerImg": "/ProjectImg/SchoolEye/banner.png",
+    "title": "Investing in the vision of tomorrow’s leaders. Bringing eye care to schools, one student at a time.",
+    "about": {
+      "heading": "About the Initiative",
+      "content": "Dristy Eye Hospital believes that clear vision is essential for a successful education. To support this, we launched the 'School Eye Screening Programme' in 2015, aiming to provide every child with access to quality eye care. Through free eye camps conducted in schools, we identify and address vision problems that could impact students' academic performance and personal development. Each year, thousands of students benefit from these screenings, which not only offer free checkups but also raise awareness about the importance of eye health among children, parents, and teachers. By detecting and treating vision issues early, we help ensure that children can achieve their full potential in both their education and life."
+    },
+    "slider": [
+      "/ProjectImg/SchoolEye/1.jpg",
+      "/ProjectImg/SchoolEye/2.jpg",
+      "/ProjectImg/SchoolEye/3.jpg"
+    ],
+    "keyHighlights": [
+      "Screened 50,000+ students across urban and rural schools.",
+      "Free corrective glasses provided to students in need.",
+      "Partnerships with schools and educational organizations to maximize outreach.",
+      "Early detection of common eye problems like myopia, hyperopia, and astigmatism."
+    ],
+    "impactStories": [
+      {
+        "title": "Pooja's Journey",
+        "image": "/ProjectImg/SchoolEye/pooja.png",
+        "name": "Pooja",
+        "description": "Before the camp, I had trouble reading the blackboard, which made studying hard. Thanks to Dristy Eye Hospital, I now have clear vision and confidence in my studies."
+      },
+      {
+        "title": "Ravi Kumar’s Transformation",
+        "image": "/ProjectImg/SchoolEye/Ravi.jpg",
+        "name": "Ravi Kumar",
+        "description": "As a teacher, I’ve seen how improved vision has positively impacted my students’ learning. This program is a blessing for schools."
+      }
+    ]
+  },
+  {
+    "name": "Doorstep Care Camp for All",
+    "description": "Compassionate Eye Care for the Elderly and Disabled at Their Doorstep",
+    "bannerImg": "/ProjectImg/Doorstep/banner.png",
+    "title": "When care reaches those who need it most, lives are transformed.",
+    "about": {
+      "heading": "About the Initiative",
+      "content": "At Dristy Eye Hospital, we understand that accessing quality healthcare can be a significant challenge for senior citizens and disabled individuals, particularly in rural areas. To address these challenges, we launched the 'Doorstep Care Camp for All' initiative in 2013. This mission is dedicated to bringing free, high-quality eye checkups directly to the homes of those who need it most, ensuring that distance and mobility issues are no longer barriers to better vision. Our team of skilled specialists travels to remote locations, setting up fully equipped mobile camps to deliver personalized and comprehensive eye care services. From early detection of vision problems to providing essential guidance on maintaining eye health, this initiative is designed to make healthcare not only accessible but also compassionate and inclusive."
+    },
+    "slider": [
+      "/ProjectImg/Doorstep/1.jpg",
+      "/ProjectImg/Doorstep/2.jpg",
+      "/ProjectImg/Doorstep/3.jpg"
+    ],
+    "keyHighlights": [
+      "Served 15,000+ individuals across 50+ rural villages.",
+      "Specialized care for senior citizens and differently-abled individuals.",
+      "Free diagnosis and prescription of corrective lenses, along with follow-up consultations.",
+      "On-the-spot arrangements for referrals to hospitals for advanced treatments."
+    ],
+    "impactStories": [
+      {
+        "title": "Rajeshwari Devi’s Story",
+        "image": "/ProjectImg/Doorstep/Rajeshwari.jpg",
+        "name": "Rajeshwari Devi",
+        "description": "Being 78 and unable to travel, I thought my failing vision would never be addressed. But Dristy Eye Hospital came to my village, and now I can see my grandchildren play again. It feels like a new life!"
+      },
+      {
+        "title": "Amit Kumar’s Testimonial",
+        "image": "/ProjectImg/Doorstep/Amit.jpg",
+        "name": "Amit Kumar",
+        "description": "As someone with a physical disability, getting to a hospital was impossible. This doorstep camp gave me hope and restored my vision without the stress of travel."
+      }
+    ]
+  },
+  {
+    "name": "Save Environment, Save Eyesight",
+    "description": "A Vision for a Sustainable Future",
+    "bannerImg": "/ProjectImg/SaveEnv/banner.jpg",
+    "title": "Healthy Eyes Begin with a Healthy Environment",
+    "about": {
+      "heading": "About the Initiative",
+      "content": "The connection between a healthy environment and healthy eyes is undeniable. Air pollution, deforestation, and climate change are not only threats to our planet’s well-being but also significant contributors to various eye diseases. Recognizing the urgent need to address these intertwined challenges, Dristy Eye Hospital launched the 'Save Environment, Save Eyesight' mission in 2018. This initiative reflects our belief that protecting the environment is essential for safeguarding vision health. Through this mission, we aim to raise awareness about how environmental degradation directly impacts eye health, causing conditions such as dry eyes, allergies, and other long-term vision issues."
+    },
+    "slider": [
+      "/ProjectImg/SaveEnv/1.jpg",
+      "/ProjectImg/SaveEnv/2.jpg"
+    ],
+    "keyHighlights": [
+      "Organized 100+ tree-planting drives in urban and rural areas.",
+      "Raised awareness among 20,000+ participants about the environmental impact on eye health.",
+      "Partnered with environmental organizations to amplify the mission's impact.",
+      "Promoted eco-friendly practices such as reduced use of plastics and sustainable waste management."
+    ],
+    "impactStories": [
+      {
+        "title": "Meera’s Testimonial",
+        "image": "/ProjectImg/SaveEnv/meera.jpg",
+        "name": "Meera",
+        "description": "After participating in a tree-planting drive organized by Dristy Eye Hospital, I not only learned about protecting my eyes but also felt the joy of contributing to nature."
+      },
+      {
+        "title": "Green Vision School Project",
+        "image": "/ProjectImg/SaveEnv/Green.jpg",
+        "name": "Green Vision School",
+        "description": "The students of Green Vision School planted 500 trees as part of this mission, creating a healthier environment for their community."
+      }
+    ]
+  }
+]

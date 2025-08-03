@@ -1,0 +1,1060 @@
+[
+  {
+    "name": "Glaucoma",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Glaucoma is a group of eye conditions that damage the optic nerve, often due to increased intraocular pressure (IOP). At Dristy Eye Hospital, we offer advanced diagnostic tools and treatments to manage glaucoma and preserve your vision.",
+      "image": "/treatmentImg/Glaucoma/main.jpg",
+      "banner":"/Banner/banner1.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Glaucoma",
+      "list": [
+        "Gradual loss of peripheral vision.",
+        "Blurred or tunnel vision.",
+        "Eye pain, redness, or discomfort.",
+        "Halos around lights, particularly at night."
+      ],
+      "images": [
+        "/treatmentImg/Glaucoma/symp_1.jpg",
+        "/treatmentImg/Glaucoma/sypm_2.jpg",
+        "/treatmentImg/Glaucoma/symp_3.jpeg",
+        "/treatmentImg/Glaucoma/symp_4.jpeg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Glaucoma",
+      "list": [
+        "Protect your eyes from UV rays.",
+        "Avoid prolonged exposure to dust and wind.",
+        "Maintain proper eye hydration.",
+        "Practice good eye hygiene."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Glaucoma",
+      "list": [
+        {
+          "name": "Medications",
+          "description": "Eye drops or oral medications to reduce intraocular pressure (IOP).",
+          "image": "/treatmentImg/Glaucoma/treat_1.jpg"
+        },
+        {
+          "name": "Laser Treatment",
+          "description": "Laser trabeculoplasty or laser iridotomy to improve drainage and reduce pressure.",
+          "image": "/treatmentImg/Glaucoma/treat_2.jpg"
+        },
+        {
+          "name": "Surgery",
+          "description": "Procedures like trabeculectomy, drainage implants, or minimally invasive glaucoma surgery (MIGS) to lower IOP.",
+          "image": "/treatmentImg/Glaucoma/treat_3.jpg"
+        }
+      ]
+    },
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Glaucoma Treatment?",
+      "list": [
+        "Experienced ophthalmologists skilled in treating all types of glaucoma.",
+        "Advanced technology for diagnostics and treatments.",
+        "Personalized treatment plans based on individual needs.",
+        "Comprehensive follow-up care for effective management."
+      ]
+    },
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is glaucoma?",
+          "answer": "Glaucoma is a group of conditions causing damage to the optic nerve, often associated with increased intraocular pressure."
+        },
+        {
+          "question": "Can glaucoma be cured?",
+          "answer": "Glaucoma cannot be cured, but it can be effectively managed with early diagnosis and treatment."
+        },
+        {
+          "question": "Will I lose my vision if I have glaucoma?",
+          "answer": "If untreated, glaucoma can lead to vision loss. Early detection and treatment help preserve vision."
+        },
+        {
+          "question": "Is glaucoma hereditary?",
+          "answer": "Yes, a family history of glaucoma increases your risk. Regular eye exams are recommended."
+        },
+        {
+          "question": "How often should I get tested for glaucoma?",
+          "answer": "Adults over 40 should have an eye exam every 2-4 years. More frequent exams are needed for high-risk individuals."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Cataract",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Cataracts are a common eye condition where the lens becomes cloudy, leading to blurry vision, sensitivity to light, and difficulty seeing clearly. If left untreated, they can significantly impact daily life. At Dristy Eye Hospital, we provide advanced cataract care using state-of-the-art technology and surgical techniques. Our experienced specialists ensure personalized treatments to restore your vision and improve your quality of life. With a focus on comfort and precision, we guide you through every step, from diagnosis to recovery, so you can see the world clearly again.",
+      "image": "/treatmentImg/Cataract/main.jpg",
+      "banner":"/Banner/banner2.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Cataracts",
+      "list": [
+        "Blurred or cloudy vision.",
+        "Difficulty seeing at night.",
+        "Sensitivity to light and glare.",
+        "Seeing 'halos' around lights."
+      ],
+      "images": [
+        "/treatmentImg/Cataract/symp_1.jpg",
+        "/treatmentImg/Cataract/symp_2.jpg",
+        "/treatmentImg/Cataract/symp_3.jpg",
+        "/treatmentImg/Cataract/symp_4.jpeg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Cataracts in the Eye",
+      "list": [
+        "Regular eye examinations",
+        "Giving up smoking",
+        "Keeping a balanced diet",
+        "Eating antioxidant-rich fruits and veggies"
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatments on Cataract",
+      "list": [
+        {
+          "name": "Visual Acuity Test",
+          "description": "A visual acuity test uses an eye chart to measure how well you can read a series of letters. Your eyes are tested one at a time, while the other eye is covered. Using a chart or a viewing device with progressively smaller letters.",
+          "image": "/treatmentImg/Cataract/treat_1.jpg"
+        },
+
+        {
+          "name": "Slit-Lamp Examination",
+          "description": "A slit lamp allows your eye doctor to see the structures at the front of your eye under magnification. The microscope is called a slit lamp because it uses an intense line of light, a slit, to illuminate your cornea, iris, lens, and the space between your iris and cornea.",
+          "image": "/treatmentImg/Cataract/treat_2.jpg"
+        },
+        {
+          "name": "Retinal Exam",
+          "description": "To prepare for a retinal exam, your eye doctor puts drops in your eyes to open your pupils wide (dilate). This makes it easier to examine the back of your eyes (retina).",
+          "image": "/treatmentImg/Cataract/treat_3.jpeg"
+        }
+      ]
+    },
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Cataract Treatment?",
+      "list": [
+        "Experienced ophthalmologists specializing in cataract surgery.",
+        "State-of-the-art technology for cataract diagnosis and surgery.",
+        "Customized treatment options for optimal vision restoration.",
+        "Comprehensive post-surgery care to ensure quick recovery."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "When should I consider cataract surgery?",
+          "answer": "You should consider surgery when cataracts start affecting your daily life, such as reading, driving, or recognizing faces. Our specialists can help determine the right time during your consultation."
+        },
+        {
+          "question": "Is cataract surgery safe?",
+          "answer": "Yes, cataract surgery is one of the safest and most effective surgical procedures. At Dristy Eye Hospital, we use advanced techniques and technology to ensure a smooth and painless experience."
+        },
+        {
+          "question": "What happens during cataract surgery?",
+          "answer": "Cataract surgery involves removing the cloudy lens and replacing it with an artificial intraocular lens (IOL). The procedure is quick, typically taking about 15–20 minutes, and is performed under local anesthesia."
+        },
+        {
+          "question": "How long does it take to recover from cataract surgery?",
+          "answer": "Most patients experience improved vision within a few days. Full recovery usually takes 4–6 weeks, during which you’ll need to follow your doctor's instructions for optimal healing."
+        },
+        {
+          "question": "Will I need glasses after cataract surgery?",
+          "answer": "It depends on the type of intraocular lens (IOL) chosen. Premium lenses can reduce dependence on glasses for distance and near vision, but some patients may still need glasses for specific tasks."
+        },
+        {
+          "question": "How do I book a consultation for cataract treatment?",
+          "answer": "You can book a consultation through our website or call our helpline. Our team is here to assist you with any questions and guide you through the process."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Pterygium",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Pterygium, commonly known as 'surfer's eye,' is a non-cancerous growth of tissue on the conjunctiva, the clear outer layer of the eye. It often appears as a pink or fleshy growth extending onto the cornea and may cause discomfort, redness, irritation, or blurred vision. While its exact cause is unknown, prolonged exposure to sunlight, wind, and dust is believed to be contributing factors. At Dristy Eye Hospital, we specialize in the diagnosis and treatment of pterygium. Our expert ophthalmologists offer both non-surgical and surgical options, depending on the severity of the condition. Whether you need relief from symptoms or a procedure to remove the growth, we are here to help you regain comfort and clear vision.",
+      "image": "/treatmentImg/Pterygium/main.jpg",
+      "banner":"/Banner/banner3.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Pterygium",
+      "list": [
+        "A visible pink or fleshy growth on the eye.",
+        "Irritation, redness, or a gritty sensation.",
+        "Blurred or distorted vision in advanced cases.",
+        "Dryness or excessive tearing."
+      ],
+      "images": [
+        "/treatmentImg/Pterygium/symp_1.jpg",
+        "/treatmentImg/Pterygium/symp_2.jpg",
+        "/treatmentImg/Pterygium/symp_3.jpg",
+        "/treatmentImg/Pterygium/symp_4.jpeg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Pterygium in the Eye",
+      "list": [
+        "Protect Your Eyes from UV Rays",
+        "Avoid Prolonged Exposure to Dust and Wind",
+        "Maintain Proper Eye Hydration",
+        "Limit Time Spent in Harsh Environments"
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatments on Pterygium",
+      "list": [
+        {
+          "name": "Lubricating Eye Drops",
+          "description": "Relieves dryness and irritation. Helps maintain moisture on the eye surface.",
+          "image": "/treatmentImg/Pterygium/treat_1.jpg"
+        },
+        {
+          "name": "Anti-Inflammatory Medications",
+          "description": "Prescribed eye drops or ointments reduce redness and swelling, providing relief from discomfort caused by inflammation.",
+          "image": "/treatmentImg/Pterygium/treat_2.jpg"
+        },
+        {
+          "name": "Lifestyle Modifications",
+          "description": "Avoid exposure to UV rays, wind, and dust by wearing protective eyewear. Use a humidifier to keep the eyes hydrated in dry environments.",
+          "image": "/treatmentImg/Pterygium/treat_3.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Pterygium Treatment?",
+      "list": [
+        "Expert ophthalmologists with years of experience in treating pterygium.",
+        "Comprehensive diagnostic approach to accurately assess the severity of the condition.",
+        "Non-surgical and surgical treatment options tailored to your needs.",
+        "State-of-the-art technology for precise diagnosis and treatment.",
+        "Personalized care to ensure the best outcome for each patient.",
+        "Post-treatment follow-up to monitor recovery and prevent recurrence."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is pterygium?",
+          "answer": "Pterygium is a non-cancerous growth of tissue on the conjunctiva, the clear membrane that covers the white part of the eye. It typically extends onto the cornea and may cause redness, irritation, and blurred vision. It is often caused by prolonged exposure to UV rays, dust, and wind."
+        },
+        {
+          "question": "Is surgery necessary for pterygium?",
+          "answer": "Surgery is recommended if the pterygium is causing vision problems, persistent irritation, or cosmetic concerns. Most cases can be managed with non-surgical methods, but surgery is the best option for advanced or recurring cases."
+        },
+        {
+          "question": "How long is the recovery time after pterygium surgery?",
+          "answer": "Recovery time after pterygium surgery varies, but most patients return to normal activities within 1 to 2 weeks. You will need to follow post-operative care instructions, such as using prescribed eye drops, avoiding direct sunlight, and attending follow-up visits for optimal healing."
+        },
+        {
+          "question": "Does pterygium come back after surgery?",
+          "answer": "While the risk of recurrence is relatively low, pterygium can return in some cases. Techniques like conjunctival autografting reduce the chances of recurrence. Your ophthalmologist will monitor your recovery to ensure proper healing."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Uveitis",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Uveitis is an inflammation of the uvea, the vascular layer of the eye, which supplies blood to the retina. This condition can affect different parts of the uvea, leading to various types of uveitis:\n\n1. Anterior Uveitis (Iritis): Inflammation of the iris (the colored part of the eye).\n2. Intermediate Uveitis: Inflammation of the vitreous, the gel-like substance inside the eye.\n3. Posterior Uveitis: Inflammation of the choroid (the layer behind the retina).\n4. Panuveitis: Inflammation that affects all layers of the uvea.",
+      "image": "/treatmentImg/Uveitis/main.jpg",
+      "banner":"/Banner/banner4.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Uveitis",
+      "list": [
+        "Eye redness and pain.",
+        "Blurred or decreased vision.",
+        "Sensitivity to light (photophobia).",
+        "Floaters (black spots or lines in your vision)."
+      ],
+      "images": [
+        "/treatmentImg/Uveitis/symp_1.jpg",
+        "/treatmentImg/Uveitis/symp_2.jpg",
+        "/treatmentImg/Uveitis/symp_3.jpeg",
+        "/treatmentImg/Uveitis/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Uveitis in the Eye",
+      "list": [
+        "Manage Autoimmune Diseases",
+        "Prevent Eye Injuries",
+        "Treat Infections Promptly",
+        "Protect Against Environmental Factors"
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Uveitis",
+      "list": [
+        {
+          "name": "Medications",
+          "description": "Various medications can help reduce inflammation and control symptoms of uveitis. These may include eye drops, oral corticosteroids, immunosuppressive drugs, or antibiotics/antiviral medications depending on the underlying cause.",
+          "image": "/treatmentImg/Uveitis/treat_1.jpg"
+        },
+        {
+          "name": "Laser Treatment",
+          "description": "In cases of posterior uveitis, laser therapy can be used to reduce inflammation or repair retinal damage.",
+          "image": "/treatmentImg/Uveitis/treat_2.jpg"
+        },
+        {
+          "name": "Surgery",
+          "description": "In severe cases of uveitis with complications, surgery such as vitrectomy may be needed to remove the vitreous gel and treat underlying issues.",
+          "image": "/treatmentImg/Uveitis/treat_3.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Uveitis Treatment?",
+      "list": [
+        "Highly skilled ophthalmologists specializing in the diagnosis and treatment of uveitis.",
+        "Comprehensive care for all types of uveitis, including anterior, intermediate, posterior, and panuveitis.",
+        "Advanced diagnostic tools for accurate assessment and monitoring of uveitis.",
+        "Customized treatment plans based on the severity and underlying cause of the condition.",
+        "Access to the latest treatment options, including medications, laser therapy, and surgical interventions.",
+        "Ongoing follow-up care to monitor recovery and prevent complications like vision loss."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is uveitis?",
+          "answer": "Uveitis is the inflammation of the uvea, the middle layer of the eye. It can affect one or both eyes and cause symptoms like eye pain, redness, blurred vision, and light sensitivity. If untreated, uveitis can lead to serious complications like cataracts, glaucoma, or permanent vision loss."
+        },
+        {
+          "question": "Can uveitis lead to permanent vision loss?",
+          "answer": "If left untreated or not properly managed, uveitis can cause complications like cataracts, glaucoma, retinal damage, or macular edema, which may result in permanent vision loss. Timely treatment is crucial to prevent these complications."
+        },
+        {
+          "question": "Is uveitis a serious condition?",
+          "answer": "Yes, uveitis can be a serious condition if not treated promptly. It can lead to long-term complications, including vision loss. Early diagnosis and appropriate treatment are essential for preserving vision and managing symptoms effectively."
+        },
+        {
+          "question": "How long does uveitis treatment take?",
+          "answer": "The duration of treatment varies depending on the severity of the uveitis and its underlying cause. For acute cases, treatment may take a few weeks, while chronic or recurrent uveitis may require long-term management. Regular follow-up appointments are important to monitor progress and adjust treatment as needed."
+        },
+        {
+          "question": "Can I still live a normal life with uveitis?",
+          "answer": "With proper treatment and regular follow-ups, most people with uveitis can manage their condition and maintain a good quality of life. Early intervention and adherence to your doctor’s advice are key to minimizing the impact of uveitis on your daily activities."
+        },
+        {
+          "question": "How can I book an appointment for uveitis treatment at Dristy Eye Hospital?",
+          "answer": "You can schedule an appointment with our expert ophthalmologists by calling our clinic directly or visiting our website. We offer comprehensive eye exams and personalized treatment plans to manage uveitis and other eye conditions."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Diabetic Retinopathy",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Diabetic retinopathy is a common eye condition caused by damage to the blood vessels in the retina, which is the light-sensitive tissue at the back of the eye. It occurs in people with diabetes, either type 1 or type 2, and is one of the leading causes of blindness in adults. High blood sugar levels over time can weaken and damage the blood vessels in the retina, leading to vision problems.",
+      "image": "/treatmentImg/DiabeticRetinopathy/main.jpg",
+      "banner":"/Banner/banner5.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Diabetic Retinopathy",
+      "list": [
+        "Blurry or fluctuating vision",
+        "Dark or empty areas in your vision.",
+        "Difficulty seeing at night",
+        "Sudden vision loss or spotting (floaters)"
+      ],
+      "images": [
+        "/treatmentImg/DiabeticRetinopathy/symp_1.jpg",
+        "/treatmentImg/DiabeticRetinopathy/symp_2.jpeg",
+        "/treatmentImg/DiabeticRetinopathy/symp_3.jpeg",
+        "/treatmentImg/DiabeticRetinopathy/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Diabetic Retinopathy in the Eye",
+      "list": [
+        "Control Blood Sugar Levels",
+        "Maintain Healthy Blood Pressure",
+        "Manage Cholesterol Levels",
+        "Regular Eye Examinations",
+        "Quit Smoking",
+        "Avoid Alcohol Overconsumption",
+        "Stay Physically Active"
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Diabetic Retinopathy",
+      "list": [
+        {
+          "name": "Diagnosis Methods",
+          "description": "To diagnose diabetic retinopathy, an eye care professional will conduct a comprehensive eye exam, which may include methods such as dilated eye exams, fundus photography, fluorescein angiography, and optical coherence tomography (OCT).",
+          "image": "/treatmentImg/DiabeticRetinopathy/treat_1.jpg"
+        },
+        {
+          "name": "Laser Therapy",
+          "description": "Laser therapy can be used to stop blood vessels from leaking and prevent further damage to the retina.",
+          "image": "/treatmentImg/DiabeticRetinopathy/treat_2.jpg"
+        },
+        {
+          "name": "Anti-VEGF Injections",
+          "description": "These injections can help control abnormal blood vessel growth and reduce fluid leakage in the retina.",
+          "image": "/treatmentImg/DiabeticRetinopathy/treat_3.jpeg"
+        },
+        {
+          "name": "Vitrectomy",
+          "description": "In severe cases, surgery may be required to remove vitreous gel and address retinal issues caused by diabetic retinopathy.",
+          "image": "/treatmentImg/DiabeticRetinopathy/treat_4.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Diabetic Retinopathy Treatment?",
+      "list": [
+        "Expert ophthalmologists with specialized experience in managing diabetic retinopathy.",
+        "Comprehensive diagnostic tools, including Optical Coherence Tomography (OCT) and fluorescein angiography, for early detection.",
+        "Personalized treatment plans tailored to your specific condition, including laser therapy, anti-VEGF injections, and vitrectomy.",
+        "Access to the latest advancements in diabetic retinopathy treatments to prevent vision loss.",
+        "Regular follow-up care to monitor the progression of the disease and manage any complications.",
+        "A patient-centered approach, ensuring you receive the support you need for managing diabetes-related eye conditions."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is diabetic retinopathy?",
+          "answer": "Diabetic retinopathy is a complication of diabetes that affects the blood vessels in the retina, leading to vision problems and, if untreated, blindness."
+        },
+        {
+          "question": "How is diabetic retinopathy diagnosed?",
+          "answer": "It is diagnosed through a comprehensive eye exam, which may include Optical Coherence Tomography (OCT) and fluorescein angiography to detect changes in the retina."
+        },
+        {
+          "question": "Can diabetic retinopathy be treated?",
+          "answer": "Yes, treatments like laser therapy, anti-VEGF injections, and vitrectomy can help manage and prevent vision loss."
+        },
+        {
+          "question": "How often should I get eye exams for diabetic retinopathy?",
+          "answer": "It’s recommended to have a comprehensive eye exam at least once a year if you have diabetes, or more often if advised by your ophthalmologist."
+        },
+        {
+          "question": "Can diabetic retinopathy be prevented?",
+          "answer": "Controlling blood sugar, blood pressure, and cholesterol levels can help prevent or delay the onset of diabetic retinopathy."
+        },
+        {
+          "question": "Is diabetic retinopathy curable?",
+          "answer": "While it can’t be fully cured, early detection and treatment can effectively manage the condition and prevent severe vision loss."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Hypertensive Retinopathy",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Hypertensive retinopathy is damage to the retina due to high blood pressure (hypertension). Over time, untreated hypertension can cause changes in the blood vessels of the retina, leading to vision problems. It can range from mild to severe damage and may lead to permanent vision loss if left untreated.",
+      "image": "/treatmentImg/Hypertensive/main.jpg",
+      "banner":"/Banner/banner6.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Hypertensive Retinopathy",
+      "list": [
+        "Blurry or impaired vision",
+        "Sudden loss of vision in one or both eyes",
+        "Retinal hemorrhages (bleeding in the eye)",
+        "Swelling or damage to the blood vessels of the retina"
+      ],
+      "images": [
+        "/treatmentImg/Hypertensive/symp_1.jpeg",
+        "/treatmentImg/Hypertensive/symp_2.jpeg",
+        "/treatmentImg/Hypertensive/symp_3.jpg",
+        "/treatmentImg/Hypertensive/symp_4.jpeg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Hypertensive Retinopathy in the Eye",
+      "list": [
+        "Maintain a healthy blood pressure level through diet, exercise, and medications.",
+        "Follow a balanced diet, low in salt, and high in fruits, vegetables, and whole grains.",
+        "Avoid smoking and excessive alcohol consumption, both of which can worsen hypertension.",
+        "Regularly monitor your blood pressure and visit your healthcare provider for routine checkups."
+      ],
+     "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Hypertensive Retinopathy",
+      "list": [
+        {
+          "name": "Blood Pressure Management",
+          "description": "The most important step in treating hypertensive retinopathy is controlling high blood pressure. Medications prescribed by a doctor to lower blood pressure are crucial in halting or slowing the progression of the disease.",
+          "image": "/treatmentImg/Hypertensive/treat_1.jpeg"
+        },
+        {
+          "name": "Laser Treatment",
+          "description": "In more severe cases, laser therapy may be used to treat swelling or leaking blood vessels in the retina.",
+          "image": "/treatmentImg/Hypertensive/treat_2.jpeg"
+        },
+        {
+          "name": "Anti-VEGF Injections",
+          "description": "These injections can help manage vision problems caused by leaking blood vessels in the retina.",
+          "image": "/treatmentImg/Hypertensive/treat_3.jpg"
+        }
+      ]
+    },
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Hypertensive Retinopathy Treatment?",
+      "list": [
+        "Experienced ophthalmologists who specialize in diagnosing and managing hypertensive retinopathy.",
+        "Advanced diagnostic tools, including Optical Coherence Tomography (OCT) and fluorescein angiography, for accurate detection of retinal damage.",
+        "Comprehensive treatment options, including blood pressure management, laser therapy, and anti-VEGF injections, tailored to your condition.",
+        "Focus on controlling hypertension to prevent further retinal damage and preserve vision.",
+        "Regular follow-up care and monitoring to ensure the best outcomes for your eye health.",
+        "A holistic approach to eye care, addressing both the root cause (hypertension) and its effects on the retina."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is hypertensive retinopathy?",
+          "answer": "Hypertensive retinopathy is damage to the retina caused by high blood pressure, which can lead to vision problems or even blindness if not treated."
+        },
+        {
+          "question": "What causes hypertensive retinopathy?",
+          "answer": "It is caused by long-term high blood pressure, which damages the blood vessels in the retina, leading to leakage, bleeding, and swelling."
+        },
+        {
+          "question": "How is hypertensive retinopathy diagnosed?",
+          "answer": "It is diagnosed through a comprehensive eye exam, which may include a retinal exam, optical coherence tomography (OCT), and fluorescein angiography."
+        },
+        {
+          "question": "How is hypertensive retinopathy treated?",
+          "answer": "Treatment focuses on controlling blood pressure through medications, lifestyle changes, and in some cases, laser therapy or anti-VEGF injections to manage the damage in the retina."
+        },
+        {
+          "question": "Can hypertensive retinopathy be prevented?",
+          "answer": "Yes, by managing blood pressure through medication, a healthy diet, regular exercise, and avoiding smoking and excessive alcohol consumption."
+        },
+        {
+          "question": "Is hypertensive retinopathy curable?",
+          "answer": "While it can't be fully cured, early detection and treatment can control the condition and prevent further damage to your vision."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Retinal Detachment",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Retinal detachment is a critical and potentially sight-threatening condition in which the retina—the light-sensitive tissue at the back of the eye—becomes separated from the layer of supportive tissue beneath it. The retina plays a crucial role in capturing light and sending visual signals to the brain, and when it detaches, it can no longer function properly. If left untreated, retinal detachment can lead to permanent vision loss, making it essential to seek prompt medical attention. Early intervention can significantly increase the chances of restoring vision and preventing further damage.",
+      "image": "/treatmentImg/Retinal/main.png",
+      "banner":"/Banner/banner7.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Retinal Detachment",
+      "list": [
+        "Sudden flashes of light or floaters in the vision",
+        "A shadow or curtain-like effect in the peripheral vision",
+        "Sudden loss of vision in one eye",
+        "Blurry or distorted vision"
+      ],
+      "images": [
+        "/treatmentImg/Retinal/symp_1.jpg",
+        "/treatmentImg/Retinal/symp_2.jpg",
+        "/treatmentImg/Retinal/symp_3.jpeg",
+        "/treatmentImg/Retinal/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Retinal Detachment in the Eye",
+      "list": [
+        "Regular eye check-ups, especially if you're at risk (e.g., high myopia, family history, or diabetic retinopathy).",
+        "Early treatment of conditions like retinal tears or diabetic retinopathy can prevent detachment.",
+        "Protect your eyes from trauma by wearing appropriate eye protection during sports or high-risk activities."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Retinal Detachment",
+      "list": [
+        {
+          "name": "Scleral Buckling",
+          "description": "A procedure where a small band is placed around the eye to push the retina back into place.",
+          "image": "/treatmentImg/Retinal/treat_1.jpeg"
+        },
+        {
+          "name": "Vitrectomy",
+          "description": "A surgical procedure that removes the vitreous gel from the eye, allowing the retina to be reattached.",
+          "image": "/treatmentImg/Retinal/treat_2.jpg"
+        },
+        {
+          "name": "Laser Surgery or Cryopexy",
+          "description": "Laser or freezing treatments are used to seal retinal tears or holes that may lead to detachment.",
+          "image": "/treatmentImg/Retinal/treat_3.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Retinal Detachment Treatment?",
+      "list": [
+        "Highly skilled ophthalmologists with expertise in diagnosing and treating retinal detachment.",
+        "State-of-the-art diagnostic technology, including Optical Coherence Tomography (OCT) and ultrasound, for accurate assessment of retinal health.",
+        "Comprehensive treatment options tailored to your condition, including scleral buckling, vitrectomy, laser surgery, and pneumatic retinopexy.",
+        "Urgent care for retinal detachment, with quick intervention to prevent permanent vision loss.",
+        "Cutting-edge surgical techniques that offer the best chance for vision recovery.",
+        "Focus on personalized care, with detailed follow-up and monitoring to ensure successful outcomes."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is retinal detachment?",
+          "answer": "Retinal detachment is a condition where the retina, the light-sensitive tissue at the back of the eye, separates from its supporting layers. This separation disrupts vision and, if untreated, can lead to permanent vision loss."
+        },
+        {
+          "question": "How is retinal detachment diagnosed?",
+          "answer": "An ophthalmologist will perform a comprehensive eye exam, which may include dilating the pupils, retinal imaging, and tests like optical coherence tomography (OCT) or ultrasound."
+        },
+        {
+          "question": "Is retinal detachment painful?",
+          "answer": "No, retinal detachment itself is not painful, but its symptoms, such as vision changes, can be alarming and require immediate medical attention."
+        },
+        {
+          "question": "Is retinal detachment an emergency?",
+          "answer": "Yes, retinal detachment is a medical emergency. If you experience symptoms, seek immediate attention from an ophthalmologist to prevent permanent vision loss."
+        },
+        {
+          "question": "Can vision be restored after retinal detachment?",
+          "answer": "The success of vision restoration depends on the severity of the detachment and how quickly it is treated. Early intervention offers the best chance of recovery."
+        },
+        {
+          "question": "Who is at higher risk of retinal detachment?",
+          "answer": "People with severe nearsightedness, a family history of retinal detachment, previous eye injuries or surgeries, or conditions like diabetic retinopathy are at higher risk."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Dacryocystitis",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Dacryocystitis is an infection or inflammation of the tear sac (lacrimal sac), located between the eye and the bridge of the nose. It typically occurs when the tear drainage system becomes blocked, causing tears to accumulate and become infected. This condition can lead to pain, redness, swelling near the affected area, and excessive tearing or discharge.\n\nIf left untreated, dacryocystitis can lead to complications such as abscess formation or the spread of infection to nearby tissues. Early diagnosis and appropriate treatment can effectively manage this condition and prevent further complications.",
+      "image": "/treatmentImg/Dacryocystitis/main.jpg",
+      "banner":"/Banner/banner8.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Dacryocystitis",
+      "list": [
+        "Pain, redness, and swelling near the inner corner of the eye.",
+        "Excessive tearing or watery eyes.",
+        "Discharge from the eye, which may be yellow or green.",
+        "Tenderness and warmth in the affected area."
+      ],
+      "images": [
+        "/treatmentImg/Dacryocystitis/symp_1.jpeg",
+        "/treatmentImg/Dacryocystitis/symp_2.jpeg",
+        "/treatmentImg/Dacryocystitis/symp_3.jpg",
+        "/treatmentImg/Dacryocystitis/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Dacryocystitis in the Eye",
+      "list": [
+        "Regular Eye Hygiene: Keep the eye area clean and free from debris.",
+        "Manage Chronic Conditions: Control conditions like chronic sinusitis and diabetes that can increase the risk of infections.",
+        "Protect Eyes from Trauma: Wear protective eyewear during activities that could cause eye injuries.",
+        "Prompt Treatment of Eye Infections: Seek immediate medical attention for any eye infections to prevent complications."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Dacryocystitis",
+      "list": [
+        {
+          "name": "Antibiotics",
+          "description": "Oral or topical antibiotics are prescribed to treat bacterial infections.",
+          "image": "/treatmentImg/Dacryocystitis/treat_1.jpg"
+        },
+        {
+          "name": "Warm Compresses",
+          "description": "Applying warm compresses to the affected area can reduce swelling and promote drainage.",
+          "image": "/treatmentImg/Dacryocystitis/treat_2.jpg"
+        },
+        {
+          "name": "Surgical Intervention",
+          "description": "In cases of chronic dacryocystitis or recurrent infections, procedures like dacryocystorhinostomy (DCR) may be performed to restore tear drainage.",
+          "image": "/treatmentImg/Dacryocystitis/treat_3.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Dacryocystitis Treatment?",
+      "list": [
+        "Expert ophthalmologists specialized in diagnosing and treating dacryocystitis and other tear duct disorders.",
+        "Advanced diagnostic tools, including dacryocystography, to accurately assess tear drainage system blockages.",
+        "Comprehensive treatment options, including antibiotics, warm compresses, and surgical intervention (dacryocystorhinostomy) for chronic or recurrent cases.",
+        "Prompt and effective management of infections to prevent complications like abscess formation.",
+        "Focus on personalized care, ensuring proper follow-up and guidance to prevent recurrence.",
+        "State-of-the-art facilities for both medical and surgical treatments, ensuring the best outcomes."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is dacryocystitis?",
+          "answer": "Dacryocystitis is an infection or inflammation of the lacrimal sac, located near the inner corner of the eye. It occurs due to a blockage in the tear drainage system, leading to the accumulation of tears and bacteria."
+        },
+        {
+          "question": "What causes dacryocystitis?",
+          "answer": "It is primarily caused by a blocked nasolacrimal duct. Other causes include infections, trauma to the eye, congenital abnormalities, or chronic sinusitis."
+        },
+        {
+          "question": "How is dacryocystitis diagnosed?",
+          "answer": "Doctors use a combination of physical examination, imaging (like dacryocystography), and sometimes cultures of the discharge to diagnose dacryocystitis accurately."
+        },
+        {
+          "question": "Can dacryocystitis recur?",
+          "answer": "Yes, dacryocystitis can recur, especially if the underlying cause of the blockage is not resolved. Preventive care and follow-ups are crucial."
+        },
+        {
+          "question": "Is dacryocystitis contagious?",
+          "answer": "No, dacryocystitis itself is not contagious. However, any discharge from the eye should be handled carefully to prevent bacterial spread."
+        },
+        {
+          "question": "Can dacryocystitis resolve on its own?",
+          "answer": "In some mild cases, dacryocystitis may resolve with warm compresses and good hygiene. However, medical treatment is often needed to address infection and prevent complications."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Corneal Ulcer",
+    "introduction": {
+      "title": "Introduction",
+      "content": "A corneal ulcer is an open sore or erosion on the cornea, the transparent front part of the eye that plays a crucial role in focusing vision. This condition can result from infections, trauma, or underlying eye diseases and is often accompanied by severe pain, redness, blurred vision, and light sensitivity.\n\nAt Dristy Eye Hospital, we understand the urgency of treating corneal ulcers promptly to prevent complications like scarring, vision loss, or even blindness. Our expert team of ophthalmologists uses advanced diagnostic tools and effective treatment strategies to ensure the best outcomes for our patients.",
+      "image": "/treatmentImg/CornealUlcer/main.jpeg",
+      "banner":"/Banner/banner9.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Corneal Ulcer",
+      "list": [
+        "Persistent eye pain or discomfort",
+        "Redness of the eye",
+        "Sensitivity to light (photophobia)",
+        "Blurred or reduced vision"
+      ],
+      "images": [
+        "/treatmentImg/CornealUlcer/symp_1.jpg",
+        "/treatmentImg/CornealUlcer/symp_2.jpg",
+        "/treatmentImg/CornealUlcer/symp_3.jpg",
+        "/treatmentImg/CornealUlcer/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Corneal Ulcer in the Eye",
+      "list": [
+        "Maintain Regular Eye Hygiene: Keep your eyes and the surrounding area clean to prevent dirt and bacteria from causing infections.",
+        "Handle Contact Lenses Properly: Clean, disinfect, and store contact lenses correctly. Avoid wearing them for extended periods or while sleeping unless prescribed.",
+        "Protect Eyes from Trauma: Use protective eyewear during sports, construction work, or other activities that could lead to eye injuries.",
+        "Manage Underlying Conditions: Control chronic conditions like dry eyes, sinusitis, or autoimmune diseases that increase the risk of corneal ulcers.",
+        "Seek Prompt Treatment for Infections: Address any signs of eye infections, such as redness, pain, or discharge, immediately to avoid complications.",
+        "Avoid Eye Irritants: Minimize exposure to smoke, dust, and harmful chemicals that can irritate the eyes."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Corneal Ulcer",
+      "list": [
+        {
+          "name": "Accurate Diagnosis",
+          "description": "We use cutting-edge diagnostic tools to identify the exact cause of the ulcer, whether bacterial, viral, fungal, or parasitic. Early and accurate diagnosis is key to effective treatment.",
+          "image": "/treatmentImg/CornealUlcer/treat_1.jpg"
+        },
+        {
+          "name": "Targeted Medications",
+          "description": "Antibiotic, Antiviral, or Antifungal Drops: Depending on the type of infection, we prescribe medications to eliminate the infection and promote healing. Anti-Inflammatory and Lubricating Drops: To reduce pain, inflammation, and dryness.",
+          "image": "/treatmentImg/CornealUlcer/treat_2.jpeg"
+        },
+        {
+          "name": "Pain Management",
+          "description": "We provide medications, including cycloplegic drops, to ease discomfort and sensitivity to light during the healing process.",
+          "image": "/treatmentImg/CornealUlcer/treat_3.jpg"
+        },
+        {
+          "name": "Advanced Surgical Options",
+          "description": "In severe cases, we offer surgical solutions such as:\n- Debridement: Removal of damaged tissue to promote recovery.\n- Corneal Transplant (Keratoplasty): For cases with extensive damage or scarring.",
+          "image": "/treatmentImg/CornealUlcer/treat_4.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Corneal Ulcer Treatment?",
+      "list": [
+        "Expert ophthalmologists with extensive experience in diagnosing and treating corneal ulcers and other eye infections.",
+        "Advanced diagnostic tools, including slit-lamp microscopy and fluorescein dye, to accurately assess the severity and cause of the ulcer.",
+        "Comprehensive treatment options, including targeted medications, pain management, and advanced surgical interventions like corneal transplants for severe cases.",
+        "Focus on early intervention to prevent complications like scarring, vision loss, or blindness.",
+        "Personalized care with a strong emphasis on patient education to prevent recurrence and promote healing.",
+        "State-of-the-art facilities with a multidisciplinary approach to ensure the best outcomes for every patient."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is a corneal ulcer?",
+          "answer": "A corneal ulcer is an open sore on the cornea, the clear, protective layer at the front of the eye. It is often caused by infections, injuries, or underlying eye conditions."
+        },
+        {
+          "question": "How is a corneal ulcer diagnosed?",
+          "answer": "An ophthalmologist diagnoses a corneal ulcer through a comprehensive eye exam, often using a slit lamp microscope and fluorescein dye to identify the ulcer and its cause."
+        },
+        {
+          "question": "Can corneal ulcers lead to permanent vision loss?",
+          "answer": "Yes, if left untreated, a corneal ulcer can cause scarring, leading to vision impairment or even permanent vision loss."
+        },
+        {
+          "question": "Can corneal ulcers be prevented?",
+          "answer": "Yes, you can reduce the risk by practicing good eye hygiene, properly caring for contact lenses, protecting your eyes from injuries, and addressing infections promptly."
+        },
+        {
+          "question": "Is a corneal ulcer contagious?",
+          "answer": "The ulcer itself is not contagious, but infections causing it, such as bacterial or viral infections, can be contagious. Proper precautions should be taken."
+        },
+        {
+          "question": "When should I see a doctor for a corneal ulcer?",
+          "answer": "Seek immediate medical attention if you experience persistent eye pain, redness, or blurry vision, as these could indicate a corneal ulcer or other serious eye conditions."
+        }
+      ]
+    }
+  },
+  {
+    "name": "ICL-IPCL",
+    "introduction": {
+      "title": "Introduction",
+      "content": "ICL/IPCL procedures are advanced solutions for individuals seeking to correct their vision without relying on glasses or traditional contact lenses. These lenses are surgically implanted into the eye, offering a permanent alternative to LASIK for people with high refractive errors or thin corneas.\n\nAt Dristy Eye Hospital, we provide cutting-edge ICL/IPCL treatments to help you achieve crystal-clear vision with unmatched precision and care.",
+      "image": "/treatmentImg/ICL-IPCL/main.jpg",
+      "banner":"/Banner/banner10.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of ICL/IPCL Candidates",
+      "list": [
+        "Refractive Errors",
+        "Difficulty with Night Vision",
+        "Frequent Changes in Prescription",
+        "Blurred or Distorted Vision"
+      ],
+      "images": [
+        "/treatmentImg/ICL-IPCL/symp_1.jpg",
+        "/treatmentImg/ICL-IPCL/symp_2.jpeg",
+        "/treatmentImg/ICL-IPCL/symp_3.jpeg",
+        "/treatmentImg/ICL-IPCL/symp_4.jpg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Complications in ICL/IPCL Surgery",
+      "list": [
+        "Maintain Regular Eye Hygiene: Keep your eyes and the surrounding area clean to prevent infections and ensure smooth healing after ICL surgery.",
+        "Handle Contact Lenses Properly (Before Surgery): If you're using contact lenses before the procedure, clean, disinfect, and store them correctly. Avoid wearing them for extended periods or while sleeping unless prescribed.",
+        "Protect Eyes from Trauma: Use protective eyewear during sports, construction work, or other activities that could cause eye injuries, especially after ICL surgery.",
+        "Manage Underlying Conditions: Control chronic conditions like diabetes and hypertension, as they can affect eye health and healing after surgery.",
+        "Seek Prompt Treatment for Eye Issues: If you experience any discomfort, redness, or vision changes post-surgery, seek immediate medical attention to avoid complications.",
+        "Avoid Eye Irritants: Minimize exposure to smoke, dust, and harmful chemicals to protect your eyes and promote proper healing after ICL surgery."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for ICL/IPCL Surgery",
+      "list": [
+        {
+          "name": "Consultation and Evaluation",
+          "description": "An ophthalmologist evaluates the patient's eye health, refractive error, and suitability for ICL surgery.",
+          "image": "/treatmentImg/ICL-IPCL/treat_1.jpg"
+        },
+        {
+          "name": "Preoperative Measurements",
+          "description": "Precise measurements of the eye are taken to determine the appropriate size and power of the ICL.",
+          "image": "/treatmentImg/ICL-IPCL/treat_2.jpeg"
+        },
+        {
+          "name": "Surgical Procedure",
+          "description": "The ICL, a soft, flexible lens, is implanted into the eye through a small incision. It is positioned behind the iris and in front of the eye's natural lens.",
+          "image": "/treatmentImg/ICL-IPCL/treat_3.jpg"
+        }
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for ICL/IPCL Surgery?",
+      "list": [
+        "Experienced ophthalmologists specializing in advanced vision correction procedures, including ICL/IPCL surgery.",
+        "State-of-the-art technology and diagnostic tools for precise evaluation and customized treatment plans.",
+        "A safe and effective alternative to LASIK for individuals with high refractive errors or thin corneas.",
+        "Comprehensive preoperative and postoperative care to ensure smooth recovery and long-term success.",
+        "Personalized consultations to determine your suitability for ICL/IPCL surgery and to address all your concerns.",
+        "Commitment to achieving crystal-clear vision with minimal discomfort and optimal results."
+      ]
+    },
+
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What is ICL surgery?",
+          "answer": "ICL (Implantable Collamer Lens) surgery is a procedure where a synthetic lens is implanted in the eye to correct refractive errors such as nearsightedness, farsightedness, and astigmatism. It is an alternative to LASIK surgery."
+        },
+        {
+          "question": "Who is a good candidate for ICL surgery?",
+          "answer": "ICL surgery is ideal for individuals who have moderate to high nearsightedness or astigmatism and are not suitable candidates for LASIK. Candidates should be at least 21 years old with a stable prescription for at least one year."
+        },
+        {
+          "question": "Is the ICL surgery safe?",
+          "answer": "Yes, ICL surgery is generally considered safe and has a high success rate. It is performed by skilled ophthalmologists using advanced technology. As with any surgery, there are potential risks, but they are rare and can be managed with proper care."
+        },
+        {
+          "question": "How long does the recovery take after ICL surgery?",
+          "answer": "Most patients experience improved vision within 24 to 48 hours after the procedure. Full recovery may take a few weeks, but you can return to most normal activities soon after the surgery. Your doctor will provide post-surgery care instructions to ensure proper healing."
+        },
+        {
+          "question": "Is ICL surgery painful?",
+          "answer": "ICL surgery is typically not painful as it is performed under local anesthesia. You may experience some discomfort or mild irritation after the surgery, but it generally resolves quickly."
+        },
+        {
+          "question": "How long will the ICL last?",
+          "answer": "ICLs are designed to be a permanent solution for vision correction. However, in rare cases, the lens may need to be replaced due to changes in your eye's condition over time."
+        },
+        {
+          "question": "Is ICL surgery reversible?",
+          "answer": "Yes, the ICL is removable. If necessary, the lens can be removed or replaced with another lens in the future. This is one of the advantages of ICL surgery over other types of vision correction procedures like LASIK."
+        }
+      ]
+    }
+  },
+  {
+    "name": "Squint",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Squint, also known as strabismus, is a visual condition in which the eyes do not align properly with each other. This misalignment can occur in various directions, where one or both eyes may turn inward (esotropia), outward (exotropia), upward (hypertropia), or downward (hypotropia). As a result, each eye may focus on a different object or point in space, leading to difficulty in focusing on the same object.\n\nStrabismus can have a significant impact on vision and overall eye health. It may cause double vision, making it challenging to perceive the world clearly. Additionally, squint can impair depth perception, which is the ability to judge distances accurately, and it can affect a person’s ability to perform everyday activities such as driving, reading, or playing sports. In children, untreated strabismus can also lead to the development of amblyopia (lazy eye), a condition in which the brain ignores input from one eye, potentially resulting in permanent vision loss if not addressed in time.",
+      "image": "/treatmentImg/Squint/main.jpg",
+      "banner":"/Banner/banner11.jpg"
+    },
+    "symptoms": {
+      "title": "Symptoms of Squint",
+      "list": [
+        "Misaligned Eyes",
+        "Double Vision",
+        "Poor Depth Perception",
+        "Squinting or Closing One Eye"
+      ],
+      "images": [
+        "/treatmentImg/Squint/symp_1.jpg",
+        "/treatmentImg/Squint/symp_2.jpg",
+        "/treatmentImg/Squint/symp_3.jpg",
+        "/treatmentImg/Squint/symp_4.jpeg"
+      ]
+    },
+    "prevention": {
+      "title": "How to Avoid Squint in the Eye",
+      "list": [
+        "Early Diagnosis and Treatment: Regular eye exams are essential, especially for children, to detect and treat squint early.",
+        "Proper Vision Correction: Correct refractive errors such as nearsightedness, farsightedness, or astigmatism with glasses or contact lenses to reduce the risk of squint.",
+        "Monitor Eye Health: Seek prompt treatment for any eye infections, trauma, or underlying health issues that could affect eye alignment.",
+        "Address Muscle Imbalances: Eye exercises prescribed by an eye specialist can help strengthen weak eye muscles and improve alignment."
+      ],
+      "image": "/treatmentImg/prevention.jpg"
+    },
+    "treatments": {
+      "title": "Treatment Options for Squint",
+      "list": [
+        {
+          "name": "Glasses",
+          "description": "Glasses can help if a squint is caused by a problem with eyesight, such as long-sightedness.",
+          "image": "/treatmentImg/Squint/treat_1.jpg"
+        },
+        {
+          "name": "Eye Exercises",
+          "description": "Exercises for the muscles that control eye movement may help the eyes work together better.",
+          "image": "/treatmentImg/Squint/treat_2.jpeg"
+        },
+        {
+          "name": "Surgery",
+          "description": "Involves moving the muscles that control eye movement so the eyes line up correctly. It may be recommended if glasses are not fully effective on their own.",
+          "image": "/treatmentImg/Squint/treat_3.jpg"
+        }
+      ]
+    },
+    "why_choose_us": {
+      "title": "Why Choose Dristy Eye Hospital for Squint?",
+      "list": [
+        "Expert Ophthalmologists: Our team specializes in diagnosing and treating all types of squint, offering both non-surgical and surgical options.",
+        "Advanced Technology: We use the latest diagnostic tools and techniques to accurately assess and treat squint in patients of all ages.",
+        "Comprehensive Care: From eye exams to advanced treatment options, we provide personalized care plans to ensure the best outcomes for each patient.",
+        "Surgical Expertise: Our surgeons are highly skilled in performing eye muscle surgeries to align the eyes and restore normal vision."
+      ],
+      "image": "path-to-your-image-why-choose-us.png"
+    },
+    "faq": {
+      "title": "FAQ",
+      "list": [
+        {
+          "question": "What causes squint (strabismus)?",
+          "answer": "Squint can be caused by various factors, including muscle imbalances, refractive errors, neurological conditions, or eye injuries. It can also be congenital or develop later in life."
+        },
+        {
+          "question": "Can squint be treated without surgery?",
+          "answer": "Yes, non-surgical treatments like glasses, eye exercises, or Botox injections can be effective, especially in mild cases. Surgery is considered if other treatments are not successful."
+        },
+        {
+          "question": "Is squint a sign of a serious problem?",
+          "answer": "In some cases, squint can indicate underlying health issues such as neurological disorders. It’s essential to get a thorough eye examination to determine the cause."
+        },
+        {
+          "question": "Can squint affect vision in children?",
+          "answer": "Yes, squint can lead to amblyopia (lazy eye) in children if left untreated. Early diagnosis and treatment are crucial to prevent permanent vision loss."
+        },
+        {
+          "question": "Is squint surgery safe?",
+          "answer": "Squint surgery is generally safe, with a high success rate. Our skilled ophthalmologists use advanced techniques to minimize risks and ensure the best possible outcomes."
+        },
+        {
+          "question": "Can squint come back after surgery?",
+          "answer": "While squint surgery is effective for most patients, in some cases, the misalignment may return. Regular follow-up visits are necessary to monitor progress and ensure the eyes remain aligned."
+        },
+        {
+          "question": "At what age should squint be treated?",
+          "answer": "It is best to treat squint as early as possible, especially in children, to prevent long-term vision problems. However, squint can be treated at any age with appropriate care."
+        }
+      ]
+    }
+  }
+]
