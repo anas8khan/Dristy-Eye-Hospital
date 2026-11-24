@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 
 const Join = () => {
   return (
-    <div className="text-center p-2 mt-2">
-      <h3 className="lg:text-4xl dark:text-gray-200 text-2xl font-bold text-gray-800 mb-6">
-        Join Our Mission
-      </h3>
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
-        <Link to={"/appointment"} className="w-full sm:w-auto px-6 py-3 lg:px-10 lg:py-3 bg-primary text-white rounded-lg text-sm lg:text-base hover:scale-95 duration-300">
-          Book Your Surgery
+    <div className="mt-12 rounded-3xl bg-gradient-to-br from-primary-50 via-white to-leaf-50 px-6 py-12 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
+      <h3 className="h-section !text-2xl lg:!text-4xl">Join Our Mission</h3>
+      <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Link to={"/appointment"} className="btn-primary w-full sm:w-auto">
+          Book Your Surgery <HiArrowRight />
         </Link>
-        <button className="w-full sm:w-auto px-6 py-3 lg:px-6 lg:py-3 bg-primary text-white rounded-lg text-sm lg:text-base hover:scale-95 duration-300">
+        <button type="button" className="btn-outline w-full sm:w-auto">
           Contribute to the Initiative
         </button>
       </div>

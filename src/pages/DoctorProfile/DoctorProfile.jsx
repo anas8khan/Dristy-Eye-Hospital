@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
+import { Link, useParams } from "react-router-dom";
+import { HiOutlineAcademicCap, HiOutlineBuildingOffice2, HiOutlineSparkles, HiArrowRight } from "react-icons/hi2";
 import BackgroundWrapper from "../../component/BackgroundWrapper";
-import { useParams } from "react-router-dom";
-import { useApiData } from "../../context/ApiDataContext";
-import doctorData from "../../doctorData.json"; 
+import Consultant from "../../component/Consultant";
+import Reveal from "../../component/ui/Reveal";
+import doctorData from "../../doctorData.json";
 import img from "../../assets/bgwrapper.jpg";
-import Consultant from "../../component/Consultant"; 
 
 const DoctorProfile = () => {
   const { doctorName } = useParams();
-  const [doctorDetails, setDoctorDetails] = useState(null);
-  const { isLoading, setIsLoading } = useApiData();
+  const doctorDetails = useMemo(
+    () => (doctorData.doctors || []).find((doctor) => doctor.name === doctorName) || null,
+    [doctorName]
+  );
 
   useEffect(() => {
     document.title = "Doctor Profile - Dristy Eye Hospital, Chouparan";
@@ -22,97 +25,54 @@ const DoctorProfile = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    const doctorsArray = doctorData.doctors || [];
-    const doctor = doctorsArray.find((doctor) => doctor.name === doctorName);
-    setDoctorDetails(doctor || null); 
-
-    setIsLoading(false);
-  }, [doctorName, setIsLoading]);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="loader text-xl text-primary"></div>
-      </div>
-    );
-  }
-
   if (!doctorDetails) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <p className="text-gray-500 dark:text-gray-300">
-          Doctor details not found.
-        </p>
+      <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
+        <p className="text-lg text-slate-500 dark:text-slate-300">Doctor details not found.</p>
+        <Link to="/doctor" className="btn-primary">{"Doctor's"} <HiArrowRight /></Link>
       </div>
     );
   }
+
+  const facts = [
+    { icon: <HiOutlineSparkles />, label: "Speciality:", value: doctorDetails.specialization },
+    { icon: <HiOutlineAcademicCap />, label: "Degree:", value: doctorDetails.qualification },
+    { icon: <HiOutlineBuildingOffice2 />, label: "Hospital:", value: doctorDetails.hospital },
+  ];
 
   return (
     <>
-      <BackgroundWrapper
-        title1={"Home"}
-        title2={doctorDetails.name}
-        img={img}
-      />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-10 lg:px-20">
-        <div className="flex justify-center md:justify-start">
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:block">
-              <img
-                src={doctorDetails.image}
-                alt={doctorDetails.name}
-                className="w-[70%] lg:h-[40vh] sm:h-[30vh] bg-gray-100 dark:bg-gradient-to-r from-slate-900 to-slate-700 p-3 rounded-lg"
-              />
+      <BackgroundWrapper title1={"Home"} title2={doctorDetails.name} img={img} />
+      <section className="section">
+        <div className="container-x grid items-start gap-10 lg:grid-cols-3">
+          <Reveal className="card overflow-hidden lg:sticky lg:top-28">
+            <div className="aspect-[4/5] bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
+              <img src={doctorDetails.image} alt={doctorDetails.name} className="h-full w-full object-cover object-top" />
             </div>
-            <h2 className="mt-4 text-xl font-bold dark:text-gray-200">
-              {doctorDetails.name}
-            </h2>
-            <p className="text-blue-700 font-medium dark:text-gray-300">
-              {doctorDetails.specialization}
-            </p>
-            <p className="mt-2 text-gray-600 text-sm dark:text-gray-200">
-              {doctorDetails.description}
-            </p>
-          </div>
-        </div>
-
-        <div className="md:col-span-2">
-          <div className="bg-white dark:bg-gradient-to-r from-slate-900 to-slate-700 shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-300">
-              Biography
-            </h3>
-            <p className="text-gray-600 dark:text-gray-200 mt-4">
-              {doctorDetails.description}
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              <div className="bg-blue-50 dark:bg-transparent p-4 rounded-lg">
-                <p className="font-semibold dark:text-gray-300">Speciality:</p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {doctorDetails.specialization}
-                </p>
-              </div>
-              <div className="bg-teal-50 dark:bg-transparent p-4 rounded-lg">
-                <p className="font-semibold dark:text-gray-300">Degree:</p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {doctorDetails.qualification}
-                </p>
-              </div>
-              <div className="bg-teal-50 dark:bg-transparent p-4 rounded-lg">
-                <p className="font-semibold dark:text-gray-300">Hospital:</p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {doctorDetails.hospital}
-                </p>
-              </div>
+            <div className="p-6">
+              <h2 className="text-2xl font-extrabold">{doctorDetails.name}</h2>
+              <p className="mt-1 font-semibold text-leaf-600 dark:text-leaf-400">{doctorDetails.specialization}</p>
+              <p className="mt-3 text-sm leading-relaxed">{doctorDetails.description}</p>
             </div>
-          </div>
-        </div>
-      </div>
+          </Reveal>
 
-      {/* Consultant Component */}
+          <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-2">
+            <h3 className="text-2xl font-extrabold">Biography</h3>
+            <p className="lead mt-4">{doctorDetails.description}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {facts.map((f) => (
+                <div key={f.label} className="flex gap-4 rounded-2xl bg-slate-50 p-5 dark:bg-slate-800/60">
+                  <span className="icon-badge">{f.icon}</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">{f.label}</p>
+                    <p className="mt-0.5 text-sm">{f.value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
       <Consultant />
     </>
   );

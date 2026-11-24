@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 import Hero from "./Home/Hero";
 import Benefits from "./Home/Benefits";
 import Features from "./Home/Features";
@@ -8,26 +10,15 @@ import Book from "./Home/Book";
 import StatsSection from "../component/StatsSection";
 import Testimonial from "./Home/Testimonial";
 import ImageCarousel from "../component/ImageCarousel";
-import { Link } from "react-router-dom";
-import { useApiData } from "../context/ApiDataContext";
 import Branches from "../component/Branches";
-
-// import React, { useEffect } from "react";
-// import Hero from "./Home/Hero";
-// import Benefits from "./Home/Benefits";
-// import Features from "./Home/Features";
-// import Consultant from "../component/Consultant";
-// import Doctor from "./Home/Doctor";
-// import Book from "./Home/Book";
-// import StatsSection from "../component/StatsSection";
-// import Testimonial from "./Home/Testimonial";
-// import ImageCarousel from "../component/ImageCarousel";
-// import { Link } from "react-router-dom";
-// import { useApiData } from "../context/ApiDataContext";
-// import Branches from "../component/Branches";
+import SectionHeading from "../component/ui/SectionHeading";
+import Reveal from "../component/ui/Reveal";
+import { useApiData } from "../context/ApiDataContext";
+import aboutImg from "../assets/hospitalImg/IMG_100.jpg";
+import aboutImg2 from "../assets/hospitalImg/IMG_1157.jpg";
 
 const Home = () => {
-  const { gallery, isLoading, error } = useApiData() || { gallery: [], isLoading: true, error: null };
+  const { gallery, isLoading, error } = useApiData();
 
   useEffect(() => {
     document.title = "Dristy Eye Hospital, Chouparan";
@@ -40,56 +31,72 @@ const Home = () => {
     }
   }, []);
 
-  // 🚀 Show Loader Initially
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  // 🚀 Show Error Message if an Error Occurs
-  if (error) {
-    return (
-      <div className="flex justify-center items-center min-h-screen text-red-500">
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   return (
-    <div>
+    <>
       <Hero />
-      <div className="flex flex-col items-center justify-center p-4 md:p-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center md:text-left dark:text-white">
-          About Dristy Eye Hospital
-        </h2>
-        <p className="text-gray-700 text-center leading-relaxed lg:w-[65%] dark:text-gray-200">
-        With a profound commitment to transforming lives through the gift of vision, Dristy Eye Hospital has emerged as a beacon of hope for countless individuals in need. Founded under the guidance of Afroj Charitable Trust, our hospital is rooted in a legacy of selfless service, unwavering compassion, and an unrelenting pursuit of excellence in eye care. Our story is one of dedication, perseverance, and a relentless drive to make a meaningful difference in the lives of those we serve.
-        </p>
-        <Link to={"/about"} className="mt-4 relative overflow-hidden text-white font-semibold px-6 py-3 bg-primary rounded-full group">
-          <button>
-            <span className="absolute inset-0 bg-blue-950 transition-all duration-500 transform -translate-x-full group-hover:translate-x-0"></span>
-            <span className="relative z-10 uppercase">More About Us</span>
-          </button>
-        </Link>
-      </div>
+
+      {/* About */}
+      <section className="section">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal className="relative">
+            <div className="grid grid-cols-5 gap-4">
+              <img
+                src={aboutImg}
+                alt="Dristy Eye Hospital"
+                loading="lazy"
+                className="col-span-3 h-80 w-full rounded-3xl object-cover shadow-lift md:h-[26rem]"
+              />
+              <img
+                src={aboutImg2}
+                alt="Afroj Charitable Trust"
+                loading="lazy"
+                className="col-span-2 mt-12 h-64 w-full rounded-3xl object-cover shadow-lift md:h-80"
+              />
+            </div>
+            <div className="absolute -bottom-6 left-6 rounded-2xl bg-leaf px-6 py-4 text-white shadow-lift">
+              <p className="font-display text-3xl font-extrabold">10,000+</p>
+              <p className="text-sm font-medium text-leaf-50">free cataract surgeries every year</p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <SectionHeading align="left" eyebrow="About Us" title="About Dristy Eye Hospital" />
+            <p className="lead mt-5">
+              With a profound commitment to transforming lives through the gift of vision, Dristy Eye Hospital has
+              emerged as a beacon of hope for countless individuals in need. Founded under the guidance of Afroj
+              Charitable Trust, our hospital is rooted in a legacy of selfless service, unwavering compassion, and an
+              unrelenting pursuit of excellence in eye care. Our story is one of dedication, perseverance, and a
+              relentless drive to make a meaningful difference in the lives of those we serve.
+            </p>
+            <Link to={"/about"} className="btn-primary mt-8">
+              More About Us <HiArrowRight />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
 
       <Benefits />
-      <div className="md:px-10">
-        <Features />
-      </div>
+      <Features />
       <Consultant />
       <Doctor />
       <Book />
       <StatsSection />
       <Testimonial />
-      <ImageCarousel images={gallery} isLoading={isLoading} error={error} />
-      <div>
-        <Branches />
-      </div>
-    </div>
+
+      <section className="pb-16">
+        <div className="container-x">
+          <SectionHeading eyebrow="Gallery" title="Explore Our Gallery" className="mb-10" />
+          <ImageCarousel images={gallery} isLoading={isLoading} error={error} />
+          <div className="flex justify-center">
+            <Link to="/gallery" className="btn-outline">
+              View More <HiArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Branches />
+    </>
   );
 };
 

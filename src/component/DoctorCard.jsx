@@ -1,45 +1,36 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { fadeIn } from "./animations";
 import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 
-const DoctorCard = ({ data, idx }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-  });
-
+const DoctorCard = ({ data }) => {
   return (
-    <motion.div
-      key={idx}
-      className="bg-gray-300 rounded-md transform hover:translate-y-2 duration-300 ease-in-out shadow-md"
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={fadeIn}
+    <Link
+      to={`/doctor-profile/${data.name}`}
+      className="card card-hover group flex h-full flex-col overflow-hidden"
     >
-      {/* Responsive image container using aspect ratio */}
-      <div className="w-full aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
         <img
           src={data.image}
-          alt="doctor"
+          alt={data.name}
           loading="lazy"
-          className="w-full h-full object-cover"
-          onError={(e) => (e.target.src = "/fallback-doctor.jpg")} // optional fallback
+          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-
-      <Link
-        to={`/doctor-profile/${data.name}`}
-        className="bg-white dark:bg-gradient-to-r from-slate-900 to-slate-700 shadow-inner flex justify-center"
-      >
-        <div className="text-center py-4 px-2">
-          <h1 className="text-base sm:text-lg md:text-xl text-primary dark:text-gray-200 font-bold hover:text-blue-950 dark:hover:text-blue-600 cursor-pointer duration-300">
+      <div className="flex flex-1 items-start justify-between gap-3 p-5">
+        <div>
+          <h3 className="text-lg font-bold transition group-hover:text-primary-600 dark:group-hover:text-primary-300">
             {data.name}
-          </h1>
+          </h3>
+          {data.specialization && (
+            <p className="mt-1 text-sm font-medium text-leaf-600 dark:text-leaf-400">{data.specialization}</p>
+          )}
+          {data.qualification && <p className="mt-1 text-xs text-slate-500">{data.qualification}</p>}
         </div>
-      </Link>
-    </motion.div>
+        <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary-50 text-primary-600 transition group-hover:bg-primary-600 group-hover:text-white dark:bg-slate-800 dark:text-primary-300">
+          <HiArrowRight />
+        </span>
+      </div>
+    </Link>
   );
 };
 

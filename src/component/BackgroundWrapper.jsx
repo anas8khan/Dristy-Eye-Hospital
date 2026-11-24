@@ -2,38 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
-import { slideInRight } from "../component/animations";
 
-const BackgroundWrapper = ({ title1, title2,img}) => {
+// Inner-page header with breadcrumb. Props kept compatible with the previous version.
+const BackgroundWrapper = ({ title1, title2, img }) => {
   return (
-    <div
-      className="flex p-10 items-center bg-center bg-cover xl:h-[45vh] h-[20vh]"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url(${img})`,
-      }}
-    >
+    <section className="relative isolate overflow-hidden bg-navy">
+      {img && (
+        <img
+          src={img}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
+        />
+      )}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-primary-800/40" />
+      <div className="absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
+      <div className="absolute -bottom-32 left-1/3 -z-10 h-72 w-72 rounded-full bg-leaf/20 blur-3xl" />
+
       <motion.div
-        className="text-white sm:px-20"
-        variants={slideInRight}
-        initial="hidden"
-        animate="visible"
+        className="container-x py-16 md:py-24"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        <h1 className="text-sm sm:text-2xl md:text-3xl font-bold mb-4">
-          {title2}
-        </h1>
-        <div className="flex items-center gap-2">
-          <Link
-            to="/"
-            className="md:text-lg text-sm hover:text-[#32FC16] font-semibold"
-            aria-label={`Navigate to ${title1}`}
-          >
+        <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-300">
+          <Link to="/" className="transition hover:text-white" aria-label={`Navigate to ${title1}`}>
             {title1}
           </Link>
-          <IoIosArrowForward size={20} />
-          <span className="md:text-lg text-xs font-semibold text-[#32FC16]">{title2}</span>
-        </div>
+          <IoIosArrowForward className="text-slate-500" />
+          <span className="text-leaf-300">{title2}</span>
+        </nav>
+        <h1 className="max-w-4xl font-display text-3xl font-extrabold capitalize leading-tight text-white sm:text-4xl md:text-5xl">
+          {title2}
+        </h1>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

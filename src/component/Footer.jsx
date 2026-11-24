@@ -1,189 +1,141 @@
-import React, { useEffect } from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaClock,
-  FaInstagram,
-} from "react-icons/fa";
-import logo from "../assets/logo.png";
+import React from "react";
 import { Link } from "react-router-dom";
-import { FaYoutube } from "react-icons/fa6";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import logo from "../assets/logo.png";
+import SocialLinks from "./ui/SocialLinks";
+import { contact } from "../siteConfig";
+
+const usefulLinks = [
+  { label: "Make Appointments", link: "/appointment" },
+  { label: "Contact Us", link: "/contact" },
+  { label: "Treatments", link: "/treatments" },
+  { label: "About Us", link: "/about" },
+  { label: "Our Doctors", link: "/doctor" },
+];
+
+const services = [
+  { name: "Cataract", link: "/treatment-details/Cataract" },
+  { name: "Pterygium", link: "/treatment-details/Pterygium" },
+  { name: "Glaucoma", link: "/treatment-details/Glaucoma" },
+  { name: "Uveitis", link: "/treatment-details/Uveitis" },
+  { name: "Diabetic Retinopathy", link: "/treatment-details/Diabetic Retinopathy" },
+  { name: "Hypertensive Retinopathy", link: "/treatment-details/Hypertensive Retinopathy" },
+  { name: "Retinal Detachment", link: "/treatment-details/Retinal Detachment" },
+  { name: "Dacryocystitis", link: "/treatment-details/Dacryocystitis" },
+  { name: "Corneal Ulcer", link: "/treatment-details/Corneal Ulcer" },
+  { name: "ICL-IPCL", link: "/treatment-details/ICL-IPCL" },
+  { name: "Squint", link: "/treatment-details/Squint" },
+];
+
+const contactInfo = [
+  { icon: <FaMapMarkerAlt />, label: "DRISTY EYE HOSPITAL", details: contact.address, href: contact.mapLink },
+  { icon: <FaPhoneAlt />, label: "(+91) 9006440240", href: contact.phoneHref },
+  { icon: <FaEnvelope />, label: contact.email, href: `mailto:${contact.email}` },
+  { icon: <FaClock />, label: contact.hours },
+];
+
+const footerLinks = [
+  { label: "About Us", link: "/about" },
+  { label: "Treatments", link: "/treatments" },
+];
+
+const ColumnTitle = ({ children }) => (
+  <h3 className="mb-5 flex items-center gap-3 text-base font-bold !text-white">
+    <span className="h-[2px] w-5 rounded-full bg-leaf" />
+    {children}
+  </h3>
+);
 
 const Footer = () => {
-  const socialIcons = [
-    {
-      icon: <FaFacebookF size={18} className="text-blue-600" />,
-      link: "https://www.facebook.com/imranchouparan/",
-    },
-    {
-      icon: <FaTwitter size={18} className="text-sky-500" />,
-      link: "https://x.com/DristyCPN",
-    },
-    {
-      icon: <FaInstagram size={18} className="text-red-500" />,
-      link: "https://www.instagram.com/dristyeyehospitalcpn/",
-    },
-    {
-      icon: <FaLinkedinIn size={18} className="text-blue-500" />,
-      link: "https://www.linkedin.com/in/dristy-eye-hospital-chouparan-666581342/",
-    },
-    {
-      icon: <FaYoutube size={18} className="text-red-500" />,
-      link: "https://www.youtube.com/channel/UCp_Suti-3MRjjdLkNoHeArw",
-    },
-  ];
-
-  const usefulLinks = [
-    { label: "Make Appointments", link: "/appointment" },
-    { label: "Contact Us", link: "/contact" },
-    { label: "Treatments", link: "/treatments" },
-    { label: "About Us", link: "/about" },
-    { label: "Our Doctors", link: "/doctor" },
-  ];
-
-  const services = [
-    { name: "Cataract", link: "/treatment-details/Cataract" },
-    { name: "Pterygium", link: "/treatment-details/pterygium" },
-    { name: "Glaucoma", link: "/treatment-details/glaucoma" },
-    { name: "Uveitis", link: "/treatment-details/uveitis" },
-    { name: "Diabetic Retinopathy", link: "/treatment-details/diabetic-retinopathy" },
-    {
-      name: "Hypertensive Retinopathy",
-      link: "/treatment-details/hypertensive-retinopathy",
-    },
-    { name: "Retinal Detachment", link: "/treatment-details/retinal-detachment" },
-    { name: "Dacryocystitis", link: "/treatment-details/dacryocystitis" },
-    { name: "Corneal Ulcer", link: "/treatment-details/corneal-ulcer" },
-    { name: "ICL-IPCL", link: "/treatment-details/icl-ipcl" },
-    { name: "Squint", link: "/treatment-details/squint" },
-  ];
-
-  const contactInfo = [
-    {
-      icon: <FaMapMarkerAlt />,
-      label: "DRISTY EYE HOSPITAL",
-      details:
-        "hospital Road, Tajpur, Vill- Tajpur, Chouparan, Dist-Hazaribagh, Jharkhand",
-    },
-    { icon: <FaPhoneAlt />, label: "(+91) 9006440240" },
-    { icon: <FaEnvelope />, label: "info@dristyeyehospital.com" },
-    { icon: <FaClock />, label: "Mon to Sat - 9:00am to 5:00pm" },
-  ];
-
-  const footerLinks = [
-    { label: "About Us", link: "/about" },
-    { label: "Treatments", link: "/treatments" },
-  ];
-
-  useEffect(() =>{
-      document.title = "Dristy Eye Hospital, Chouparan";
-      const meta = document.querySelector("meta[name='description']");
-      if(meta){
-        meta.setAttribute("content", "Dristy Eye Hospital a unit of Afroz Charitable trust is a non profitable organization in Jharkhand dedicated to transforming lives and fostering hope for the underprivileged.");
-      }
-    },[])
-
   return (
-    <footer className="bg-gray-100 dark:bg-black py-10 mt-8 lg:px-4">
-      <div className="container mx-auto px-4 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:gap-6 gap-2 text-gray-700 dark:text-white">
-          <div>
-            <div className="mb-4">
-              <img src={logo} alt="Optico Logo" className="h-14" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-200 text-sm">
-              Founded with a mission to transform lives through vision care,
-              Dristy Eye Hospital has become a beacon of hope for thousands of
-              underprivileged individuals.
-            </p>
-            <div className="flex space-x-4 mt-4">
-              {socialIcons.map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.link}
-                  aria-label={social.name}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-white hover:bg-gray-400 dark:hover:bg-primary hover:text-white duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="relative mt-0 overflow-hidden bg-navy text-slate-400">
+      <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-primary-600/20 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-leaf/10 blur-3xl" />
 
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              Useful Links
-            </h3>
-            <div className="w-10 h-[2px] bg-primary mb-3"></div>
-            <ul className="space-y-2">
-              {usefulLinks.map((link, idx) => (
-                <li
-                  key={idx}
-                  className="hover:text-primary cursor-pointer duration-500"
-                >
-                  <Link to={link.link}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
+      <div className="container-x relative grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <div className="mb-5 inline-block rounded-xl bg-white p-2.5">
+            <img src={logo} alt="Dristy Eye Hospital logo" className="h-12 w-auto" />
           </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              Our Services
-            </h3>
-            <div className="w-10 h-[2px] bg-primary mb-3"></div>
-            <ul className="space-y-2">
-              {services.map((service, idx) => (
-                <Link to={service.link}>
-                  <li key={idx} className="hover:text-primary cursor-pointer">
-                    {service.name}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              Get In Touch
-            </h3>
-            <div className="w-10 h-[2px] bg-primary mb-3"></div>
-            <ul className="space-y-2">
-              {contactInfo.map((item, idx) => (
-                <li key={idx} className="flex items-center space-x-2">
-                  <span className="text-primary">{item.icon}</span>
-                  <div className="text-sm sm:text-md">
-                    <strong className="text-">{item.label}</strong>
-                    <br />
-                    {item.details}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="max-w-sm text-sm leading-relaxed">
+            Founded with a mission to transform lives through vision care, Dristy Eye Hospital has become a beacon of
+            hope for thousands of underprivileged individuals.
+          </p>
+          <SocialLinks className="mt-6" itemClassName="bg-white/5 text-slate-300 hover:bg-primary-600 hover:text-white" />
         </div>
 
-        <div className="mt-10 border-t pt-6 text-center md:text-left text-sm text-gray-600 dark:text-gray-400 flex flex-col md:flex-row justify-between px-4 sm:px-0">
+        <div className="lg:col-span-2">
+          <ColumnTitle>Useful Links</ColumnTitle>
+          <ul className="space-y-3 text-sm">
+            {usefulLinks.map((link) => (
+              <li key={link.label}>
+                <Link to={link.link} className="transition hover:pl-1 hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-3">
+          <ColumnTitle>Our Services</ColumnTitle>
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+            {services.map((service) => (
+              <li key={service.name}>
+                <Link to={service.link} className="transition hover:text-white">
+                  {service.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-3">
+          <ColumnTitle>Get In Touch</ColumnTitle>
+          <ul className="space-y-4 text-sm">
+            {contactInfo.map((item) => {
+              const body = (
+                <>
+                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/5 text-leaf-400">
+                    {item.icon}
+                  </span>
+                  <span>
+                    <strong className="block font-semibold text-slate-200">{item.label}</strong>
+                    {item.details && <span className="mt-0.5 block capitalize">{item.details}</span>}
+                  </span>
+                </>
+              );
+              return (
+                <li key={item.label}>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex gap-3 transition hover:text-white"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <div className="flex gap-3">{body}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+
+      <div className="relative border-t border-white/10">
+        <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-sm md:flex-row">
           <p>
-            Copyright © 2024{" "}
-            <span className="text-primary font-semibold">
-              Dristy Eye Hospital
-            </span>
-            . All rights reserved.
+            Copyright © 2024 <span className="font-semibold text-white">Dristy Eye Hospital</span>. All rights reserved.
           </p>
-          <div className="flex space-x-4 mt-2 md:mt-0 justify-center md:justify-end">
-            {footerLinks.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.link}
-                className="hover:text-primary dark:hover:text-primary"
-              >
+          <div className="flex gap-6">
+            {footerLinks.map((link) => (
+              <Link key={link.label} to={link.link} className="transition hover:text-white">
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

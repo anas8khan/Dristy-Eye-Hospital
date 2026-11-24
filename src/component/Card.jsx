@@ -1,65 +1,35 @@
 import React from "react";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { motion } from "framer-motion"; 
-import { useInView } from "react-intersection-observer"; 
-import { slideInLeft, slideInRight } from "../component/animations"; 
 import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 
+// Treatment/service card
 const Card = ({ data }) => {
   if (!data) return null;
 
-  const [ref, inView] = useInView({
-    triggerOnce: false, 
-  });
-
   return (
-    <motion.div
-      ref={ref} 
-      className="bg-white dark:bg-gradient-to-r from-slate-900 to-slate-700 shadow-lg rounded-md overflow-hidden transform hover:-translate-y-2 duration-300 ease-in-out"
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"} 
-      variants={slideInRight} 
+    <Link
+      to={data.link}
+      className="card card-hover group flex h-full flex-col overflow-hidden"
     >
-      <motion.img
-        src={data.image}
-        alt={data.title}
-        className="w-full h-48 object-cover hover:scale-105"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.3 }}
-      />
-      <motion.div
-        className="flex flex-col items-start p-4"
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"} 
-        variants={slideInRight} 
-      >
-        <Link to={data.link}>
-        <motion.h3
-          className="text-lg font-semibold text-primary dark:text-gray-200 hover:text-blue-950 duration-300 cursor-pointer mb-2"
-          variants={slideInLeft} 
-        >
+      <div className="relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
+        <img
+          src={data.image}
+          alt={data.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-lg font-bold transition group-hover:text-primary-600 dark:group-hover:text-primary-300">
           {data.title}
-        </motion.h3>
-        </Link>
-        <motion.p
-          className="lg:text-md text-sm text-gray-600 h-24 dark:text-gray-300"
-          variants={slideInLeft} 
-        >
-          {data.description}
-        </motion.p>
-        <Link to={data.link}>
-          <motion.button
-            className="text-primary bg-gray-200 hover:text-white hover:bg-gray-400 px-2 py-2 rounded-full transition duration-500 hover:scale-110"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            variants={slideInLeft}
-          >
-            <MdKeyboardDoubleArrowRight />
-          </motion.button>
-        </Link>
-      </motion.div>
-    </motion.div>
+        </h3>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{data.description}</p>
+        <span className="mt-4 grid h-9 w-9 place-items-center rounded-full bg-primary-50 text-primary-600 transition group-hover:bg-primary-600 group-hover:text-white dark:bg-slate-800 dark:text-primary-300" aria-hidden="true">
+          <HiArrowRight className="transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </Link>
   );
 };
 

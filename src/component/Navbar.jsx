@@ -1,574 +1,295 @@
-import React, { useState, useEffect } from "react";
-import logo from "../assets/logo.png";
-import { Link, NavLink } from "react-router-dom";
-import {
-  IoIosArrowDown,
-  IoIosArrowDropdownCircle,
-  IoIosArrowDropright,
-} from "react-icons/io";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import DarkMode from "./DarkMode";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { FaLinkedin, FaLocationDot, FaYoutube } from "react-icons/fa6";
-import { FaFacebook, FaInstagram, FaPhoneAlt, FaTwitter } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi2";
+import logo from "../assets/logo.png";
+import DarkMode from "./DarkMode";
+import SocialLinks from "./ui/SocialLinks";
+import {
+  aboutSubItems,
+  contact,
+  navItems,
+  projectSubItems,
+  treatmentSubItems,
+} from "../siteConfig";
 
-const Navbar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState({
-    about: false,
-    treatments: false,
-    project: false,
-  });
-  const [isSticky, setIsSticky] = useState(false);
+const linkBase =
+  "relative inline-flex items-center gap-1 rounded-full px-3 py-2 text-[0.92rem] font-semibold transition-colors duration-200";
+const linkIdle = "text-slate-700 hover:text-primary-600 dark:text-slate-200 dark:hover:text-primary-300";
+const linkActive = "text-primary-600 dark:text-primary-300";
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsSidebarOpen(false);
-        document.body.style.overflow = "auto";
-      }
-    };
+const Dropdown = ({ label, to, items, columns = 1, active }) => {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef(null);
 
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const navItems = [
-    { name: "Doctor's", path: "/doctor" },
-    { name: "Blogs", path: "/blog" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const aboutSubItems = [
-    { name: "About Hospital", path: "/about" },
-    { name: "Our Mission and Vission", path: "/mission" },
-    { name: "Patient Feedback", path: "/feedback" },
-  ];
-  const projectSubItems = [
-    { name: "One Eye One Tree", path: "/projects/One Eye One Tree" },
-    {
-      name: "Blanket of Light Mission",
-      path: "/projects/Blanket of Light Mission",
-    },
-    {
-      name: "School Eye Screening",
-      path: "/projects/School Eye Screening",
-    },
-    {
-      name: "Doorstep Care Camp for All",
-      path: "/projects/Doorstep Care Camp for All",
-    },
-    {
-      name: "Save Environment, Save Eyesight",
-      path: "/projects/Save Environment, Save Eyesight",
-    },
-  ];
-
-  const treatmentSubItems = [
-    { name: "View All Treatment", path: "/treatments" },
-    { name: "Cataract", path: "/treatment-details/Cataract" },
-    { name: "Pterygium", path: "/treatment-details/Pterygium" },
-    { name: "Glaucoma", path: "/treatment-details/Glaucoma" },
-    { name: "Uveitis", path: "/treatment-details/Uveitis" },
-    {
-      name: "Diabetic retinopathy",
-      path: "/treatment-details/Diabetic retinopathy",
-    },
-    {
-      name: "Hypertensive retinopathy",
-      path: "/treatment-details/Hypertensive retinopathy",
-    },
-    {
-      name: "Retinal detachment",
-      path: "/treatment-details/Retinal detachment",
-    },
-    { name: "Dacryocystitis", path: "/treatment-details/Dacryocystitis" },
-    { name: "Corneal ulcer", path: "/treatment-details/Corneal ulcer" },
-    { name: "ICL/IPCL", path: "/treatment-details/ICL-IPCL" },
-    { name: "Squint", path: "/treatment-details/Squint" },
-  ];
-
-  const handleLinkClick = () => {
-    setIsSidebarOpen(false);
-    document.body.style.overflow = "auto";
-    setDropdownOpen({ about: false, treatments: false });
+  const show = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const hide = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-    if (!isSidebarOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  };
+  const Trigger = to ? NavLink : "button";
+  const triggerProps = to ? { to } : { type: "button" };
 
   return (
-    <div className="w-full">
-      <div className="bg-primary w-full flex gap-4 items-center lg:justify-between justify-center px-20 py-2">
-        <div className="lg:flex items-center gap-4 hidden text-sm">
-          <span className="text-xl text-white">
-            <MdOutlineMailOutline />
-          </span>
-          <Link to={"mailto: info@dristyeyehospital.com"} className="text-white">
-            Email:info@dristyeyehospital.com
-          </Link>
-          <span className="text-lg text-white">
-            <FaLocationDot />
-          </span>
-          <Link
-            to={"https://maps.app.goo.gl/gBrFizP7uiWcg97s5"}
-            target="_blank"
-            className="text-white"
-          >
-            hospital Road, Tajpur, Vill- Tajpur, Chouparan, Dist-Hazaribagh, Jharkhand
-          </Link>
-          <span className="text-lg text-white">
-            <FaPhoneAlt />
-          </span>
-          <Link to={"tel:+919771740140"} className="text-white">
-            Call:+91 9006440240
-          </Link>
-        </div>
-        <div className="flex items-center gap-4 text-lg text-white">
-          <Link
-            className="hover:text-blue-500 duration-300"
-            to={"https://www.facebook.com/imranchouparan/"}
-            target="_blank"
-          >
-            <FaFacebook />
-          </Link>
-          <Link
-            className="hover:text-sky-400 duration-300"
-            to={"https://x.com/DristyCPN"}
-            target="_blank"
-          >
-            <FaTwitter />
-          </Link>
-          <Link
-            className="hover:text-sky-700 duration-300"
-            to={
-              "https://www.linkedin.com/in/dristy-eye-hospital-chouparan-666581342/"
-            }
-            target="_blank"
-          >
-            <FaLinkedin />
-          </Link>
-          <Link
-            to={"https://www.instagram.com/dristyeyehospitalcpn/"}
-            className="hover:text-red-500 duration-300"
-            target="_blank"
-          >
-            <FaInstagram />
-          </Link>
-        </div>
-      </div>
-      <nav
-        className={`${
-          isSticky ? "fixed top-0 left-0 z-[50] shadow-lg" : "relative"
-        } w-full flex items-center justify-between p-6 md:px-8 transition-all duration-500
-      ${
-        isSticky
-          ? "dark:bg-black bg-white"
-          : "dark:bg-transparent bg-transparent"
-      }`}
+    <li className="relative" onMouseEnter={show} onMouseLeave={hide} onFocus={show} onBlur={hide}>
+      <Trigger
+        {...triggerProps}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className={`${linkBase} ${active ? linkActive : linkIdle}`}
       >
-        <NavLink to={"/"}>
-          <img className="w-28 md:w-40" src={logo} alt="logo" />
-        </NavLink>
+        {label}
+        <IoIosArrowDown className={`text-xs transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      </Trigger>
 
-        <div className="lg:hidden">
-          <button
-            onClick={() => toggleSidebar()}
-            className="text-gray-800 dark:text-gray-200 text-2xl"
-          >
-            {!isSidebarOpen && <AiOutlineMenu />}
-          </button>
-        </div>
-
-        <div className="hidden lg:flex items-center gap-8 font-semibold z-10">
-          <li className="list-none duration-300 dark:text-gray-200 dark:hover:text-primary">
-            <Link
-              to={"/"}
-              className={({ isActive }) =>
-                isActive
-                  ? "text-primary"
-                  : "hover:text-primary dark:hover:text-primary"
-              }
-            >
-              Home
-            </Link>
-          </li>
-          <li className="relative group list-none duration-300 dark:text-gray-200 dark:hover:text-primary">
-            <NavLink
-              to="/about"
-              onClick={handleLinkClick}
-              className={({ isActive }) =>
-                `flex items-center gap-1 ${
-                  isActive
-                    ? "text-primary"
-                    : "hover:text-primary dark:hover:text-primary"
-                }`
-              }
-            >
-              About Us{" "}
-              <span className="mt-1 group-hover:rotate-180 duration-500">
-                <IoIosArrowDown />
-              </span>
-            </NavLink>
-            <ul className="absolute left-0 top-full bg-black border-t-4 border-primary text-white shadow-lg w-52 py-2 mt-1 rounded-md opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-4 transition-all duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto">
-              {aboutSubItems.map((subItem, index) => (
-                <li
-                  key={subItem.name}
-                  className={`px-4 py-2 hover:text-primary text-sm ${
-                    index !== aboutSubItems.length - 1
-                      ? "border-b border-gray-300"
-                      : ""
-                  }`}
-                >
-                  <NavLink
-                    to={subItem.path}
-                    onClick={handleLinkClick}
-                    className={({ isActive }) =>
-                      isActive ? "text-primary font-bold" : ""
-                    }
-                  >
-                    {subItem.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </li>
-
-          <li className="relative group list-none duration-300 dark:text-gray-200 dark:hover:text-primary">
-            <span className="flex items-center gap-1 hover:text-primary dark:hover:text-primary cursor-pointer">
-              Our Projects{" "}
-              <span className="mt-1 group-hover:rotate-180 duration-500">
-                <IoIosArrowDown />
-              </span>
-            </span>
-            <ul className="absolute left-0 top-full bg-black border-t-4 border-primary text-white shadow-lg w-52 py-2 mt-1 rounded-md opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-4 transition-all duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto">
-              {projectSubItems.map((subItem, index) => (
-                <li
-                  key={subItem.name}
-                  className={`px-4 py-2 hover:text-primary text-sm ${
-                    index !== projectSubItems.length - 1
-                      ? "border-b border-gray-300"
-                      : ""
-                  }`}
-                >
-                  <NavLink
-                    to={subItem.path}
-                    onClick={handleLinkClick}
-                    className={({ isActive }) =>
-                      isActive ? "text-primary font-bold" : ""
-                    }
-                  >
-                    {subItem.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </li>
-
-          <li className="relative group list-none duration-300 dark:text-gray-200 hover:text-primary dark:hover:text-primary">
-            <NavLink
-              to="/treatments"
-              onClick={handleLinkClick}
-              className={({ isActive }) =>
-                `flex items-center gap-1 ${
-                  isActive
-                    ? "text-primary"
-                    : "hover:text-primary dark:hover:text-primary"
-                }`
-              }
-            >
-              Treatments
-              <span className="mt-1 group-hover:rotate-180 duration-500">
-                <IoIosArrowDown />
-              </span>
-            </NavLink>
-            <ul className="absolute left-0 top-full bg-black border-t-4 border-primary text-white shadow-lg w-52 py-2 mt-1 rounded-md opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-4 transition-all duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto">
-              {treatmentSubItems.map((subItem, index) => (
-                <li
-                  key={subItem.name}
-                  className={`px-4 py-2 hover:text-primary text-sm ${
-                    index !== treatmentSubItems.length - 1
-                      ? "border-b border-gray-300"
-                      : ""
-                  }`}
-                >
-                  <NavLink
-                    to={subItem.path}
-                    onClick={handleLinkClick}
-                    className={({ isActive }) =>
-                      isActive ? "text-primary" : ""
-                    }
-                  >
-                    {subItem.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </li>
-          {navItems.map((item) => (
-            <li
-              key={item.name}
-              className="list-none duration-300 dark:text-gray-200 dark:hover:text-primary"
-            >
+      <div
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition-all duration-200 ${
+          open ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"
+        }`}
+      >
+        <ul
+          className={`card grid gap-1 p-2 ${columns === 2 ? "w-[30rem] grid-cols-2" : "w-64 grid-cols-1"}`}
+        >
+          {items.map((item) => (
+            <li key={item.name}>
               <NavLink
                 to={item.path}
-                onClick={handleLinkClick}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-primary"
-                    : "hover:text-primary dark:hover:text-primary"
+                  `group flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-primary-50 text-primary-700 dark:bg-primary-900/40 dark:text-primary-200"
+                      : "text-slate-700 hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800"
+                  }`
+                }
+              >
+                {item.name}
+                <HiArrowRight className="-translate-x-1 text-xs opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+};
+
+const MobileGroup = ({ label, items, onNavigate }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <li className="border-b border-slate-100 dark:border-slate-800">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between py-3.5 text-left text-base font-semibold text-slate-800 dark:text-slate-100"
+      >
+        {label}
+        <IoIosArrowDown className={`transition-transform duration-300 ${open ? "rotate-180 text-primary-600" : ""}`} />
+      </button>
+      <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] pb-3" : "grid-rows-[0fr]"}`}>
+        <ul className="min-h-0 overflow-hidden">
+          {items.map((item) => (
+            <li key={item.name}>
+              <NavLink
+                to={item.path}
+                onClick={onNavigate}
+                className={({ isActive }) =>
+                  `block rounded-lg px-3 py-2 text-sm ${
+                    isActive ? "bg-primary-50 font-semibold text-primary-700 dark:bg-primary-900/40 dark:text-primary-200" : "text-slate-600 dark:text-slate-300"
+                  }`
                 }
               >
                 {item.name}
               </NavLink>
             </li>
           ))}
-        </div>
+        </ul>
+      </div>
+    </li>
+  );
+};
 
-        <Link
-          to={"/appointment"}
-          className="hidden md:flex items-center gap-2 relative overflow-hidden text-white font-semibold px-4 xl:px-6 py-3 bg-primary rounded-full group"
-        >
-          <button>
-            <span className="absolute inset-0 bg-blue-950 transition-all duration-500 transform -translate-x-full group-hover:translate-x-0"></span>
-            <span className="relative z-10 uppercase">Appointment</span>
-          </button>
-          <span className="z-10">
-            <IoIosArrowDropright size={20} />
-          </span>
-        </Link>
+const Navbar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { pathname } = useLocation();
 
-        {isSidebarOpen && (
-          <div className="fixed inset-0 bg-black opacity-30 top-0"></div>
-        )}
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    const onResize = () => window.innerWidth >= 1024 && setIsSidebarOpen(false);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
 
-        {/* Mobile Sidebar */}
-        <div
-          className={`fixed top-0 left-0 h-screen w-full md:w-72 lg:hidden bg-white dark:bg-black dark:text-white shadow-lg z-50 transform ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300`}
-        >
-          <div className="lg:hidden text-right px-4 pt-6">
-            <button
-              onClick={toggleSidebar}
-              className="text-gray-800 dark:text-gray-200 text-2xl"
+  useEffect(() => {
+    document.body.style.overflow = isSidebarOpen ? "hidden" : "";
+  }, [isSidebarOpen]);
+
+  useEffect(() => setIsSidebarOpen(false), [pathname]);
+
+  const closeSidebar = () => setIsSidebarOpen(false);
+
+  const isAboutActive = aboutSubItems.some((i) => pathname === i.path);
+  const isProjectActive = pathname.startsWith("/projects");
+  const isTreatmentActive = pathname.startsWith("/treatment");
+
+  return (
+    <>
+      {/* Top contact bar */}
+      <div className="hidden bg-navy text-[0.8rem] text-slate-300 lg:block">
+        <div className="container-x flex items-center justify-between gap-6 py-2.5">
+          <div className="flex items-center gap-6">
+            <a href={`mailto:${contact.email}`} className="flex items-center gap-2 transition hover:text-white">
+              <MdOutlineMailOutline className="text-base text-leaf-400" />
+              {contact.email}
+            </a>
+            <a
+              href={contact.mapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition hover:text-white"
             >
-              {isSidebarOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
-            </button>
+              <FaLocationDot className="text-leaf-400" />
+              {contact.address}
+            </a>
+            <a href={contact.phoneHref} className="flex items-center gap-2 transition hover:text-white">
+              <FaPhoneAlt className="text-leaf-400" />
+              Call: {contact.phone}
+            </a>
           </div>
+          <SocialLinks itemClassName="!h-7 !w-7 text-slate-400 hover:bg-white/10 hover:text-white" />
+        </div>
+      </div>
 
-          <div className="p-6 bg-white dark:bg-black">
-            <NavLink to={"/"} onClick={handleLinkClick}>
-              <img src={logo} alt="logo" className="w-32 mb-6" />
-            </NavLink>
-            <ul className="flex flex-col gap-6 text-lg">
-              <li className="list-none duration-300 dark:text-gray-200 dark:hover:text-primary">
-                <NavLink
-                  to={"/"}
-                  onClick={handleLinkClick}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-primary"
-                      : "hover:text-primary dark:hover:text-primary"
-                  }
-                >
-                  Home
+      {/* Main header */}
+      <header
+        className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+          isScrolled
+            ? "border-slate-200/80 bg-white/85 shadow-soft backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/85"
+            : "border-transparent bg-white dark:bg-slate-950"
+        }`}
+      >
+        <nav className="container-x flex items-center justify-between gap-4 py-3" aria-label="Main">
+          <Link to="/" className="shrink-0" aria-label="Dristy Eye Hospital – Home">
+            <img
+              className={`w-auto transition-all duration-300 dark:rounded-lg dark:bg-white dark:p-1 ${isScrolled ? "h-10 md:h-11" : "h-11 md:h-14"}`}
+              src={logo}
+              alt="Dristy Eye Hospital logo"
+            />
+          </Link>
+
+          <ul className="hidden items-center gap-0.5 lg:flex">
+            <li>
+              <NavLink to="/" end className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
+                Home
+              </NavLink>
+            </li>
+            <Dropdown label="About Us" to="/about" items={aboutSubItems} active={isAboutActive} />
+            <Dropdown label="Our Projects" items={projectSubItems} active={isProjectActive} />
+            <Dropdown label="Treatments" to="/treatments" items={treatmentSubItems} columns={2} active={isTreatmentActive} />
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <NavLink to={item.path} className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
+                  {item.name}
                 </NavLink>
               </li>
-              <li>
-                <button
-                  onClick={() =>
-                    setDropdownOpen({ about: !dropdownOpen.about })
-                  }
-                  className="w-full text-left group-hover:text-primary flex items-center gap-1"
-                >
-                  About Us
-                  <span>
-                    <IoIosArrowDropdownCircle />
-                  </span>
-                </button>
-                {dropdownOpen.about && (
-                  <ul className="border shadow-md mt-2 p-2">
-                    {aboutSubItems.map((subItem, idx) => (
-                      <li
-                        key={subItem.name}
-                        className={`${
-                          idx === aboutSubItems.length - 1
-                            ? ""
-                            : "border-b pb-1"
-                        }`}
-                      >
-                        <NavLink
-                          to={subItem.path}
-                          onClick={handleLinkClick}
-                          className="text-sm hover:text-primary"
-                        >
-                          {subItem.name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button
-                  onClick={() =>
-                    setDropdownOpen({
-                      project: !dropdownOpen.project,
-                    })
-                  }
-                  className="w-full text-left hover:text-primary flex items-center gap-1"
-                >
-                  Our Projects
-                  <span>
-                    <IoIosArrowDropdownCircle />
-                  </span>
-                </button>
-                {dropdownOpen.project && (
-                  <ul className="border shadow-md mt-2 p-2 max-h-40 overflow-y-auto">
-                    {projectSubItems.map((subItem, idx) => (
-                      <li
-                        key={subItem.name}
-                        className={`${
-                          idx === projectSubItems.length - 1
-                            ? ""
-                            : "border-b pb-1"
-                        }`}
-                      >
-                        <NavLink
-                          to={subItem.path}
-                          onClick={handleLinkClick}
-                          className="text-sm hover:text-primary"
-                        >
-                          {subItem.name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-              <li>
-                <button
-                  onClick={() =>
-                    setDropdownOpen({
-                      treatments: !dropdownOpen.treatments,
-                    })
-                  }
-                  className="w-full text-left hover:text-primary flex gap-1 items-center"
-                >
-                  Treatments
-                  <span>
-                    <IoIosArrowDropdownCircle />
-                  </span>
-                </button>
-                {dropdownOpen.treatments && (
-                  <ul className="border shadow-md mt-2 p-2 max-h-60 overflow-y-auto">
-                    {treatmentSubItems.map((subItem, idx) => (
-                      <li
-                        key={subItem.name}
-                        className={`${
-                          idx === treatmentSubItems.length - 1
-                            ? ""
-                            : "border-b pb-1"
-                        }`}
-                      >
-                        <NavLink
-                          to={subItem.path}
-                          onClick={handleLinkClick}
-                          className="text-sm hover:text-primary"
-                        >
-                          {subItem.name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-              {navItems.map((item) => (
-                <li
-                  key={item.name}
-                  className="list-none duration-300 hover:text-primary"
-                >
-                  <NavLink
-                    to={item.path}
-                    onClick={handleLinkClick}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-primary"
-                        : "hover:text-primary dark:hover:text-primary"
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-2">
+            <DarkMode />
+            <Link to="/appointment" className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
+              Appointment
+              <HiArrowRight />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open menu"
+              className="grid h-10 w-10 place-items-center rounded-full bg-primary-50 text-2xl text-primary-700 lg:hidden dark:bg-slate-800 dark:text-white"
+            >
+              <HiOutlineMenuAlt3 />
+            </button>
           </div>
-          <div className="p-6 border-t border-gray-300 bg-white dark:bg-black">
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-              <p className="text-sm">Phone: +91 9006440240</p>
-              <p className="text-sm">Email: dristyeyehospital92@gmail.com</p>
-            </div>
-            <div className="flex gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary"
-              >
-                <i className="fab fa-facebook-f text-xl"></i>
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary"
-              >
-                <i className="fab fa-twitter text-xl"></i>
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary"
-              >
-                <i className="fab fa-instagram text-xl"></i>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary"
-              >
-                <i className="fab fa-linkedin-in text-xl"></i>
-              </a>
-            </div>
-          </div>
+        </nav>
+      </header>
+
+      {/* Mobile drawer */}
+      <div
+        className={`fixed inset-0 z-[60] bg-navy/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          isSidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={closeSidebar}
+        aria-hidden="true"
+      />
+      <aside
+        className={`fixed right-0 top-0 z-[70] flex h-full w-full max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 lg:hidden dark:bg-slate-950 ${
+          isSidebarOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-label="Mobile menu"
+      >
+        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 dark:border-slate-800">
+          <Link to="/" onClick={closeSidebar}>
+            <img src={logo} alt="logo" className="h-10 w-auto dark:rounded dark:bg-white dark:p-1" />
+          </Link>
+          <button
+            type="button"
+            onClick={closeSidebar}
+            aria-label="Close menu"
+            className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-xl text-slate-700 dark:bg-slate-800 dark:text-white"
+          >
+            <HiX />
+          </button>
         </div>
-      </nav>
-      <DarkMode />
-    </div>
+
+        <ul className="flex-1 overflow-y-auto px-5">
+          <li className="border-b border-slate-100 dark:border-slate-800">
+            <NavLink to="/" end onClick={closeSidebar} className={({ isActive }) => `block py-3.5 text-base font-semibold ${isActive ? "text-primary-600" : "text-slate-800 dark:text-slate-100"}`}>
+              Home
+            </NavLink>
+          </li>
+          <MobileGroup label="About Us" items={aboutSubItems} onNavigate={closeSidebar} />
+          <MobileGroup label="Our Projects" items={projectSubItems} onNavigate={closeSidebar} />
+          <MobileGroup label="Treatments" items={treatmentSubItems} onNavigate={closeSidebar} />
+          {navItems.map((item) => (
+            <li key={item.name} className="border-b border-slate-100 dark:border-slate-800">
+              <NavLink
+                to={item.path}
+                onClick={closeSidebar}
+                className={({ isActive }) => `block py-3.5 text-base font-semibold ${isActive ? "text-primary-600" : "text-slate-800 dark:text-slate-100"}`}
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <div className="space-y-4 border-t border-slate-100 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+          <Link to="/appointment" onClick={closeSidebar} className="btn-primary w-full">
+            Appointment <HiArrowRight />
+          </Link>
+          <div>
+            <h3 className="mb-1 text-sm font-bold">Contact Us</h3>
+            <p className="text-sm">Phone: {contact.phone}</p>
+            <p className="text-sm">Email: dristyeyehospital92@gmail.com</p>
+          </div>
+          <SocialLinks itemClassName="bg-white text-slate-600 shadow-sm hover:bg-primary-600 hover:text-white dark:bg-slate-800 dark:text-slate-200" />
+        </div>
+      </aside>
+    </>
   );
 };
 

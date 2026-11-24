@@ -1,84 +1,56 @@
 import React from "react";
+import { FaPhoneAlt } from "react-icons/fa";
 import img from "../../assets/main1.jpg";
-import blob from "../../assets/blob.png";
 import BookingForm from "../../component/BookingForm";
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
-import { slideInRight, slideInLeft } from "../../component/animations";
+import Reveal from "../../component/ui/Reveal";
+
+const branchPhones = [
+  { name: "Chouparan", phone: "+91 9006440240" },
+  { name: "Koderma", phone: "+91 8235297244" },
+  { name: "Chatra", phone: "+91 7294040240" },
+];
 
 const Book = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-  });
-
   return (
-    <div
-      style={{ backgroundImage: `url(${blob})` }}
-      className="w-full bg-cover bg-center dark:bg-black py-20"
-    >
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={slideInLeft}
-        className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 items-center justify-between px-6 lg:px-12"
-      >
-        <div className="w-full lg:w-[40%] py-6">
-          <motion.h1
-            variants={slideInRight}
-            className="text-3xl lg:text-4xl font-extrabold text-gray-800 mb-6 dark:text-gray-200 text-center"
-          >
-            Need a Doctor for Check-up?
-          </motion.h1>
-          <motion.p
-            variants={slideInRight}
-            className="text-lg lg:text-xl font-medium text-primary mb-3 dark:text-gray-300 text-center"
-          >
-            Call us for immediate assistance
-          </motion.p>
-          <div className="text-center space-y-2">
-            <motion.p
-              variants={slideInRight}
-              className="text-lg font-semibold text-primary dark:text-gray-300"
-            >
-              Chouparan: +91 9006440240
-            </motion.p>
-            <motion.p
-              variants={slideInRight}
-              className="text-lg font-semibold text-primary dark:text-gray-300"
-            >
-              Koderma: +91 8235297244
-            </motion.p>
-            <motion.p
-              variants={slideInRight}
-              className="text-lg font-semibold text-primary dark:text-gray-300"
-            >
-              Chatra: +91 7294040240
-            </motion.p>
+    <section className="section relative overflow-hidden">
+      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-primary-100 blur-3xl dark:bg-primary-900/30" />
+      <div className="container-x relative grid items-start gap-10 lg:grid-cols-5">
+        <Reveal className="lg:col-span-2">
+          <span className="eyebrow">Appointment</span>
+          <h2 className="h-section mt-3">Need a Doctor for Check-up?</h2>
+          <p className="mt-4 text-lg font-medium text-primary-600 dark:text-primary-300">Call us for immediate assistance</p>
+
+          <ul className="mt-6 space-y-3">
+            {branchPhones.map((b) => (
+              <li key={b.name}>
+                <a
+                  href={`tel:${b.phone.replace(/\s/g, "")}`}
+                  className="card card-hover flex items-center gap-4 px-5 py-4"
+                >
+                  <span className="icon-badge !h-10 !w-10 !text-base">
+                    <FaPhoneAlt />
+                  </span>
+                  <span className="font-semibold text-slate-900 dark:text-white">
+                    {b.name}: <span className="text-primary-600 dark:text-primary-300">{b.phone}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-6 hidden overflow-hidden rounded-2xl shadow-soft lg:block">
+            <img src={img} alt="Doctor Consultation" loading="lazy" className="h-56 w-full object-cover" />
           </div>
-          <div className="mt-6 bg-white p-3 rounded-xl shadow-lg max-w-xs mx-auto">
-            <img
-              src={img}
-              alt="Doctor Consultation"
-              className="rounded-lg shadow-md w-full h-auto"
-            />
-          </div>
-        </div>
-        <div className="w-full lg:w-[45%] bg-white dark:bg-gradient-to-r from-slate-700 to-slate-800 p-8 rounded-lg shadow-md">
-          <motion.h1
-            variants={slideInLeft}
-            className="text-2xl lg:text-3xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-6"
-          >
-            Get in Touch
-            <br />
-            <span className="text-primary dark:text-gray-300">
-              for Professional Advice
-            </span>
-          </motion.h1>
-          <BookingForm />
-        </div>
-      </motion.div>
-    </div>
+        </Reveal>
+
+        <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
+          <h3 className="font-display text-2xl font-extrabold sm:text-3xl">
+            Get in Touch <span className="block text-primary-600 dark:text-primary-300">for Professional Advice</span>
+          </h3>
+          <BookingForm className="mt-8" />
+        </Reveal>
+      </div>
+    </section>
   );
 };
 

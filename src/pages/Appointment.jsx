@@ -1,106 +1,112 @@
 import React, { useEffect, useState } from "react";
+import { FaPhoneAlt, FaClock } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
 import BackgroundWrapper from "../component/BackgroundWrapper";
 import BookingForm from "../component/BookingForm";
 import banner from "../assets/bgwrapper.jpg";
+import { contact } from "../siteConfig";
+
+const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const Appointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  useEffect(() =>{
-        document.title = "Appointment - Dristy Eye Hospital, Chouparan";
-        const meta = document.querySelector("meta[name='description']");
-        if(meta){
-          meta.setAttribute("content", "Dristy Eye Hospital a unit of Afroz Charitable trust is a non profitable organization in Jharkhand dedicated to transforming lives and fostering hope for the underprivileged.");
-        }
-      },[])
+  useEffect(() => {
+    document.title = "Appointment - Dristy Eye Hospital, Chouparan";
+    const meta = document.querySelector("meta[name='description']");
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Dristy Eye Hospital a unit of Afroz Charitable trust is a non profitable organization in Jharkhand dedicated to transforming lives and fostering hope for the underprivileged."
+      );
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      if (now.getDate() !== currentDate.getDate()) {
-        setCurrentDate(now);
-      }
-    }, 1000);
-
+      if (now.getDate() !== currentDate.getDate()) setCurrentDate(now);
+    }, 60000);
     return () => clearInterval(timer);
   }, [currentDate]);
 
-  const getDaysInMonth = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  const generateCalendarDays = () => {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = getDaysInMonth(year, month);
-
-    const days = [];
-
-    for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="h-12 bg-transparent"></div>);
-    }
-
-    for (let day = 1; day <= daysInMonth; day++) {
-      const isToday =
-        day === currentDate.getDate() &&
-        year === currentDate.getFullYear() &&
-        month === currentDate.getMonth();
-      days.push(
+  const cells = [
+    ...Array.from({ length: firstDay }, (_, i) => <div key={`e-${i}`} />),
+    ...Array.from({ length: daysInMonth }, (_, i) => {
+      const day = i + 1;
+      const isToday = day === currentDate.getDate();
+      const isSunday = new Date(year, month, day).getDay() === 0;
+      return (
         <div
           key={day}
-          className={`h-12 flex items-center justify-center rounded-lg ${
+          className={`grid aspect-square place-items-center rounded-xl text-sm font-semibold ${
             isToday
-              ? "bg-primary text-white font-bold"
-              : "bg-gray-100 hover:bg-blue-100"
+              ? "bg-leaf text-white shadow-lg"
+              : isSunday
+              ? "text-white/40"
+              : "text-white/90 hover:bg-white/10"
           }`}
         >
           {day}
         </div>
       );
-    }
-
-    return days;
-  };
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    }),
   ];
+
   return (
-    <div>
+    <>
       <BackgroundWrapper title1={"Home"} title2={"Appointment"} img={banner} />
-      <div className="mt-10 flex w-full lg:p-0 p-4">
-        <div className="lg:block hidden mx-auto p-6 bg-gradient-to-r from-black to-violet-600 shadow-lg rounded-lg">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-semibold text-gray-100">
-              {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+      <section className="section">
+        <div className="container-x grid items-start gap-8 lg:grid-cols-5">
+          <aside className="space-y-6 lg:col-span-2">
+            <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-6 shadow-lift sm:p-8">
+              <h2 className="text-center font-display text-2xl font-bold !text-white">
+                {monthNames[month]} {year}
+              </h2>
+              <div className="mt-6 grid grid-cols-7 gap-1.5 text-center">
+                {dayNames.map((d) => (
+                  <div key={d} className="pb-2 text-xs font-bold uppercase tracking-wider text-primary-200">
+                    {d}
+                  </div>
+                ))}
+                {cells}
+              </div>
+            </div>
+
+            <ul className="card divide-y divide-slate-100 dark:divide-slate-800">
+              <li className="flex items-center gap-4 p-5">
+                <span className="icon-badge"><FaPhoneAlt /></span>
+                <a href={contact.phoneHref} className="font-semibold text-slate-900 hover:text-primary-600 dark:text-white">{contact.phone}</a>
+              </li>
+              <li className="flex items-center gap-4 p-5">
+                <span className="icon-badge"><MdOutlineMailOutline /></span>
+                <a href={`mailto:${contact.email}`} className="font-semibold text-slate-900 hover:text-primary-600 dark:text-white">{contact.email}</a>
+              </li>
+              <li className="flex items-center gap-4 p-5">
+                <span className="icon-badge"><FaClock /></span>
+                <span className="font-semibold text-slate-900 dark:text-white">{contact.hours}</span>
+              </li>
+            </ul>
+          </aside>
+
+          <div className="card p-6 sm:p-10 lg:col-span-3">
+            <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
+              Get in Touch <span className="block text-primary-600 dark:text-primary-300">for Professional Advice</span>
             </h2>
-          </div>
-          <div className="grid grid-cols-7 gap-4 text-center">
-            <div className="font-bold text-gray-100 p-1">Sun</div>
-            <div className="font-bold text-gray-100 p-1">Mon</div>
-            <div className="font-bold text-gray-100 p-1">Tue</div>
-            <div className="font-bold text-gray-100 p-1">Wed</div>
-            <div className="font-bold text-gray-100 p-1">Thu</div>
-            <div className="font-bold text-gray-100 p-1">Fri</div>
-            <div className="font-bold text-gray-100 p-1">Sat</div>
-            {generateCalendarDays()}
+            <BookingForm className="mt-8" />
           </div>
         </div>
-        <BookingForm />
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

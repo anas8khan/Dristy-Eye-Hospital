@@ -1,85 +1,62 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { staggerText } from "../../component/animations";
 import about from "../../assets/about.png";
+import Reveal from "../../component/ui/Reveal";
+
+const benefits = [
+  "Qualified Doctors",
+  "Modern Equipment",
+  "Individual Approach",
+  "Special Eye Exam",
+  "Contact Lens Service",
+  "Special Retina Exam",
+];
 
 const Benefits = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-  });
-
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={staggerText}
-      className="mt-8 w-full transition-all duration-300 bg-gradient-to-r from-black to-violet-600"
-    >
-      <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center px-4 lg:px-8 py-8">
-        {/* Image Section */}
-        <motion.div
-          className="lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700 py-16 md:py-24">
+      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-leaf/20 blur-3xl" />
+
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
+        <Reveal className="relative mx-auto w-full max-w-md">
+          <div className="absolute inset-6 rounded-full bg-gradient-to-br from-leaf/40 to-primary-400/40 blur-2xl" />
           <img
-  className="w-[80%] lg:w-[70%] max-w-sm transform transition-transform duration-300 hover:scale-105"
-  src={about}
+            className="relative w-full transition-transform duration-500 hover:scale-[1.03]"
+            src={about}
             alt="About"
+            loading="lazy"
           />
-        </motion.div>
+        </Reveal>
 
-        {/* Content Section */}
-        <motion.div
-          className="lg:w-1/2 flex flex-col lg:items-start items-center"
-          variants={staggerText}
-        >
-          <motion.h1
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white text-center lg:text-left mb-6 leading-tight"
-            variants={staggerText}
-          >
-            Benefits with Dristy Eye Hospital
-          </motion.h1>
+        <div>
+          <Reveal>
+            <span className="eyebrow !text-leaf-300">Why Choose Us?</span>
+            <h2 className="h-section mt-3 !text-white">Benefits with Dristy Eye Hospital</h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-300 md:text-lg">
+              We pledge to make your visit at all of our locations an opportunity to provide timely and appropriate care
+              for you and your family members.
+            </p>
+          </Reveal>
 
-          <motion.p
-            className="text-sm sm:text-base lg:text-lg font-medium text-white text-center lg:text-left mb-6"
-            variants={staggerText}
-          >
-            We pledge to make your visit at all of our locations an opportunity
-            to provide timely and appropriate care for you and your family
-            members.
-          </motion.p>
-
-          <motion.div className="w-full">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                "Qualified Doctors",
-                "Modern Equipment",
-                "Individual Approach",
-                "Special Eye Exam",
-                "Contact Lens Service",
-                "Special Retina Exam",
-              ].map((benefit, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-center gap-3 bg-violet-700/70 p-4 rounded-lg shadow-md backdrop-blur-md"
-                  variants={staggerText}
-                >
-                  <FaCheck className="text-green-400 text-lg" />
-                  <span className="text-sm sm:text-base text-gray-100">
-                    {benefit}
-                  </span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {benefits.map((benefit, i) => (
+              <Reveal
+                as="li"
+                key={benefit}
+                delay={i * 0.05}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur transition hover:border-leaf/40 hover:bg-white/10"
+              >
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-leaf text-sm text-white">
+                  <FaCheck />
+                </span>
+                <span className="font-semibold text-slate-100">{benefit}</span>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
-    </motion.div>
+    </section>
   );
 };
 

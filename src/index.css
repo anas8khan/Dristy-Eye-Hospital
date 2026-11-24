@@ -1,72 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-body {
-  @apply dark:bg-black duration-300;
-  @apply font-Roboto;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-white font-sans text-slate-600 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-slate-900 dark:text-white;
+  }
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
 }
 
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary-600 dark:text-primary-300;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-[2px] w-6 rounded-full bg-leaf;
+  }
+  .h-section {
+    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-[2.75rem];
+  }
+  .lead {
+    @apply text-base leading-relaxed text-slate-600 dark:text-slate-300 md:text-lg;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 text-white shadow-[0_8px_20px_-6px_rgba(29,63,209,.55)] hover:-translate-y-0.5 hover:bg-primary-700;
+  }
+  .btn-leaf {
+    @apply btn bg-leaf text-white shadow-[0_8px_20px_-6px_rgba(34,184,58,.55)] hover:-translate-y-0.5 hover:bg-leaf-600;
+  }
+  .btn-outline {
+    @apply btn border border-slate-300 bg-white text-slate-800 hover:border-primary-600 hover:text-primary-600 dark:border-slate-700 dark:bg-transparent dark:text-slate-100 dark:hover:border-primary-400 dark:hover:text-primary-300;
+  }
+  .btn-light {
+    @apply btn bg-white text-primary-700 hover:-translate-y-0.5 hover:bg-primary-50;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/40 text-white hover:bg-white/10;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lift dark:hover:border-primary-800;
+  }
+  .icon-badge {
+    @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary-50 text-xl text-primary-600 dark:bg-primary-900/40 dark:text-primary-300;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-primary-900/50;
+  }
+  .check-list li {
+    @apply flex gap-3;
+  }
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
-
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
-  background-color: #4f46e5;
+  background-color: #c3cffd;
   border-radius: 10px;
-  border: 2px solid #f1f1f1;
+  border: 2px solid #fff;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #4338ca;
+  background-color: #1d3fd1;
 }
 
+/* react-slick refinements */
+.slick-dots {
+  bottom: -36px;
+}
+.slick-dots li {
+  margin: 0 2px;
+}
+.slick-dots li button:before {
+  font-size: 9px;
+  color: #94a3b8;
+  opacity: 1;
+}
+.slick-dots li.slick-active button:before {
+  color: #1d3fd1;
+}
+.slick-slide > div {
+  height: 100%;
+}
+
+/* Hero entrance (CSS-only so text never stays hidden if JS animation is throttled) */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-in {
+  animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Loader used by a few data-driven pages */
 .loader {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: inline-block;
-  position: relative;
-  border: 2px solid #ff3d00;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  border: 3px solid #e0e7ff;
+  border-top-color: #1d3fd1;
+  animation: rotation 0.9s linear infinite;
 }
-.loader::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  left: 4px;
-  top: 4px;
-  border: 2px solid #fff;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
-ul, ol {
-  margin-left: 2rem;
-  margin-bottom: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-.animated-element {
-  will-change: transform, opacity;
-}
-

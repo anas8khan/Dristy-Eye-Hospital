@@ -1,148 +1,144 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { FaCalendarAlt } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi2";
 import BackgroundWrapper from "../../component/BackgroundWrapper";
+import SectionHeading from "../../component/ui/SectionHeading";
+import Reveal from "../../component/ui/Reveal";
 import img from "../../assets/bgwrapper.jpg";
 import { client } from "../../contentful/client";
-import { Helmet } from "react-helmet";
+
+const blogsPerPage = 6;
+
+const formatDate = (dateString) => {
+  if (!dateString) return "Date not available";
+  return new Date(dateString).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+};
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
-  const blogsPerPage = 6; // Max blogs per page
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Fetch blogs
   useEffect(() => {
     const fetchData = async () => {
       try {
         const entries = await client.getEntries({ content_type: "blog" });
-        console.log("Fetched Entries:", entries.items); // Log the fetched data
-        setBlogs(entries.items); // Set blogs to state
+        setBlogs(entries.items);
       } catch (err) {
         console.error("Error fetching entries:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  // Format the date
-  const formatDate = (dateString) => {
-    if (!dateString) return "Date not available";
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  // Pagination logic
-  const indexOfLastBlog = currentPage * blogsPerPage;
-  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-
   const totalPages = blogs.length ? Math.ceil(blogs.length / blogsPerPage) : 1;
+  const currentBlogs = blogs.slice((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage);
 
-  console.log("Blogs:", blogs); // Log blogs to ensure they're fetched correctly
-  console.log("Total Pages:", totalPages); // Log totalPages to check calculation
-
-  // Handle page change
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const paginate = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  if (!blogs.length) return null;
 
   return (
     <>
-      {/* Helmet for managing meta tags */}
       <Helmet>
         <title>Our Blogs - Dristy Eye Hospital</title>
         <meta
           name="description"
           content="Read the latest blogs on eye care and treatments from Dristy Eye Hospital, providing quality eye services in Chouparan."
         />
-        <meta
-          name="keywords"
-          content="Dristy Eye Hospital, Blogs, Eye Care, Treatments, Health, Chouparan"
-        />
+        <meta name="keywords" content="Dristy Eye Hospital, Blogs, Eye Care, Treatments, Health, Chouparan" />
         <meta name="author" content="Dristy Eye Hospital" />
       </Helmet>
 
       <BackgroundWrapper title1={"Home"} title2={"Blog"} img={img} />
-      <div className="bg-gray-50 dark:bg-black p-6">
-        {/* Animated Our Blogs Title */}
-        <div className="text-center mb-6">
-          <h1 className="text-5xl font-bold text-grey-200 dark:text-white animate__animated animate__fadeIn animate__delay-1s">
-            Our Blogs
-          </h1>
-        </div>
+      <section className="section bg-slate-50 dark:bg-slate-900/40">
+        <div className="container-x">
+          <SectionHeading title="Our Blogs" />
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentBlogs.map((item, index) => {
-            const { title, date, image, blogId } = item.fields;
-            return (
-              <div
-                key={index}
-                className="dark:bg-gradient-to-r from-slate-900 to-slate-700 shadow-md rounded-lg overflow-hidden cursor-pointer transform transition duration-500 hover:scale-105"
-                onClick={() => navigate(`/blogs/${blogId}`)}
-              >
-                {image?.fields?.file?.url && (
-                  <img
-                    src={image.fields.file.url}
-                    alt={image.fields.title || "Blog Image"}
-                    className="w-full h-48 object-cover"
-                  />
-                )}
-                <div className="p-4">
-                  <span className="text-sm text-gray-500">
-                    {formatDate(date)}
-                  </span>
-                  <h2 className="mt-2 text-2xl font-semibold text-[#4338ca] dark:text-white">
-                    {title || "Untitled Blog"}
-                  </h2>
+          {loading ? (
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="card animate-pulse overflow-hidden">
+                  <div className="aspect-[16/10] bg-slate-200 dark:bg-slate-800" />
+                  <div className="space-y-3 p-6">
+                    <div className="h-3 w-1/3 rounded bg-slate-200 dark:bg-slate-800" />
+                    <div className="h-5 w-4/5 rounded bg-slate-200 dark:bg-slate-800" />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          ) : (
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {currentBlogs.map((item, index) => {
+                const { title, date, image, blogId } = item.fields;
+                return (
+                  <Reveal key={item.sys?.id || index} delay={(index % 3) * 0.06}>
+                    <Link to={`/blogs/${blogId}`} className="card card-hover group flex h-full flex-col overflow-hidden">
+                      <div className="aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                        {image?.fields?.file?.url && (
+                          <img
+                            src={image.fields.file.url}
+                            alt={image.fields.title || "Blog Image"}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        )}
+                      </div>
+                      <div className="flex flex-1 flex-col p-6">
+                        <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                          <FaCalendarAlt className="text-leaf-500" />
+                          {formatDate(date)}
+                        </span>
+                        <h2 className="mt-3 flex-1 text-xl font-bold leading-snug transition group-hover:text-primary-600 dark:group-hover:text-primary-300">
+                          {title || "Untitled Blog"}
+                        </h2>
+                        <span className="mt-5 grid h-9 w-9 place-items-center rounded-full bg-primary-50 text-primary-600 transition group-hover:bg-primary-600 group-hover:text-white dark:bg-slate-800 dark:text-primary-300">
+                          <HiArrowRight />
+                        </span>
+                      </div>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
+          )}
+
+          {!loading && totalPages > 1 && (
+            <nav className="mt-12 flex flex-wrap items-center justify-center gap-2" aria-label="Pagination">
+              {currentPage > 1 && (
+                <button type="button" onClick={() => paginate(currentPage - 1)} className="btn-outline !px-4 !py-2">
+                  Prev
+                </button>
+              )}
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  type="button"
+                  key={index + 1}
+                  onClick={() => paginate(index + 1)}
+                  aria-current={currentPage === index + 1 ? "page" : undefined}
+                  className={`grid h-10 w-10 place-items-center rounded-full text-sm font-semibold transition ${
+                    currentPage === index + 1
+                      ? "bg-primary-600 text-white shadow-lg"
+                      : "bg-white text-slate-700 shadow-soft hover:bg-primary-50 dark:bg-slate-800 dark:text-slate-200"
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              {currentPage < totalPages && (
+                <button type="button" onClick={() => paginate(currentPage + 1)} className="btn-outline !px-4 !py-2">
+                  Next
+                </button>
+              )}
+            </nav>
+          )}
         </div>
-
-        {/* Pagination Section */}
-        <div className="flex justify-center mt-8">
-          <div className="flex items-center space-x-4">
-            {/* Previous Button */}
-            {currentPage > 1 && (
-              <button
-                onClick={() => paginate(currentPage - 1)}
-                className="px-4 py-2 text-sm font-semibold rounded-md bg-gray-300 dark:bg-gray-700 dark:text-white hover:bg-[#4338ca]"
-              >
-                Prev
-              </button>
-            )}
-
-            {/* Page Numbers */}
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index + 1}
-                onClick={() => paginate(index + 1)}
-                className={`px-4 py-2 text-sm font-semibold rounded-md transition duration-200 ${
-                  currentPage === index + 1
-                    ? "bg-[#4338ca] text-white"
-                    : "bg-gray-300 dark:bg-gray-700 dark:text-white hover:bg-[#4338ca]"
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-
-            {/* Next Button */}
-            {currentPage < totalPages && (
-              <button
-                onClick={() => paginate(currentPage + 1)}
-                className="px-4 py-2 text-sm font-semibold rounded-md bg-gray-300 dark:bg-gray-700 dark:text-white hover:bg-[#4338ca]"
-              >
-                Next
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+      </section>
     </>
   );
 };

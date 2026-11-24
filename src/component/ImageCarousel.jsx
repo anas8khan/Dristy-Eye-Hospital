@@ -1,130 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
-import { RxCrossCircled } from "react-icons/rx";
+import { HiOutlineArrowsPointingOut } from "react-icons/hi2";
+import Lightbox, { useLightbox } from "./ui/Lightbox";
 
-const ImageCarousel = ({ images, isLoading, error }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(null);
+const ImageCarousel = ({ images = [], isLoading, error }) => {
+  const lightbox = useLightbox();
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
+    arrows: false,
     responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
   };
 
-  useEffect(() => {
-    if (selectedImage) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  if (isLoading) {
+    return (
+      <div className="flex h-[40vh] items-center justify-center">
+        <div className="loader" />
+      </div>
+    );
+  }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [selectedImage]);
+  if (error) {
+    return <div className="flex h-[40vh] items-center justify-center text-red-500">{error}</div>;
+  }
 
-  const prevImage = () => {
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    setCurrentIndex(prevIndex);
-    setSelectedImage(images[prevIndex]);
-  };
-
-  const nextImage = () => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    setCurrentIndex(nextIndex);
-    setSelectedImage(images[nextIndex]);
-  };
-
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-  });
+  if (!images.length) return null;
 
   return (
-    <div className="overflow-hidden">
-      {isLoading && (
-        <div className="flex justify-center items-center h-[50vh]">
-          <div className="loader"></div>
-        </div>
-      )}
-
-      {error && (
-        <div className="flex justify-center items-center h-[50vh] text-red-500">
-          <p>{error}</p>
-        </div>
-      )}
-
-      {!isLoading && !error && images.length > 0 && (
-        <Slider {...sliderSettings} className="p-4">
-          {images.map((image, index) => (
-            <div key={image.id} className="relative group p-2">
+    <div className="pb-10">
+      <Slider {...sliderSettings} className="-mx-2">
+        {images.map((image, index) => (
+          <div key={image.id} className="px-2">
+            <button
+              type="button"
+              onClick={() => lightbox.open(index)}
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800"
+              aria-label={`Open image ${index + 1}`}
+            >
               <img
-                src={image.image} 
+                src={image.image}
                 alt={`Thumbnail ${index + 1}`}
-                className="w-full h-48 object-cover rounded-lg cursor-pointer transform group-hover:scale-105 transition-transform duration-300"
-                onClick={() => {
-                  setSelectedImage(image);
-                  setCurrentIndex(index);
-                }}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div
-                onClick={() => {
-                  setSelectedImage(image);
-                  setCurrentIndex(index);
-                }}
-                className="absolute cursor-pointer inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
-              ></div>
-            </div>
-          ))}
-        </Slider>
-      )}
-
-      {/* Modal */}
-      {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="relative">
-            <img
-              src={selectedImage.image} 
-              alt="Selected"
-              className="max-w-full max-h-screen rounded-lg p-6 bg-cover bg-center"
-            />
-            <button
-              onClick={prevImage}
-              className="absolute top-1/2 left-3 transform -translate-y-1/2 text-primary"
-            >
-              <IoIosArrowDropleftCircle size={35} />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute top-1/2 right-3 transform -translate-y-1/2 text-primary"
-            >
-              <IoIosArrowDroprightCircle size={35} />
-            </button>
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-10 right-10 text-primary"
-            >
-              <RxCrossCircled size={35} />
+              <span className="absolute inset-0 grid place-items-center bg-navy/50 text-2xl text-white opacity-0 transition group-hover:opacity-100">
+                <HiOutlineArrowsPointingOut />
+              </span>
             </button>
           </div>
-        </div>
-      )}
+        ))}
+      </Slider>
+      <Lightbox images={images} index={lightbox.index} onClose={lightbox.close} onChange={lightbox.setIndex} />
     </div>
   );
 };

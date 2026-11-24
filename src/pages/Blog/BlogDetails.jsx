@@ -1,277 +1,185 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { client } from "../../contentful/client";
+import { Link, useParams } from "react-router-dom";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { FaFacebook, FaWhatsapp, FaLinkedin, FaCalendarAlt, FaClock } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi2";
+import { client } from "../../contentful/client";
 
-import { FaFacebook, FaWhatsapp, FaLinkedin } from "react-icons/fa";
-import { FaCalendarAlt, FaClock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+const formatDate = (dateString) => {
+  if (!dateString) return "Date not available";
+  return new Date(dateString).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+};
 
-const BlogDetails = () => {
-  const { blogId } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [recentBlogs, setRecentBlogs] = useState([]);
-  const [visibleBlogs, setVisibleBlogs] = useState(3); // State to control the number of visible blogs
-  const navigate = useNavigate();
+const formatTime = (dateString) => {
+  if (!dateString) return "Time not available";
+  return new Date(dateString).toLocaleTimeString(undefined, { hour: "numeric", minute: "numeric" });
+};
 
-  useEffect(() => {
-    const fetchBlogDetails = async () => {
-      try {
-        const response = await client.getEntries({
-          content_type: "blog",
-          "fields.blogId": blogId,
-        });
-
-        if (response.items.length > 0) {
-          setBlog(response.items[0]);
-        } else {
-          console.error("Blog not found");
-        }
-      } catch (err) {
-        console.error("Error fetching blog details:", err);
-      }
-    };
-
-    const fetchRecentBlogs = async () => {
-      try {
-        const response = await client.getEntries({
-          content_type: "blog",
-          order: "-fields.date",
-          limit: 10, // Fetch more blogs initially (can be adjusted)
-        });
-
-        setRecentBlogs(response.items);
-      } catch (err) {
-        console.error("Error fetching recent blogs:", err);
-      }
-    };
-
-    fetchBlogDetails();
-    fetchRecentBlogs();
-  }, [blogId]);
-
-  const showMoreBlogs = () => {
-    setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 3); // Increment the number of visible blogs
-  };
-
-  const handleShowMoreNavigation = () => {
-    // Navigate to the blog card page (adjust path as needed)
-    navigate("/blog");
-  };
-
-  if (!blog) {
-    return null;
-  }
-
-  const { title, content, date, image } = blog.fields;
-
-  const formatDate = (dateString) => {
-    if (!dateString) return "Date not available";
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
-  const formatTime = (dateString) => {
-    if (!dateString) return "Time not available";
-    const options = { hour: "numeric", minute: "numeric" };
-    return new Date(dateString).toLocaleTimeString(undefined, options);
-  };
-
-  const options = {
+const richTextOptions = {
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <h1 className="text-4xl font-bold my-6 text-gray-800 dark:text-white">{children}</h1>
-    ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <h2 className="text-3xl font-semibold my-4 text-gray-800 dark:text-white">{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <h3 className="text-2xl font-semibold my-3 text-gray-800 dark:text-white">{children}</h3>
-    ),
-    [BLOCKS.HEADING_4]: (node, children) => (
-      <h4 className="text-xl font-medium my-2 text-gray-800 dark:text-white">{children}</h4>
-    ),
-    [BLOCKS.HEADING_5]: (node, children) => (
-      <h5 className="text-lg font-medium my-2 text-gray-800 dark:text-white">{children}</h5>
-    ),
-    [BLOCKS.HEADING_6]: (node, children) => (
-      <h6 className="text-base font-medium my-1 text-gray-800 dark:text-white">{children}</h6>
-    ),
-    [BLOCKS.PARAGRAPH]: (node, children) => (
-      <p className="my-4 text-gray-700 dark:text-gray-300">{children}</p>
-    ),
-    [BLOCKS.UL_LIST]: (node, children) => (
-      <ul className="list-disc pl-8 my-4 text-gray-700 dark:text-gray-300">{children}</ul>
-    ),
-    [BLOCKS.OL_LIST]: (node, children) => (
-      <ol className="list-decimal pl-8 my-4 text-gray-700 dark:text-gray-300">{children}</ol>
-    ),
-    [BLOCKS.LIST_ITEM]: (node, children) => (
-      <li className="my-2 text-gray-700 dark:text-gray-300">{children}</li>
+    [BLOCKS.HEADING_1]: (node, children) => <h1 className="mb-4 mt-10 text-3xl font-extrabold md:text-4xl">{children}</h1>,
+    [BLOCKS.HEADING_2]: (node, children) => <h2 className="mb-4 mt-10 text-2xl font-bold md:text-3xl">{children}</h2>,
+    [BLOCKS.HEADING_3]: (node, children) => <h3 className="mb-3 mt-8 text-xl font-bold md:text-2xl">{children}</h3>,
+    [BLOCKS.HEADING_4]: (node, children) => <h4 className="mb-2 mt-6 text-lg font-bold md:text-xl">{children}</h4>,
+    [BLOCKS.HEADING_5]: (node, children) => <h5 className="mb-2 mt-6 text-lg font-semibold">{children}</h5>,
+    [BLOCKS.HEADING_6]: (node, children) => <h6 className="mb-2 mt-4 font-semibold">{children}</h6>,
+    [BLOCKS.PARAGRAPH]: (node, children) => <p className="my-5 text-[1.05rem] leading-8">{children}</p>,
+    [BLOCKS.UL_LIST]: (node, children) => <ul className="my-5 list-disc space-y-2 pl-6 marker:text-primary-600">{children}</ul>,
+    [BLOCKS.OL_LIST]: (node, children) => <ol className="my-5 list-decimal space-y-2 pl-6 marker:font-bold marker:text-primary-600">{children}</ol>,
+    [BLOCKS.LIST_ITEM]: (node, children) => <li className="pl-1 leading-7 [&>p]:my-0">{children}</li>,
+    [BLOCKS.QUOTE]: (node, children) => (
+      <blockquote className="my-6 border-l-4 border-leaf bg-slate-50 py-2 pl-5 italic dark:bg-slate-900">{children}</blockquote>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
       <img
         src={node.data.target.fields.file.url}
         alt={node.data.target.fields.title || "Image"}
-        className="my-6 w-full rounded-lg shadow-md"
+        loading="lazy"
+        className="my-8 w-full rounded-2xl shadow-soft"
       />
     ),
-    [BLOCKS.HYPERLINK]: (node) => (
-      <a href={node.data.uri} className="text-blue-500 underline dark:text-blue-400">
-        {node.content[0].value}
+    [INLINES.HYPERLINK]: (node, children) => (
+      <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="font-medium text-primary-600 underline underline-offset-2 dark:text-primary-300">
+        {children}
       </a>
     ),
   },
 };
 
+const BlogDetails = () => {
+  const { blogId } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [notFound, setNotFound] = useState(false);
+  const visibleBlogs = 3;
 
-  const shareOnWhatsApp = () => {
-    const text = `${title} - ${window.location.href}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
-  };
+  useEffect(() => {
+    setBlog(null);
+    setNotFound(false);
 
-  const shareOnFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, "_blank");
-  };
+    client
+      .getEntries({ content_type: "blog", "fields.blogId": blogId })
+      .then((response) => {
+        if (response.items.length > 0) setBlog(response.items[0]);
+        else setNotFound(true);
+      })
+      .catch((err) => {
+        console.error("Error fetching blog details:", err);
+        setNotFound(true);
+      });
 
-  const shareOnLinkedIn = () => {
-    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${title}`, "_blank");
-  };
+    client
+      .getEntries({ content_type: "blog", order: "-fields.date", limit: 10 })
+      .then((response) => setRecentBlogs(response.items))
+      .catch((err) => console.error("Error fetching recent blogs:", err));
+  }, [blogId]);
 
-  const handlePrevious = () => {
-    const currentIndex = recentBlogs.findIndex((blog) => blog.fields.blogId === blogId);
-    if (currentIndex > 0) {
-      const previousBlog = recentBlogs[currentIndex - 1];
-      navigate(`/blogs/${previousBlog.fields.blogId}`);
-    }
-  };
+  if (notFound) {
+    return (
+      <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
+        <p className="text-lg">Blog not found</p>
+        <Link to="/blog" className="btn-primary">Our Blogs <HiArrowRight /></Link>
+      </div>
+    );
+  }
 
-  const handleNext = () => {
-    const currentIndex = recentBlogs.findIndex((blog) => blog.fields.blogId === blogId);
-    if (currentIndex < recentBlogs.length - 1) {
-      const nextBlog = recentBlogs[currentIndex + 1];
-      navigate(`/blogs/${nextBlog.fields.blogId}`);
-    }
-  };
+  if (!blog) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="loader" />
+      </div>
+    );
+  }
+
+  const { title, content, date, image } = blog.fields;
+  const url = typeof window !== "undefined" ? window.location.href : "";
+
+  const share = [
+    { label: "WhatsApp", icon: <FaWhatsapp />, cls: "hover:bg-[#25D366]", href: `https://wa.me/?text=${encodeURIComponent(`${title} - ${url}`)}` },
+    { label: "Facebook", icon: <FaFacebook />, cls: "hover:bg-[#1877F2]", href: `https://www.facebook.com/sharer/sharer.php?u=${url}` },
+    { label: "LinkedIn", icon: <FaLinkedin />, cls: "hover:bg-[#0A66C2]", href: `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}` },
+  ];
 
   return (
-    <div>
-      {/* Banner Section with Solid Blue Background */}
-      <div className="bg-blue-700 py-32 px-4 sm:px-8 md:px-16 dark:bg-blue-800" style={{backgroundColor:'#4338ca'}}>
-        <div className="flex justify-center items-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">{title}</h1>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-screen-xl mx-auto p-6">
-        <div className="flex gap-12 mt-12 flex-col lg:flex-row">
-          {/* Left Side - Blog Content */}
-          <div className="flex-1">
-            <div className="max-w-4xl p-6">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center text-gray-500 dark:text-gray-300">
-                  <FaCalendarAlt className="text-xl text-gray-600 dark:text-gray-400" />
-                  <span className="ml-2">{formatDate(date)}</span>
-                </div>
-                <div className="flex items-center text-gray-500 dark:text-gray-300">
-                  <FaClock className="text-xl text-gray-600 dark:text-gray-400" />
-                  <span className="ml-2">{formatTime(date)}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="max-w-4xl p-6">
-              {/* Blog Image */}
-              {image?.fields?.file?.url && (
-                <img
-                  src={image.fields.file.url}
-                  alt={image.fields.title || "Blog Image"}
-                  className="w-full h-auto object-cover rounded-lg mt-6"
-                />
-              )}
-
-              {/* Title below the image */}
-              <h1 className="text-4xl font-bold mt-6 text-gray-900 dark:text-white">{title}</h1>
-            </div>
-
-            {/* Blog Content */}
-            <div className="max-w-4xl mx-auto p-6 mt-12">
-              <div className="prose prose-lg prose-indigo dark:prose-invert">
-                {documentToReactComponents(content, options)}
-              </div>
-            </div>
-
-            {/* Social Share Icons */}
-            <div className="max-w-4xl mx-auto p-6 text-left">
-              <div className="flex justify-start space-x-6">
-                <button
-                  onClick={shareOnWhatsApp}
-                  className="text-3xl text-green-500 hover:text-green-600"
-                >
-                  <FaWhatsapp />
-                </button>
-                <button
-                  onClick={shareOnFacebook}
-                  className="text-3xl text-blue-600 hover:text-blue-700"
-                >
-                  <FaFacebook />
-                </button>
-                <button
-                  onClick={shareOnLinkedIn}
-                  className="text-3xl text-blue-800 hover:text-blue-900"
-                >
-                  <FaLinkedin />
-                </button>
-              </div>
-            </div>
+    <>
+      {/* Banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700">
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
+        <div className="container-x relative py-16 md:py-24">
+          <nav className="mb-5 flex flex-wrap items-center gap-2 text-sm font-medium text-slate-300">
+            <Link to="/" className="hover:text-white">Home</Link>
+            <span className="text-slate-500">/</span>
+            <Link to="/blog" className="hover:text-white">Blog</Link>
+          </nav>
+          <h1 className="max-w-4xl font-display text-3xl font-extrabold leading-tight !text-white sm:text-4xl md:text-5xl">{title}</h1>
+          <div className="mt-6 flex flex-wrap items-center gap-5 text-sm text-slate-300">
+            <span className="flex items-center gap-2"><FaCalendarAlt className="text-leaf-400" /> {formatDate(date)}</span>
+            <span className="flex items-center gap-2"><FaClock className="text-leaf-400" /> {formatTime(date)}</span>
           </div>
+        </div>
+      </section>
 
-          {/* Right Side - Recent Blogs */}
-          <div className="w-full lg:w-[35%] mt-12">
-            <h2 className="text-2xl font-bold mb-4 text-blue-900 dark:text-blue-300">Recent Blogs</h2>
+      <section className="section">
+        <div className="container-x grid gap-12 lg:grid-cols-12">
+          <article className="lg:col-span-8">
+            {image?.fields?.file?.url && (
+              <img
+                src={image.fields.file.url}
+                alt={image.fields.title || "Blog Image"}
+                className="mb-8 w-full rounded-3xl object-cover shadow-lift"
+              />
+            )}
+            <div className="text-slate-700 dark:text-slate-300">{documentToReactComponents(content, richTextOptions)}</div>
 
-            {/* Solid Grey Line */}
-            <hr className="border-t-2 border-gray-300 mb-6 dark:border-gray-600" />
+            <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6 dark:border-slate-800">
+              {share.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Share on ${s.label}`}
+                  className={`grid h-11 w-11 place-items-center rounded-full bg-slate-100 text-xl text-slate-700 transition hover:text-white dark:bg-slate-800 dark:text-slate-200 ${s.cls}`}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </article>
 
-            <div>
-              {recentBlogs.slice(0, visibleBlogs).map((recentBlog) => {
-                const { title, date } = recentBlog.fields;
-                return (
-                  <div key={recentBlog.sys.id} className="mb-4">
-                    <Link
-                      to={`/blogs/${recentBlog.fields.blogId}`}
-                      className="text-lg text-blue-900 font-semibold hover:text-blue-900 hover:border-b-2 hover:border-blue-900 transition duration-300 ease-in-out mt-5 dark:text-blue-400"
-                    >
-                      {title}
-                    </Link>
-
-                    {/* Date with a small gap */}
-                    <p className="text-sm text-gray-500 mt-2 dark:text-gray-300">
-                      {formatDate(date)} - {formatTime(date)}
-                    </p>
-
-                    {/* Light Grey br after the date */}
-                    <br className="border-t-2 border-gray-200 mt-2 dark:border-gray-600" />
-                  </div>
-                );
-              })}
-
+          <aside className="lg:col-span-4">
+            <div className="card p-6 lg:sticky lg:top-28">
+              <h2 className="text-xl font-bold">Recent Blogs</h2>
+              <ul className="mt-5 divide-y divide-slate-100 dark:divide-slate-800">
+                {recentBlogs.slice(0, visibleBlogs).map((recentBlog) => {
+                  const { title: rTitle, date: rDate, blogId: rId } = recentBlog.fields;
+                  const active = rId === blogId;
+                  return (
+                    <li key={recentBlog.sys.id} className="py-4 first:pt-0">
+                      <Link
+                        to={`/blogs/${rId}`}
+                        className={`font-semibold leading-snug transition hover:text-primary-600 dark:hover:text-primary-300 ${active ? "text-primary-600 dark:text-primary-300" : "text-slate-900 dark:text-white"}`}
+                      >
+                        {rTitle}
+                      </Link>
+                      <p className="mt-1.5 text-xs text-slate-500">
+                        {formatDate(rDate)} - {formatTime(rDate)}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
               {visibleBlogs < recentBlogs.length && (
-                <button
-                onClick={handleShowMoreNavigation}
-                className="mt-4 text-white rounded-full px-6 py-3 text-lg font-semibold bg-[#4338ca] hover:bg-blue-950 transition-colors duration-300"
-              >
-                Show More
-              </button>
-              
+                <Link to="/blog" className="btn-primary mt-4 w-full">
+                  Show More <HiArrowRight />
+                </Link>
               )}
             </div>
-          </div>
+          </aside>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
