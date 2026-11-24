@@ -19,6 +19,7 @@ const formatDate = (dateString) => {
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const Blog = () => {
         setBlogs(entries.items);
       } catch (err) {
         console.error("Error fetching entries:", err);
+        setLoadError(true);
       } finally {
         setLoading(false);
       }
@@ -71,6 +73,13 @@ const Blog = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          ) : loadError || !blogs.length ? (
+            <div className="card mx-auto mt-12 max-w-xl p-10 text-center">
+              <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                {loadError ? "Blogs could not be loaded right now." : "No blogs published yet."}
+              </p>
+              <p className="mt-2 text-sm">Please check back soon.</p>
             </div>
           ) : (
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

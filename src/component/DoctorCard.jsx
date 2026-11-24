@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
+import ImageWithFallback from "./ui/ImageWithFallback";
 
 const DoctorCard = ({ data }) => {
   return (
@@ -9,9 +10,10 @@ const DoctorCard = ({ data }) => {
       className="card card-hover group flex h-full flex-col overflow-hidden"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
-        <img
+        <ImageWithFallback
           src={data.image}
           alt={data.name}
+          name={data.name}
           loading="lazy"
           className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
         />

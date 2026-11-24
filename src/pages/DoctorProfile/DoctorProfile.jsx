@@ -4,6 +4,7 @@ import { HiOutlineAcademicCap, HiOutlineBuildingOffice2, HiOutlineSparkles, HiAr
 import BackgroundWrapper from "../../component/BackgroundWrapper";
 import Consultant from "../../component/Consultant";
 import Reveal from "../../component/ui/Reveal";
+import ImageWithFallback from "../../component/ui/ImageWithFallback";
 import doctorData from "../../doctorData.json";
 import img from "../../assets/bgwrapper.jpg";
 
@@ -47,7 +48,7 @@ const DoctorProfile = () => {
         <div className="container-x grid items-start gap-10 lg:grid-cols-3">
           <Reveal className="card overflow-hidden lg:sticky lg:top-28">
             <div className="aspect-[4/5] bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
-              <img src={doctorDetails.image} alt={doctorDetails.name} className="h-full w-full object-cover object-top" />
+              <ImageWithFallback src={doctorDetails.image} alt={doctorDetails.name} name={doctorDetails.name} className="h-full w-full object-cover object-top" />
             </div>
             <div className="p-6">
               <h2 className="text-2xl font-extrabold">{doctorDetails.name}</h2>
