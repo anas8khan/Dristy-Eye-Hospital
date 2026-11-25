@@ -17,22 +17,23 @@ const Benefits = () => {
   const { t } = useLanguage();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700 py-16 md:py-24">
-      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-leaf/20 blur-3xl" />
+      <div className="absolute -left-20 top-10 h-72 w-72 animate-float-slow rounded-full bg-primary-500/30 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-80 w-80 animate-float-slower rounded-full bg-leaf/20 blur-3xl" />
 
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
-        <Reveal className="relative mx-auto w-full max-w-md">
-          <div className="absolute inset-6 rounded-full bg-gradient-to-br from-leaf/40 to-primary-400/40 blur-2xl" />
+        <Reveal variant="zoom" className="relative mx-auto w-full max-w-md">
+          <div className="absolute inset-6 animate-pulse rounded-full bg-gradient-to-br from-leaf/40 to-primary-400/40 blur-2xl [animation-duration:4s]" />
           <img
-            className="relative w-full transition-transform duration-500 hover:scale-[1.03]"
+            className="relative w-full animate-float-y transition-transform duration-500 [animation-duration:6s] hover:scale-[1.03]"
             src={about}
+            style={{ animationDelay: "1s" }}
             alt="About"
             loading="lazy"
           />
         </Reveal>
 
         <div>
-          <Reveal>
+          <Reveal variant="right">
             <span className="eyebrow !text-leaf-300">{t("Why Choose Us?")}</span>
             <h2 className="h-section mt-3 !text-white">{t("Benefits with Dristy Eye Hospital")}</h2>
             <p className="mt-5 text-base leading-relaxed text-slate-300 md:text-lg">

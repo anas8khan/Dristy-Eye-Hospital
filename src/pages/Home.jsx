@@ -43,7 +43,7 @@ const Home = () => {
       {/* About */}
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="relative">
+          <Reveal variant="left" className="relative">
             <div className="grid grid-cols-5 gap-4">
               <img
                 src={aboutImg}
@@ -58,13 +58,13 @@ const Home = () => {
                 className="col-span-2 mt-12 h-64 w-full rounded-3xl object-cover shadow-lift md:h-80"
               />
             </div>
-            <div className="absolute -bottom-6 left-6 rounded-2xl bg-leaf px-6 py-4 text-white shadow-lift">
+            <div className="absolute -bottom-6 left-6 animate-float-y rounded-2xl bg-leaf px-6 py-4 text-white shadow-lift">
               <p className="font-display text-3xl font-extrabold">10,000+</p>
               <p className="text-sm font-medium text-leaf-50">{t("free cataract surgeries every year")}</p>
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal variant="right" delay={0.1}>
             <SectionHeading align="left" eyebrow={t("About Us")} title={t("About Dristy Eye Hospital")} />
             <p className="lead mt-5">
               {t(ABOUT_INTRO)}

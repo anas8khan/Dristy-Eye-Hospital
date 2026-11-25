@@ -27,15 +27,16 @@ const Lightbox = ({ images, index, onClose, onChange }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-navy/95 p-4 backdrop-blur"
+      className="fixed inset-0 z-[100] flex animate-fade-in items-center justify-center bg-navy/95 p-4 backdrop-blur"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
     >
       <img
+        key={index}
         src={images[index].image}
         alt={`Gallery image ${index + 1}`}
-        className="max-h-[85vh] max-w-full rounded-xl object-contain shadow-2xl"
+        className="max-h-[85vh] max-w-full animate-zoom-in rounded-xl object-contain shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       />
       <button type="button" aria-label="Close" onClick={onClose} className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-2xl text-white hover:bg-white/20">

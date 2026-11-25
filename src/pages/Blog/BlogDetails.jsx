@@ -108,7 +108,7 @@ const BlogDetails = () => {
     <>
       {/* Banner */}
       <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700">
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
+        <div className="absolute -right-24 -top-24 h-72 w-72 animate-float-slow rounded-full bg-primary-500/30 blur-3xl" />
         <div className="container-x relative py-16 md:py-24">
           <nav className="mb-5 flex flex-wrap items-center gap-2 text-sm font-medium text-slate-300">
             <Link to="/" className="hover:text-white">{t("Home")}</Link>

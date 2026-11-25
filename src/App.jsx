@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react"; // Import Analytics
 import { SpeedInsights } from "@vercel/speed-insights/react"; // Import Speed Insights
 import { useEffect, useState } from "react";
@@ -23,10 +24,12 @@ import Blog from "./pages/Blog/Blog";
 import Loading from "./component/Loading";
 import Feedback from "./pages/Feedback";
 import ContactUs from "./pages/ContactUs";
+import ScrollProgress from "./component/ui/ScrollProgress";
 
 const App = () => {
   // Brand splash on first load only (previously shown for 3s on every navigation).
   const [showSplash, setShowSplash] = useState(true);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 1200);
@@ -34,10 +37,13 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      {showSplash && <Loading />}
+    // reducedMotion="user" disables transform animations for visitors who prefer reduced motion.
+    <MotionConfig reducedMotion="user">
+      <AnimatePresence>{showSplash && <Loading key="splash" />}</AnimatePresence>
+      <ScrollProgress />
       <Navbar />
-      <main id="main">
+      {/* Keyed by route so each page plays a short entrance transition */}
+      <main id="main" key={pathname} className="page-enter">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/doctor" element={<Doctor />} />
@@ -62,7 +68,7 @@ const App = () => {
       <MobileActionBar />
       <Analytics /> {/* Vercel Analytics for tracking */}
       <SpeedInsights /> {/* Vercel Speed Insights for performance monitoring */}
-    </>
+    </MotionConfig>
   );
 };
 

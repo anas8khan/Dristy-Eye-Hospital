@@ -49,14 +49,14 @@ const TreatmentDetails = () => {
       {/* Introduction */}
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal variant="left">
             <img
               src={treatment.introduction.image}
               alt={treatment.introduction.title}
               className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800"
             />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal variant="right" delay={0.1}>
             <span className="eyebrow">{t(treatment.name)}</span>
             <h2 className="h-section mt-3">{treatment.introduction.title}</h2>
             <p className="lead mt-5">{treatment.introduction.content}</p>
@@ -73,13 +73,13 @@ const TreatmentDetails = () => {
           <SectionHeading title={treatment.symptoms.title} />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {treatment.symptoms.list.map((item, index) => (
-              <Reveal key={index} delay={(index % 4) * 0.06} className="card card-hover flex flex-col items-center p-6 text-center">
+              <Reveal key={index} delay={(index % 4) * 0.08} variant="zoom" className="group card card-hover flex flex-col items-center p-6 text-center">
                 {treatment.symptoms.images?.[index] && (
                   <img
                     src={treatment.symptoms.images[index]}
                     alt={`Symptom ${index + 1}`}
                     loading="lazy"
-                    className="mb-5 h-28 w-28 rounded-full object-cover ring-4 ring-primary-50 dark:ring-slate-800"
+                    className="mb-5 h-28 w-28 rounded-full object-cover ring-4 ring-primary-50 transition-transform duration-500 group-hover:scale-110 dark:ring-slate-800"
                   />
                 )}
                 <p className="font-semibold text-slate-800 dark:text-slate-100">{item}</p>
@@ -92,20 +92,20 @@ const TreatmentDetails = () => {
       {/* Prevention */}
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal variant="left">
             <h2 className="h-section">{treatment.prevention.title}</h2>
             <ul className="mt-8 space-y-4">
               {treatment.prevention.list.map((item, index) => (
-                <li key={index} className="flex gap-4">
+                <Reveal as="li" key={index} delay={index * 0.07} variant="left" className="flex gap-4">
                   <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-leaf-100 text-xs text-leaf-700 dark:bg-leaf-700/30 dark:text-leaf-300">
                     <FaCheck />
                   </span>
                   <span className="leading-relaxed">{item}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal variant="right" delay={0.1}>
             <img src={treatment.prevention.image} alt={treatment.prevention.title} loading="lazy" className="w-full rounded-3xl shadow-lift" />
           </Reveal>
         </div>
@@ -119,7 +119,8 @@ const TreatmentDetails = () => {
             {treatment.treatments.list.map((item, index) => (
               <Reveal
                 key={index}
-                className={`card grid items-center gap-6 overflow-hidden p-4 md:grid-cols-2 md:gap-10 md:p-6 ${
+                variant={index % 2 ? "right" : "left"}
+                className={`card card-hover group grid items-center gap-6 overflow-hidden p-4 md:grid-cols-2 md:gap-10 md:p-6 ${
                   index % 2 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
@@ -134,7 +135,7 @@ const TreatmentDetails = () => {
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
-                  className="aspect-[16/10] w-full rounded-2xl bg-slate-100 object-cover dark:bg-slate-800"
+                  className="aspect-[16/10] w-full rounded-2xl bg-slate-100 object-cover transition-transform duration-500 group-hover:scale-[1.02] dark:bg-slate-800"
                 />
               </Reveal>
             ))}

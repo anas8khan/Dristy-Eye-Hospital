@@ -38,20 +38,20 @@ const ContactUs = () => {
       <BackgroundWrapper title1={"Home"} title2={"Contact"} img={banner} />
       <section className="section">
         <div className="container-x grid items-start gap-10 lg:grid-cols-5 lg:gap-14">
-          <Reveal className="lg:col-span-2">
+          <Reveal variant="left" className="lg:col-span-2">
             <h2 className="font-display text-3xl font-extrabold capitalize leading-tight sm:text-4xl md:text-5xl">
               <span className="text-primary-600 dark:text-primary-300">{t("We love")} </span>{t("to hear from our customers")}
             </h2>
             <ul className="mt-10 space-y-4">
-              {contactDetails.map((detail) => (
-                <li key={detail.label}>
+              {contactDetails.map((detail, i) => (
+                <Reveal as="li" key={detail.label} delay={0.15 + i * 0.08} variant="left">
                   <a
                     href={detail.href}
                     target={detail.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="card card-hover flex items-center gap-5 p-5"
+                    className="group card card-hover flex items-center gap-5 p-5"
                   >
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-primary-600 text-xl text-white">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-primary-600 text-xl text-white transition-transform duration-300 group-hover:rotate-[-8deg] group-hover:scale-110">
                       {detail.icon}
                     </span>
                     <span>
@@ -59,12 +59,12 @@ const ContactUs = () => {
                       <span className="mt-1 block font-semibold text-slate-900 dark:text-white">{t(detail.value)}</span>
                     </span>
                   </a>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
 
-          <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
+          <Reveal variant="right" delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
             <BookingForm />
           </Reveal>
         </div>

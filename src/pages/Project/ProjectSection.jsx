@@ -55,7 +55,7 @@ const ProjectSection = () => {
       <BackgroundWrapper title1={"Home"} title2={project.name} img={project.bannerImg} />
 
       <section className="container-x pt-14 md:pt-20">
-        <Reveal className="mx-auto max-w-4xl text-center">
+        <Reveal variant="zoom" className="mx-auto max-w-4xl text-center">
           <FaQuoteLeft className="mx-auto text-3xl text-leaf" />
           <h2 className="mt-4 font-display text-xl font-bold italic leading-relaxed sm:text-2xl md:text-3xl">
             &ldquo;{project.title}&rdquo;
@@ -65,11 +65,11 @@ const ProjectSection = () => {
 
       <section className="section">
         <div className="container-x grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal variant="left">
             <h3 className="h-section !text-2xl md:!text-3xl">{project.about.heading}</h3>
             <p className="mt-5 whitespace-pre-line leading-relaxed">{project.about.content}</p>
           </Reveal>
-          <Reveal delay={0.1} className="pb-10">
+          <Reveal variant="right" delay={0.1} className="pb-10">
             <Slider {...settings}>
               {project.slider?.map((image, index) => (
                 <div key={index}>
@@ -90,12 +90,12 @@ const ProjectSection = () => {
           <h3 className="text-2xl font-bold !text-white">{t("Key Highlights")}</h3>
           <ul className="mt-6 grid gap-4 md:grid-cols-2">
             {project.keyHighlights?.map((highlight, index) => (
-              <li key={index} className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 font-medium text-slate-100">
+              <Reveal as="li" key={index} delay={0.15 + index * 0.08} variant="zoom" className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 font-medium text-slate-100 transition hover:border-leaf/40 hover:bg-white/10">
                 <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-leaf text-xs text-white">
                   <FaCheck />
                 </span>
                 {highlight}
-              </li>
+              </Reveal>
             ))}
           </ul>
         </Reveal>
@@ -108,7 +108,7 @@ const ProjectSection = () => {
             {project.impactStories?.map((story, index) => {
               const name = Array.isArray(story.name) ? story.name.join(", ") : story.name;
               return (
-                <Reveal key={index} delay={(index % 2) * 0.08} className="card card-hover flex flex-col gap-5 p-6 sm:flex-row sm:items-start">
+                <Reveal key={index} delay={(index % 2) * 0.1} variant={index % 2 ? "right" : "left"} className="card card-hover flex flex-col gap-5 p-6 sm:flex-row sm:items-start">
                   <img
                     src={story.image}
                     alt={story.title || name}

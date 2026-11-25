@@ -15,16 +15,16 @@ const Book = () => {
   const { t } = useLanguage();
   return (
     <section className="section relative overflow-hidden">
-      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-primary-100 blur-3xl dark:bg-primary-900/30" />
+      <div className="absolute -right-40 top-0 h-96 w-96 animate-float-slow rounded-full bg-primary-100 blur-3xl dark:bg-primary-900/30" />
       <div className="container-x relative grid items-start gap-10 lg:grid-cols-5">
-        <Reveal className="lg:col-span-2">
+        <Reveal variant="left" className="lg:col-span-2">
           <span className="eyebrow">{t("Appointment")}</span>
           <h2 className="h-section mt-3">{t("Need a Doctor for Check-up?")}</h2>
           <p className="mt-4 text-lg font-medium text-primary-600 dark:text-primary-300">{t("Call us for immediate assistance")}</p>
 
           <ul className="mt-6 space-y-3">
-            {branchPhones.map((b) => (
-              <li key={b.name}>
+            {branchPhones.map((b, i) => (
+              <Reveal as="li" key={b.name} delay={0.15 + i * 0.08} variant="left">
                 <a
                   href={`tel:${b.phone.replace(/\s/g, "")}`}
                   className="card card-hover flex items-center gap-4 px-5 py-4"
@@ -36,7 +36,7 @@ const Book = () => {
                     {t(b.name)}: <span className="text-primary-600 dark:text-primary-300">{b.phone}</span>
                   </span>
                 </a>
-              </li>
+              </Reveal>
             ))}
           </ul>
 
@@ -45,7 +45,7 @@ const Book = () => {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
+        <Reveal variant="right" delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
           <h3 className="font-display text-2xl font-extrabold sm:text-3xl">
             {t("Get in Touch")} <span className="block text-primary-600 dark:text-primary-300">{t("for Professional Advice")}</span>
           </h3>

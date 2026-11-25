@@ -21,8 +21,9 @@ const BackToTop = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on Whatsapp"
-        className="group fixed bottom-6 left-5 z-50 hidden items-center gap-2 rounded-full bg-[#25D366] p-3.5 text-white shadow-lift transition hover:pr-5 md:flex"
+        className="group fixed bottom-6 left-5 z-50 hidden isolate items-center gap-2 rounded-full bg-[#25D366] p-3.5 text-white shadow-lift transition hover:pr-5 md:flex"
       >
+        <span aria-hidden="true" className="absolute inset-0 -z-10 animate-ring-pulse rounded-full bg-[#25D366]" />
         <FaWhatsapp className="text-2xl" />
         <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-[6rem] sm:inline">
           {t("Whatsapp")}

@@ -118,7 +118,7 @@ const About = () => {
       {/* About the hospital */}
       <section className="section">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-5">
+          <Reveal variant="left" className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <img src={img} alt={t(hospital.title)} className="aspect-[4/5] w-full rounded-3xl object-cover shadow-lift" />
             </div>
@@ -127,7 +127,7 @@ const About = () => {
             <SectionHeading align="left" eyebrow={t("About Us")} title={t(hospital.title)} />
             <p className="lead mt-5">{t(hospital.introduction)}</p>
 
-            <Reveal className="mt-10">
+            <Reveal variant="right" className="mt-10">
               <h3 className="flex items-center gap-3 text-xl font-bold">
                 <span className="icon-badge !h-10 !w-10 !text-base"><FaRoute /></span>
                 {t("Our Journey")}
@@ -145,13 +145,13 @@ const About = () => {
                 {t("Partnerships for a Cause")}
               </h3>
               <div className="mt-5 grid gap-4">
-                {hospital.partnerships.map((p) => (
-                  <div key={p.name} className="card flex gap-4 p-5">
+                {hospital.partnerships.map((p, i) => (
+                  <Reveal key={p.name} delay={i * 0.08} variant="right" className="card card-hover flex gap-4 p-5">
                     <FaRegCheckCircle className="mt-1 shrink-0 text-lg text-leaf-500" />
                     <p className="text-sm leading-relaxed">
                       <span className="font-bold text-slate-900 dark:text-white">{t(p.name)}:</span> {t(p.details)}
                     </p>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </Reveal>
@@ -168,19 +168,19 @@ const About = () => {
             <Reveal className="mt-8">
               <h3 className="text-xl font-bold">{t("Our Key Initiatives")}</h3>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {trustInfo.achievements.map((a) => (
-                  <li key={a} className="card flex gap-3 p-4 text-sm leading-relaxed">
+                {trustInfo.achievements.map((a, i) => (
+                  <Reveal as="li" key={a} delay={i * 0.07} variant="zoom" className="card card-hover flex gap-3 p-4 text-sm leading-relaxed">
                     <FaRegCheckCircle className="mt-0.5 shrink-0 text-lg text-leaf-500" />
                     {t(a)}
-                  </li>
+                  </Reveal>
                 ))}
               </ul>
             </Reveal>
           </div>
-          <Reveal className="order-1 lg:order-2">
+          <Reveal variant="right" className="order-1 lg:order-2">
             <div className="relative">
               <img src={trust} alt={t(trustInfo.title)} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
-              <div className="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-lift dark:bg-slate-900 sm:-left-6">
+              <div className="absolute -bottom-6 -left-4 flex animate-float-y items-center gap-3 rounded-2xl bg-white p-4 shadow-lift dark:bg-slate-900 sm:-left-6">
                 <span className="icon-badge"><HiOutlineBuildingOffice2 /></span>
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wider text-slate-500">{t("Registration No.")}</p>
@@ -199,11 +199,11 @@ const About = () => {
         <div className="container-x">
           <SectionHeading title={t("Service provided by Dristy Eye Hospital")} />
           <ul className="mx-auto mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {service.map((s) => (
-              <li key={s} className="card flex items-center gap-3 px-5 py-4 transition hover:border-primary-200">
+            {service.map((s, i) => (
+              <Reveal as="li" key={s} delay={(i % 3) * 0.06} y={16} className="card card-hover flex items-center gap-3 px-5 py-4">
                 <FaRegCheckCircle className="shrink-0 text-lg text-primary-600 dark:text-primary-300" />
                 <span className="font-medium text-slate-700 dark:text-slate-200">{t(s)}</span>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>
@@ -214,7 +214,7 @@ const About = () => {
         <div className="container-x">
           <SectionHeading title={t("Culture at Dristy Eye Hospital")} />
           <div className="mt-12 grid items-start gap-10 lg:grid-cols-2">
-            <Reveal>
+            <Reveal variant="left">
               <h3 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
                 {t("More than just a")} <br />
                 <span className="text-primary-600 dark:text-primary-300">{t("Hospital, we are a Home")}</span>
@@ -259,13 +259,13 @@ const About = () => {
             subtitle={t("The founders of Dristy Eye Hospital are pioneers in eye care, passionately redefining vision health with a blend of innovation, compassion, and an unshakable commitment to enhancing lives—especially for the underprivileged—through affordable and exceptional patient care.")}
           />
           <div className="mt-14 grid items-center gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-4">
+            <Reveal variant="zoom" className="lg:col-span-4">
               <div className="relative mx-auto max-w-xs">
                 <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-gradient-to-br from-primary-500 to-leaf" />
                 <img src={founder} alt={t("Md Imran Khan")} className="relative w-full rounded-3xl bg-slate-200 object-cover shadow-lift" />
               </div>
             </Reveal>
-            <Reveal delay={0.1} className="lg:col-span-8">
+            <Reveal variant="right" delay={0.1} className="lg:col-span-8">
               <h3 className="font-display text-3xl font-extrabold text-primary-700 dark:text-primary-300 md:text-4xl">{t("Md Imran Khan")}</h3>
               <p className="mt-1 text-sm font-bold uppercase tracking-[0.14em] text-leaf-600 dark:text-leaf-400">{t("Co-founder & Director")}</p>
               {isHi ? (

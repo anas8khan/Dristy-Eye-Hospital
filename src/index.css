@@ -62,7 +62,11 @@
     @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lift dark:hover:border-primary-800;
+    @apply transition-all duration-300 hover:border-primary-200 hover:shadow-lift dark:hover:border-primary-800;
+    /* individual translate property composes with framer-motion's inline transform */
+  }
+  .card-hover:hover {
+    translate: 0 -4px;
   }
   .icon-badge {
     @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary-50 text-xl text-primary-600 dark:bg-primary-900/40 dark:text-primary-300;
@@ -132,6 +136,81 @@ html[lang="hi"] .uppercase {
   text-transform: none;
 }
 
+/* ---------- Motion ---------- */
+
+/* Route change entrance; ends at transform:none so fixed/sticky children behave normally */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Section eyebrow uses an animated line element instead of the static ::before */
+.eyebrow--animated::before {
+  display: none;
+}
+
+/* Light sweep across primary buttons on hover */
+.btn-primary,
+.btn-leaf,
+.btn-light {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-primary::after,
+.btn-leaf::after,
+.btn-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.38) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.75s ease;
+}
+.btn-primary:hover::after,
+.btn-leaf:hover::after,
+.btn-light:hover::after {
+  transform: translateX(120%);
+}
+.btn svg {
+  transition: transform 0.3s ease;
+}
+.btn:hover > svg:last-child:not(:first-child) {
+  transform: translateX(3px);
+}
+
+/* Icon badges spring on card hover */
+.icon-badge {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s, color 0.3s;
+}
+.group:hover .icon-badge,
+.card-hover:hover .icon-badge {
+  transform: scale(1.1) rotate(-6deg);
+  background-color: #1d3fd1;
+  color: #fff;
+}
+
+/* Underline grow on footer / inline text links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
 /* Hero entrance (CSS-only so text never stays hidden if JS animation is throttled) */
 @keyframes hero-in {
   from {

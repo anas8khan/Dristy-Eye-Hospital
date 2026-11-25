@@ -98,10 +98,10 @@ const VisionMissionGoals = () => {
       {/* Vision */}
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal variant="left">
             <img src={vision} alt={t("Our Vision")} className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal variant="right" delay={0.1}>
             <h2 className="h-section">{t("Our Vision")}</h2>
             <Quote>{t("“A future where no one in Hazaribagh is left in darkness due to a curable condition.”")}</Quote>
             <p className="lead mt-6">
@@ -114,12 +114,12 @@ const VisionMissionGoals = () => {
       {/* Mission */}
       <section className="section bg-slate-50 dark:bg-slate-900/40">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="lg:order-2">
+          <Reveal variant="right" className="lg:order-2">
             <div className="lg:sticky lg:top-28">
               <img src={mission} alt={t("Our Mission")} className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
             </div>
           </Reveal>
-          <Reveal className="lg:order-1">
+          <Reveal variant="left" className="lg:order-1">
             <h2 className="h-section">{t("Our Mission")}</h2>
             <Quote>{t("“Transforming lives through compassionate and accessible eye care.”")}</Quote>
             <p className="lead mt-6">
@@ -134,11 +134,11 @@ const VisionMissionGoals = () => {
               {t("At Dristy Eye Hospital, we go beyond eye care to transform lives holistically. We utilize the funds we receive to:")}
             </h4>
             <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-              {fundUses.map((f) => (
-                <li key={f.name} className="card p-5">
+              {fundUses.map((f, i) => (
+                <Reveal as="li" key={f.name} delay={i * 0.07} variant="zoom" className="card card-hover p-5">
                   <h5 className="font-bold text-slate-900 dark:text-white">{t(f.name)}</h5>
                   <p className="mt-1.5 text-sm leading-relaxed">{t(f.description)}</p>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
@@ -151,8 +151,8 @@ const VisionMissionGoals = () => {
           <SectionHeading title={t("Our Goals")} subtitle={t("“Striving to be a beacon of hope for the visually impaired.”")} />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {goalsData.map((goal, i) => (
-              <Reveal key={goal.title} delay={i * 0.06} className="card card-hover p-6">
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 text-2xl text-white shadow-lg">
+              <Reveal key={goal.title} delay={i * 0.08} variant="zoom" className="group card card-hover p-6">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 text-2xl text-white shadow-lg transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
                   {goal.icon}
                 </span>
                 <h3 className="mt-5 text-lg font-bold">{t(goal.title)}</h3>
@@ -169,24 +169,24 @@ const VisionMissionGoals = () => {
           <Reveal>
             <h3 className="h-section !text-white">{t("Objectives")}</h3>
             <ul className="mt-8 space-y-4">
-              {objectives.map((obj) => (
-                <li key={obj} className="flex gap-4 text-slate-300">
+              {objectives.map((obj, i) => (
+                <Reveal as="li" key={obj} delay={i * 0.08} variant="left" className="flex gap-4 text-slate-300">
                   <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-leaf text-xs text-white">
                     <FaCheck />
                   </span>
                   <p className="leading-relaxed">{t(obj)}</p>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1} className="grid grid-cols-2 gap-4">
+          <Reveal variant="zoom" delay={0.1} className="grid grid-cols-2 gap-4">
             {images.map((src, index) => (
               <img
                 key={index}
                 src={src}
                 alt={`Objective ${index + 1}`}
                 loading="lazy"
-                className={`h-44 w-full rounded-2xl object-cover shadow-lift md:h-56 ${index % 2 ? "mt-8" : ""}`}
+                className={`h-44 w-full rounded-2xl object-cover shadow-lift transition-transform duration-500 hover:scale-[1.03] md:h-56 ${index % 2 ? "mt-8" : ""}`}
               />
             ))}
           </Reveal>
@@ -200,7 +200,7 @@ const VisionMissionGoals = () => {
             title={t("Why Choose Us?")}
             subtitle={t("At Dristy Eye Hospital, we are more than just a healthcare provider; we are a partner in your journey toward better vision. Our commitment to innovation, compassion, and community engagement ensures that every patient receives the care they deserve.")}
           />
-          <Reveal className="mx-auto mt-10 max-w-4xl">
+          <Reveal variant="zoom" className="mx-auto mt-10 max-w-4xl">
             <img className="w-full rounded-3xl shadow-lift" src={choose} alt={t("Why Choose Us?")} loading="lazy" />
           </Reveal>
           <Join />

@@ -51,8 +51,8 @@ const Footer = () => {
   const { t } = useLanguage();
   return (
     <footer className="relative mt-0 overflow-hidden bg-navy text-slate-400">
-      <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-primary-600/20 blur-3xl" />
-      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-leaf/10 blur-3xl" />
+      <div className="absolute -left-32 top-0 h-80 w-80 animate-float-slow rounded-full bg-primary-600/20 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-72 w-72 animate-float-slower rounded-full bg-leaf/10 blur-3xl" />
 
       <div className="container-x relative grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
@@ -70,7 +70,7 @@ const Footer = () => {
           <ul className="space-y-3 text-sm">
             {usefulLinks.map((link) => (
               <li key={link.label}>
-                <Link to={link.link} className="transition hover:pl-1 hover:text-white">
+                <Link to={link.link} className="link-underline transition hover:text-white">
                   {t(link.label)}
                 </Link>
               </li>
@@ -83,7 +83,7 @@ const Footer = () => {
           <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
             {services.map((service) => (
               <li key={service.name}>
-                <Link to={service.link} className="transition hover:text-white">
+                <Link to={service.link} className="link-underline transition hover:text-white">
                   {t(service.name)}
                 </Link>
               </li>

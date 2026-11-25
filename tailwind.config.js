@@ -41,6 +41,45 @@ export default {
         soft: "0 1px 2px rgba(11,22,64,.04), 0 8px 24px -6px rgba(11,22,64,.10)",
         lift: "0 2px 4px rgba(11,22,64,.05), 0 20px 40px -12px rgba(11,22,64,.22)",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0)" },
+          "50%": { transform: "translate3d(18px, -22px, 0)" },
+        },
+        "float-y": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        kenburns: {
+          from: { transform: "scale(1.12)" },
+          to: { transform: "scale(1)" },
+        },
+        heartbeat: {
+          "0%, 60%, 100%": { transform: "scale(1)" },
+          "15%": { transform: "scale(1.28)" },
+          "30%": { transform: "scale(1)" },
+          "45%": { transform: "scale(1.15)" },
+        },
+        "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } },
+        "zoom-in": {
+          from: { opacity: "0", transform: "scale(.94)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "ring-pulse": {
+          "0%": { transform: "scale(1)", opacity: ".55" },
+          "100%": { transform: "scale(1.7)", opacity: "0" },
+        },
+      },
+      animation: {
+        "float-slow": "float 14s ease-in-out infinite",
+        "float-slower": "float 20s ease-in-out infinite reverse",
+        "float-y": "float-y 4s ease-in-out infinite",
+        kenburns: "kenburns 10s ease-out both",
+        heartbeat: "heartbeat 2.6s ease-in-out infinite",
+        "fade-in": "fade-in .3s ease-out both",
+        "zoom-in": "zoom-in .35s cubic-bezier(.22,1,.36,1) both",
+        "ring-pulse": "ring-pulse 2.2s cubic-bezier(0,0,.2,1) infinite",
+      },
     },
   },
   plugins: [],

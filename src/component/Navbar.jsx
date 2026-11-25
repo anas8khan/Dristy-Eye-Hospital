@@ -185,7 +185,7 @@ const Navbar = () => {
               onClick={openDonation}
               className="inline-flex items-center gap-1.5 rounded-full bg-leaf px-4 py-1.5 text-xs font-bold text-white shadow-[0_6px_16px_-6px_rgba(34,184,58,.8)] transition hover:-translate-y-0.5 hover:bg-leaf-600"
             >
-              <FaHeart className="text-[0.7rem]" />
+              <FaHeart className="animate-heartbeat text-[0.7rem]" />
               {t("Donate")}
             </button>
           </div>

@@ -6,6 +6,7 @@ import SectionHeading from "../component/ui/SectionHeading";
 import Lightbox, { useLightbox } from "../component/ui/Lightbox";
 import banner from "../assets/bgwrapper.jpg";
 import { useLanguage } from "../context/LanguageContext";
+import Reveal from "../component/ui/Reveal";
 
 const Gallery = () => {
   const { gallery } = useApiData();
@@ -32,11 +33,11 @@ const Gallery = () => {
           <SectionHeading title={t("Explore Our Gallery")} />
           <div className="mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
             {gallery?.slice(0, visibleImages).map((image, index) => (
+              <Reveal key={image.id} delay={(index % 3) * 0.07} y={30} className="break-inside-avoid">
               <button
                 type="button"
-                key={image.id}
                 onClick={() => lightbox.open(index)}
-                className="group relative block w-full break-inside-avoid overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800"
+                className="group relative block w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800"
                 aria-label={`Open image ${image.id}`}
               >
                 <img
@@ -49,6 +50,7 @@ const Gallery = () => {
                   <HiOutlineArrowsPointingOut />
                 </span>
               </button>
+              </Reveal>
             ))}
           </div>
 

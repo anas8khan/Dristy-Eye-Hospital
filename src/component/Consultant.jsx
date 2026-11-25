@@ -10,10 +10,10 @@ const Consultant = () => {
   const { t } = useLanguage();
   return (
     <section className="container-x py-12 md:py-16">
-      <Reveal className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 px-6 py-12 text-white shadow-lift md:px-14 md:py-14">
-        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute -bottom-20 left-1/3 h-64 w-64 rounded-full bg-leaf/30 blur-3xl" />
-        <svg className="absolute right-0 top-0 h-full opacity-[0.07]" viewBox="0 0 200 200" aria-hidden="true">
+      <Reveal variant="zoom" className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 px-6 py-12 text-white shadow-lift md:px-14 md:py-14">
+        <div className="absolute -right-16 -top-16 h-64 w-64 animate-float-slow rounded-full bg-white/10 blur-2xl" />
+        <div className="absolute -bottom-20 left-1/3 h-64 w-64 animate-float-slower rounded-full bg-leaf/30 blur-3xl" />
+        <svg className="absolute right-0 top-0 h-full animate-[spin_60s_linear_infinite] opacity-[0.07]" viewBox="0 0 200 200" aria-hidden="true">
           <circle cx="150" cy="50" r="120" fill="none" stroke="white" strokeWidth="30" />
         </svg>
 

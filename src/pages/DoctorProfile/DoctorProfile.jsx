@@ -46,7 +46,7 @@ const DoctorProfile = () => {
       <BackgroundWrapper title1={"Home"} title2={doctorDetails.displayName} img={img} />
       <section className="section">
         <div className="container-x grid items-start gap-10 lg:grid-cols-3">
-          <Reveal className="card overflow-hidden lg:sticky lg:top-28">
+          <Reveal variant="left" className="card overflow-hidden lg:sticky lg:top-28">
             <div className="aspect-[4/5] bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
               <ImageWithFallback src={doctorDetails.image} alt={doctorDetails.displayName} name={doctorDetails.displayName} className="h-full w-full object-cover object-top" />
             </div>
@@ -57,18 +57,18 @@ const DoctorProfile = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-2">
+          <Reveal variant="right" delay={0.1} className="card p-6 sm:p-10 lg:col-span-2">
             <h3 className="text-2xl font-extrabold">{t("Biography")}</h3>
             <p className="lead mt-4">{doctorDetails.description}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {facts.map((f) => (
-                <div key={f.label} className="flex gap-4 rounded-2xl bg-slate-50 p-5 dark:bg-slate-800/60">
+              {facts.map((f, i) => (
+                <Reveal key={f.label} delay={0.2 + i * 0.08} variant="zoom" className="group flex gap-4 rounded-2xl bg-slate-50 p-5 transition hover:[translate:0_-2px] hover:shadow-soft dark:bg-slate-800/60">
                   <span className="icon-badge">{f.icon}</span>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white">{f.label}</p>
                     <p className="mt-0.5 text-sm">{f.value}</p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </Reveal>

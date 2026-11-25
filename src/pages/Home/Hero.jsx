@@ -139,7 +139,7 @@ const Hero = () => {
       </div>
 
       {/* Quick info strip overlapping the hero */}
-      <div className="container-x relative z-10 -mt-16 md:-mt-14">
+      <div className="hero-in container-x relative z-10 -mt-16 md:-mt-14" style={{ animationDelay: "500ms" }}>
         <div className="card grid divide-y divide-slate-100 overflow-hidden !shadow-lift md:grid-cols-3 md:divide-x md:divide-y-0 dark:divide-slate-800">
           {quickInfo.map((item) => {
             const inner = (

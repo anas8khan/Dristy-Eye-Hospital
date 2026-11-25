@@ -4,6 +4,7 @@ import BackgroundWrapper from "../component/BackgroundWrapper";
 import SectionHeading from "../component/ui/SectionHeading";
 import img from "../assets/bgwrapper.jpg";
 import { useLanguage } from "../context/LanguageContext";
+import Reveal from "../component/ui/Reveal";
 
 // Videos live in /public/Feedback and are served as static files.
 const videos = Array.from({ length: 16 }, (_, i) => `/Feedback/${i + 1}.mp4`);
@@ -46,7 +47,7 @@ const Feedback = () => {
           <SectionHeading title={t("Our Patient Feedback")} />
           <div id="feedback-grid" className="mt-12 grid scroll-mt-28 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {currentVideos.map((video, index) => (
-              <div key={video} className="card overflow-hidden p-2">
+              <Reveal key={video} delay={(index % 3) * 0.08} variant="zoom" className="card card-hover overflow-hidden p-2">
                 <video
                   controls
                   preload="metadata"
@@ -55,7 +56,7 @@ const Feedback = () => {
                   onPlay={() => handlePlay(index)}
                   className="aspect-video w-full rounded-xl bg-navy object-contain"
                 ></video>
-              </div>
+              </Reveal>
             ))}
           </div>
 

@@ -31,7 +31,7 @@ const MobileActionBar = () => {
       </Link>
       <button type="button" onClick={openDonation} className={`${item} !text-white`}>
         <span className="flex w-full flex-col items-center gap-1 rounded-xl bg-leaf px-2 py-1.5 shadow-[0_6px_16px_-6px_rgba(34,184,58,.7)]">
-          <FaHeart className="text-base" />
+          <FaHeart className="animate-heartbeat text-base" />
           {t("Donate")}
         </span>
       </button>

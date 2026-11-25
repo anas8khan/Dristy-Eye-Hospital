@@ -57,14 +57,14 @@ const LeadersSection = () => {
             <Reveal
               key={leader.name}
               delay={(i % 3) * 0.08}
-              className="card card-hover flex w-full flex-col p-6 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              className="group card card-hover flex w-full flex-col p-6 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
               <div className="flex items-center gap-4">
                 <img
                   src={leader.image}
                   alt={t(leader.name)}
                   loading="lazy"
-                  className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 object-cover"
+                  className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div>
                   <h3 className="text-lg font-bold">{t(leader.name)}</h3>

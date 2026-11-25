@@ -6,6 +6,7 @@ import BookingForm from "../component/BookingForm";
 import banner from "../assets/bgwrapper.jpg";
 import { contact } from "../siteConfig";
 import { useLanguage } from "../context/LanguageContext";
+import Reveal from "../component/ui/Reveal";
 
 const monthNames = [
   "January", "February", "March", "April", "May", "June",
@@ -52,7 +53,7 @@ const Appointment = () => {
           key={day}
           className={`grid aspect-square place-items-center rounded-xl text-sm font-semibold ${
             isToday
-              ? "bg-leaf text-white shadow-lg"
+              ? "bg-leaf text-white shadow-lg ring-4 ring-leaf/30 animate-pulse [animation-duration:2.5s]"
               : isSunday
               ? "text-white/40"
               : "text-white/90 hover:bg-white/10"
@@ -69,7 +70,7 @@ const Appointment = () => {
       <BackgroundWrapper title1={"Home"} title2={"Appointment"} img={banner} />
       <section className="section">
         <div className="container-x grid items-start gap-8 lg:grid-cols-5">
-          <aside className="space-y-6 lg:col-span-2">
+          <Reveal as="aside" variant="left" className="space-y-6 lg:col-span-2">
             <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-6 shadow-lift sm:p-8">
               <h2 className="text-center font-display text-2xl font-bold !text-white">
                 {isHi ? currentDate.toLocaleDateString("hi-IN", { month: "long", year: "numeric" }) : `${monthNames[month]} ${year}`}
@@ -98,14 +99,14 @@ const Appointment = () => {
                 <span className="font-semibold text-slate-900 dark:text-white">{t(contact.hours)}</span>
               </li>
             </ul>
-          </aside>
+          </Reveal>
 
-          <div className="card p-6 sm:p-10 lg:col-span-3">
+          <Reveal variant="right" delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
             <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
               {t("Get in Touch")} <span className="block text-primary-600 dark:text-primary-300">{t("for Professional Advice")}</span>
             </h2>
             <BookingForm className="mt-8" />
-          </div>
+          </Reveal>
         </div>
       </section>
     </>
