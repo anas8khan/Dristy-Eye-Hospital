@@ -13,6 +13,7 @@ import img from "../assets/hospitalImg/IMG_100.jpg";
 import trust from "../assets/hospitalImg/IMG_1157.jpg";
 import founder from "../assets/DSC_4342.jpg";
 import banner from "../assets/bgwrapper.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const hospital = {
   title: "About Dristy Eye Hospital",
@@ -97,6 +98,7 @@ const culturalValues = [
 const About = () => {
   const { gallery, isLoading, error } = useApiData();
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t, isHi } = useLanguage();
 
   useEffect(() => {
     document.title = "About - Dristy Eye Hospital, Chouparan";
@@ -118,21 +120,21 @@ const About = () => {
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <img src={img} alt={hospital.title} className="aspect-[4/5] w-full rounded-3xl object-cover shadow-lift" />
+              <img src={img} alt={t(hospital.title)} className="aspect-[4/5] w-full rounded-3xl object-cover shadow-lift" />
             </div>
           </Reveal>
           <div className="lg:col-span-7">
-            <SectionHeading align="left" eyebrow="About Us" title={hospital.title} />
-            <p className="lead mt-5">{hospital.introduction}</p>
+            <SectionHeading align="left" eyebrow={t("About Us")} title={t(hospital.title)} />
+            <p className="lead mt-5">{t(hospital.introduction)}</p>
 
             <Reveal className="mt-10">
               <h3 className="flex items-center gap-3 text-xl font-bold">
                 <span className="icon-badge !h-10 !w-10 !text-base"><FaRoute /></span>
-                Our Journey
+                {t("Our Journey")}
               </h3>
               <div className="mt-5 space-y-4 border-l-2 border-primary-100 pl-6 dark:border-slate-800">
                 {hospital.history.map((p, i) => (
-                  <p key={i} className="leading-relaxed">{p}</p>
+                  <p key={i} className="leading-relaxed">{t(p)}</p>
                 ))}
               </div>
             </Reveal>
@@ -140,14 +142,14 @@ const About = () => {
             <Reveal className="mt-10">
               <h3 className="flex items-center gap-3 text-xl font-bold">
                 <span className="icon-badge !h-10 !w-10 !text-base"><FaHandshake /></span>
-                Partnerships for a Cause
+                {t("Partnerships for a Cause")}
               </h3>
               <div className="mt-5 grid gap-4">
                 {hospital.partnerships.map((p) => (
                   <div key={p.name} className="card flex gap-4 p-5">
                     <FaRegCheckCircle className="mt-1 shrink-0 text-lg text-leaf-500" />
                     <p className="text-sm leading-relaxed">
-                      <span className="font-bold text-slate-900 dark:text-white">{p.name}:</span> {p.details}
+                      <span className="font-bold text-slate-900 dark:text-white">{t(p.name)}:</span> {t(p.details)}
                     </p>
                   </div>
                 ))}
@@ -161,15 +163,15 @@ const About = () => {
       <section className="section bg-slate-50 dark:bg-slate-900/40">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="order-2 lg:order-1">
-            <SectionHeading align="left" title={trustInfo.title} />
-            <p className="lead mt-5">{trustInfo.introduction}</p>
+            <SectionHeading align="left" title={t(trustInfo.title)} />
+            <p className="lead mt-5">{t(trustInfo.introduction)}</p>
             <Reveal className="mt-8">
-              <h3 className="text-xl font-bold">Our Key Initiatives</h3>
+              <h3 className="text-xl font-bold">{t("Our Key Initiatives")}</h3>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {trustInfo.achievements.map((a) => (
                   <li key={a} className="card flex gap-3 p-4 text-sm leading-relaxed">
                     <FaRegCheckCircle className="mt-0.5 shrink-0 text-lg text-leaf-500" />
-                    {a}
+                    {t(a)}
                   </li>
                 ))}
               </ul>
@@ -177,11 +179,11 @@ const About = () => {
           </div>
           <Reveal className="order-1 lg:order-2">
             <div className="relative">
-              <img src={trust} alt={trustInfo.title} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
+              <img src={trust} alt={t(trustInfo.title)} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
               <div className="absolute -bottom-6 -left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-lift dark:bg-slate-900 sm:-left-6">
                 <span className="icon-badge"><HiOutlineBuildingOffice2 /></span>
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-slate-500">Registration No.</p>
+                  <p className="text-xs font-medium uppercase tracking-wider text-slate-500">{t("Registration No.")}</p>
                   <p className="font-bold text-slate-900 dark:text-white">10949/1310</p>
                 </div>
               </div>
@@ -195,12 +197,12 @@ const About = () => {
       {/* Services list */}
       <section className="section pt-4">
         <div className="container-x">
-          <SectionHeading title="Service provided by Dristy Eye Hospital" />
+          <SectionHeading title={t("Service provided by Dristy Eye Hospital")} />
           <ul className="mx-auto mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {service.map((s) => (
               <li key={s} className="card flex items-center gap-3 px-5 py-4 transition hover:border-primary-200">
                 <FaRegCheckCircle className="shrink-0 text-lg text-primary-600 dark:text-primary-300" />
-                <span className="font-medium text-slate-700 dark:text-slate-200">{s}</span>
+                <span className="font-medium text-slate-700 dark:text-slate-200">{t(s)}</span>
               </li>
             ))}
           </ul>
@@ -210,12 +212,12 @@ const About = () => {
       {/* Culture */}
       <section className="section bg-slate-50 dark:bg-slate-900/40">
         <div className="container-x">
-          <SectionHeading title="Culture at Dristy Eye Hospital" />
+          <SectionHeading title={t("Culture at Dristy Eye Hospital")} />
           <div className="mt-12 grid items-start gap-10 lg:grid-cols-2">
             <Reveal>
               <h3 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
-                More than just a <br />
-                <span className="text-primary-600 dark:text-primary-300">Hospital, we are a Home</span>
+                {t("More than just a")} <br />
+                <span className="text-primary-600 dark:text-primary-300">{t("Hospital, we are a Home")}</span>
               </h3>
             </Reveal>
             <div className="space-y-3">
@@ -230,7 +232,7 @@ const About = () => {
                       className="flex w-full items-center justify-between gap-4 p-5 text-left"
                     >
                       <span className={`text-lg font-bold ${open ? "text-primary-600 dark:text-primary-300" : "text-slate-900 dark:text-white"}`}>
-                        {value.title}
+                        {t(value.title)}
                       </span>
                       <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm transition ${open ? "bg-primary-600 text-white" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>
                         {open ? <FaMinus /> : <FaPlus />}
@@ -238,7 +240,7 @@ const About = () => {
                     </button>
                     <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                       <div className="min-h-0 overflow-hidden">
-                        <p className="px-5 pb-5 leading-relaxed">{value.description}</p>
+                        <p className="px-5 pb-5 leading-relaxed">{t(value.description)}</p>
                       </div>
                     </div>
                   </div>
@@ -253,19 +255,32 @@ const About = () => {
       <section className="section">
         <div className="container-x">
           <SectionHeading
-            title="The ones who laid our foundation"
-            subtitle="The founders of Dristy Eye Hospital are pioneers in eye care, passionately redefining vision health with a blend of innovation, compassion, and an unshakable commitment to enhancing lives—especially for the underprivileged—through affordable and exceptional patient care."
+            title={t("The ones who laid our foundation")}
+            subtitle={t("The founders of Dristy Eye Hospital are pioneers in eye care, passionately redefining vision health with a blend of innovation, compassion, and an unshakable commitment to enhancing lives—especially for the underprivileged—through affordable and exceptional patient care.")}
           />
           <div className="mt-14 grid items-center gap-10 lg:grid-cols-12">
             <Reveal className="lg:col-span-4">
               <div className="relative mx-auto max-w-xs">
                 <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-gradient-to-br from-primary-500 to-leaf" />
-                <img src={founder} alt="Md Imran Khan" className="relative w-full rounded-3xl bg-slate-200 object-cover shadow-lift" />
+                <img src={founder} alt={t("Md Imran Khan")} className="relative w-full rounded-3xl bg-slate-200 object-cover shadow-lift" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="lg:col-span-8">
-              <h3 className="font-display text-3xl font-extrabold text-primary-700 dark:text-primary-300 md:text-4xl">Md Imran Khan</h3>
-              <p className="mt-1 text-sm font-bold uppercase tracking-[0.14em] text-leaf-600 dark:text-leaf-400">Co-founder &amp; Director</p>
+              <h3 className="font-display text-3xl font-extrabold text-primary-700 dark:text-primary-300 md:text-4xl">{t("Md Imran Khan")}</h3>
+              <p className="mt-1 text-sm font-bold uppercase tracking-[0.14em] text-leaf-600 dark:text-leaf-400">{t("Co-founder & Director")}</p>
+              {isHi ? (
+                <div className="mt-6 space-y-4 leading-relaxed">
+                  <p>
+                    <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> के पीछे की सोच हमारे संस्थापक की है, जो सुलभ और अच्छी नेत्र सेवा से लोगों की ज़िंदगी बदलने के लिए समर्पित हैं। इलाज को सस्ता और सबकी पहुँच में लाने के मिशन के साथ, यह अस्पताल भारतीय ट्रस्ट अधिनियम, 1882 के तहत पंजीकृत एक ट्रस्ट की इकाई के रूप में काम करता है।
+                  </p>
+                  <p>
+                    संस्थापक के नेतृत्व में <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> ने कई बड़ी उपलब्धियाँ हासिल की हैं, जिनमें हर साल 10,000+ से ज़्यादा मुफ़्त मोतियाबिंद ऑपरेशन शामिल हैं। इलाज के अलावा, संस्थापक ने मुफ़्त नेत्र जाँच, चश्मा वितरण और आँखों की सेहत पर जागरूकता अभियान जैसे असरदार कार्यक्रम भी शुरू किए हैं।
+                  </p>
+                  <p>
+                    उनकी अटूट लगन और दूसरों को प्रेरित करने की क्षमता ने इस अस्पताल को ग़रीब और वंचित समुदायों के लिए उम्मीद की किरण बना दिया है। इसी सोच के साथ <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> सभी तक आँखों की रोशनी पहुँचाने का अपना मिशन जारी रखे हुए है।
+                  </p>
+                </div>
+              ) : (
               <div className="mt-6 space-y-4 leading-relaxed">
                 <p>
                   The visionary behind <strong className="text-slate-900 dark:text-white">DRISTY EYE HOSPITAL</strong>, our Founder, is
@@ -284,6 +299,7 @@ const About = () => {
                   its mission to bring the gift of sight to all.
                 </p>
               </div>
+              )}
             </Reveal>
           </div>
         </div>

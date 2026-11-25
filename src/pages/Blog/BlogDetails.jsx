@@ -5,15 +5,16 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { FaFacebook, FaWhatsapp, FaLinkedin, FaCalendarAlt, FaClock } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi2";
 import { client } from "../../contentful/client";
+import { useLanguage } from "../../context/LanguageContext";
 
-const formatDate = (dateString) => {
-  if (!dateString) return "Date not available";
-  return new Date(dateString).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+const formatDate = (dateString, locale) => {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" });
 };
 
-const formatTime = (dateString) => {
-  if (!dateString) return "Time not available";
-  return new Date(dateString).toLocaleTimeString(undefined, { hour: "numeric", minute: "numeric" });
+const formatTime = (dateString, locale) => {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleTimeString(locale, { hour: "numeric", minute: "numeric" });
 };
 
 const richTextOptions = {
@@ -53,6 +54,8 @@ const BlogDetails = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const visibleBlogs = 3;
+  const { t, isHi } = useLanguage();
+  const locale = isHi ? "hi-IN" : undefined;
 
   useEffect(() => {
     setBlog(null);
@@ -78,8 +81,8 @@ const BlogDetails = () => {
   if (notFound) {
     return (
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
-        <p className="text-lg">Blog not found</p>
-        <Link to="/blog" className="btn-primary">Our Blogs <HiArrowRight /></Link>
+        <p className="text-lg">{t("Blog not found")}</p>
+        <Link to="/blog" className="btn-primary">{t("Our Blogs")} <HiArrowRight /></Link>
       </div>
     );
   }
@@ -108,14 +111,14 @@ const BlogDetails = () => {
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
         <div className="container-x relative py-16 md:py-24">
           <nav className="mb-5 flex flex-wrap items-center gap-2 text-sm font-medium text-slate-300">
-            <Link to="/" className="hover:text-white">Home</Link>
+            <Link to="/" className="hover:text-white">{t("Home")}</Link>
             <span className="text-slate-500">/</span>
-            <Link to="/blog" className="hover:text-white">Blog</Link>
+            <Link to="/blog" className="hover:text-white">{t("Blog")}</Link>
           </nav>
           <h1 className="max-w-4xl font-display text-3xl font-extrabold leading-tight !text-white sm:text-4xl md:text-5xl">{title}</h1>
           <div className="mt-6 flex flex-wrap items-center gap-5 text-sm text-slate-300">
-            <span className="flex items-center gap-2"><FaCalendarAlt className="text-leaf-400" /> {formatDate(date)}</span>
-            <span className="flex items-center gap-2"><FaClock className="text-leaf-400" /> {formatTime(date)}</span>
+            <span className="flex items-center gap-2"><FaCalendarAlt className="text-leaf-400" /> {formatDate(date, locale)}</span>
+            <span className="flex items-center gap-2"><FaClock className="text-leaf-400" /> {formatTime(date, locale)}</span>
           </div>
         </div>
       </section>
@@ -150,7 +153,7 @@ const BlogDetails = () => {
 
           <aside className="lg:col-span-4">
             <div className="card p-6 lg:sticky lg:top-28">
-              <h2 className="text-xl font-bold">Recent Blogs</h2>
+              <h2 className="text-xl font-bold">{t("Recent Blogs")}</h2>
               <ul className="mt-5 divide-y divide-slate-100 dark:divide-slate-800">
                 {recentBlogs.slice(0, visibleBlogs).map((recentBlog) => {
                   const { title: rTitle, date: rDate, blogId: rId } = recentBlog.fields;
@@ -164,7 +167,7 @@ const BlogDetails = () => {
                         {rTitle}
                       </Link>
                       <p className="mt-1.5 text-xs text-slate-500">
-                        {formatDate(rDate)} - {formatTime(rDate)}
+                        {formatDate(rDate, locale)} - {formatTime(rDate, locale)}
                       </p>
                     </li>
                   );
@@ -172,7 +175,7 @@ const BlogDetails = () => {
               </ul>
               {visibleBlogs < recentBlogs.length && (
                 <Link to="/blog" className="btn-primary mt-4 w-full">
-                  Show More <HiArrowRight />
+                  {t("Show More")} <HiArrowRight />
                 </Link>
               )}
             </div>

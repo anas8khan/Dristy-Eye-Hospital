@@ -2,6 +2,7 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 import about from "../../assets/about.png";
 import Reveal from "../../component/ui/Reveal";
+import { useLanguage } from "../../context/LanguageContext";
 
 const benefits = [
   "Qualified Doctors",
@@ -13,6 +14,7 @@ const benefits = [
 ];
 
 const Benefits = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700 py-16 md:py-24">
       <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-primary-500/30 blur-3xl" />
@@ -31,11 +33,10 @@ const Benefits = () => {
 
         <div>
           <Reveal>
-            <span className="eyebrow !text-leaf-300">Why Choose Us?</span>
-            <h2 className="h-section mt-3 !text-white">Benefits with Dristy Eye Hospital</h2>
+            <span className="eyebrow !text-leaf-300">{t("Why Choose Us?")}</span>
+            <h2 className="h-section mt-3 !text-white">{t("Benefits with Dristy Eye Hospital")}</h2>
             <p className="mt-5 text-base leading-relaxed text-slate-300 md:text-lg">
-              We pledge to make your visit at all of our locations an opportunity to provide timely and appropriate care
-              for you and your family members.
+              {t("We pledge to make your visit at all of our locations an opportunity to provide timely and appropriate care for you and your family members.")}
             </p>
           </Reveal>
 
@@ -50,7 +51,7 @@ const Benefits = () => {
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-leaf text-sm text-white">
                   <FaCheck />
                 </span>
-                <span className="font-semibold text-slate-100">{benefit}</span>
+                <span className="font-semibold text-slate-100">{t(benefit)}</span>
               </Reveal>
             ))}
           </ul>

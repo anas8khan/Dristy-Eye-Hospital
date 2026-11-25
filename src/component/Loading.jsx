@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import eye from "../assets/eye-logo.png";
+import { useLanguage } from "../context/LanguageContext";
 
 const Loading = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -17,8 +19,8 @@ const Loading = () => {
         <img className="h-20 w-20 rounded-full bg-white p-2" src={eye} alt="Dristy Eye Hospital Logo" />
       </div>
       <div className="text-center text-white">
-        <h1 className="font-display text-3xl font-extrabold !text-white sm:text-5xl">Dristy Eye Hospital</h1>
-        <p className="mt-3 text-base font-medium text-leaf-300 sm:text-lg">Your vision, our priority</p>
+        <h1 className="font-display text-3xl font-extrabold !text-white sm:text-5xl">{t("Dristy Eye Hospital")}</h1>
+        <p className="mt-3 text-base font-medium text-leaf-300 sm:text-lg">{t("Your vision, our priority")}</p>
       </div>
     </div>
   );

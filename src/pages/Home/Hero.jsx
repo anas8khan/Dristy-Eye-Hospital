@@ -9,6 +9,7 @@ import img3 from "../../assets/hospitalImg/IMG_1186.jpg";
 import img4 from "../../assets/hospitalImg/IMG_1327.jpg";
 import { contact } from "../../siteConfig";
 import useAutoSlide from "../../component/ui/useAutoSlide";
+import { useLanguage } from "../../context/LanguageContext";
 
 
 const slides = [
@@ -52,6 +53,7 @@ const quickInfo = [
 ];
 
 const Hero = () => {
+  const { t } = useLanguage();
   const { index: active, go, setPaused } = useAutoSlide(slides.length, 5500);
 
   return (
@@ -88,22 +90,22 @@ const Hero = () => {
                       className="hero-in mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-leaf-300 backdrop-blur"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-leaf-400" />
-                      Dristy Eye Hospital
+                      {t("Dristy Eye Hospital")}
                     </span>
                     <div className="hero-in" style={{ animationDelay: "120ms" }}>
                       <Heading className="font-display text-4xl font-extrabold leading-[1.08] !text-white sm:text-5xl lg:text-7xl">
-                        {slide.header && <span className="text-leaf-400">{slide.header}</span>} {slide.title}
+                        {slide.header && <span className="text-leaf-400">{t(slide.header)}</span>} {t(slide.title)}
                       </Heading>
                     </div>
                     <p style={{ animationDelay: "240ms" }} className="hero-in mt-6 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg md:text-xl">
-                      {slide.description}
+                      {t(slide.description)}
                     </p>
                     <div style={{ animationDelay: "360ms" }} className="hero-in mt-9 flex flex-wrap gap-3">
                       <Link to={slide.link} className="btn-leaf !px-7 !py-3.5 !text-base">
-                        {slide.buttonText} <HiArrowRight />
+                        {t(slide.buttonText)} <HiArrowRight />
                       </Link>
                       <Link to="/appointment" className="btn-ghost-light !px-7 !py-3.5 !text-base">
-                        Appointment
+                        {t("Appointment")}
                       </Link>
                     </div>
                   </div>
@@ -145,9 +147,9 @@ const Hero = () => {
                 <span className="icon-badge">{item.icon}</span>
                 <span>
                   <span className="block text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                    {item.label}
+                    {t(item.label)}
                   </span>
-                  <span className="mt-0.5 block text-base font-bold text-slate-900 dark:text-white">{item.value}</span>
+                  <span className="mt-0.5 block text-base font-bold text-slate-900 dark:text-white">{t(item.value)}</span>
                 </span>
               </>
             );

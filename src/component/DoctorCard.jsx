@@ -12,8 +12,8 @@ const DoctorCard = ({ data }) => {
       <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
         <ImageWithFallback
           src={data.image}
-          alt={data.name}
-          name={data.name}
+          alt={data.displayName || data.name}
+          name={data.displayName || data.name}
           loading="lazy"
           className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
         />
@@ -21,7 +21,7 @@ const DoctorCard = ({ data }) => {
       <div className="flex flex-1 items-start justify-between gap-3 p-5">
         <div>
           <h3 className="text-lg font-bold transition group-hover:text-primary-600 dark:group-hover:text-primary-300">
-            {data.name}
+            {data.displayName || data.name}
           </h3>
           {data.specialization && (
             <p className="mt-1 text-sm font-medium text-leaf-600 dark:text-leaf-400">{data.specialization}</p>

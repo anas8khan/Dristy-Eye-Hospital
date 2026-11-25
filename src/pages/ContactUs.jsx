@@ -7,6 +7,7 @@ import BookingForm from "../component/BookingForm";
 import Branches from "../component/Branches";
 import Reveal from "../component/ui/Reveal";
 import banner from "../assets/bgwrapper.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const contactDetails = [
   { icon: <FaPhoneVolume />, label: "Phone Number", value: "+91 9006440240", href: "tel:+919006440240" },
@@ -20,6 +21,7 @@ const contactDetails = [
 ];
 
 const ContactUs = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     document.title = "Contact - Dristy Eye Hospital, Chouparan";
     const meta = document.querySelector("meta[name='description']");
@@ -38,7 +40,7 @@ const ContactUs = () => {
         <div className="container-x grid items-start gap-10 lg:grid-cols-5 lg:gap-14">
           <Reveal className="lg:col-span-2">
             <h2 className="font-display text-3xl font-extrabold capitalize leading-tight sm:text-4xl md:text-5xl">
-              <span className="text-primary-600 dark:text-primary-300">We love </span>to hear from our customers
+              <span className="text-primary-600 dark:text-primary-300">{t("We love")} </span>{t("to hear from our customers")}
             </h2>
             <ul className="mt-10 space-y-4">
               {contactDetails.map((detail) => (
@@ -53,8 +55,8 @@ const ContactUs = () => {
                       {detail.icon}
                     </span>
                     <span>
-                      <span className="block text-sm font-semibold uppercase tracking-wider text-slate-500">{detail.label}</span>
-                      <span className="mt-1 block font-semibold text-slate-900 dark:text-white">{detail.value}</span>
+                      <span className="block text-sm font-semibold uppercase tracking-wider text-slate-500">{t(detail.label)}</span>
+                      <span className="mt-1 block font-semibold text-slate-900 dark:text-white">{t(detail.value)}</span>
                     </span>
                   </a>
                 </li>

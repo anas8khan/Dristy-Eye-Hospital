@@ -3,11 +3,13 @@ import DoctorCard from "../component/DoctorCard";
 import BackgroundWrapper from "../component/BackgroundWrapper";
 import SectionHeading from "../component/ui/SectionHeading";
 import Reveal from "../component/ui/Reveal";
-import { useApiData } from "../context/ApiDataContext";
+import { useDoctors } from "../localizedData";
 import img from "../assets/bgwrapper.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const Doctor = () => {
-  const { doctors } = useApiData();
+  const doctors = useDoctors();
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.title = "Doctor - Dristy Eye Hospital, Chouparan";
@@ -25,7 +27,7 @@ const Doctor = () => {
       <BackgroundWrapper title1={"Home"} title2={"Doctors"} img={img} />
       <section className="section">
         <div className="container-x">
-          <SectionHeading eyebrow="Doctors" title="Dristy Eye Hospital Specialist" />
+          <SectionHeading eyebrow={t("Doctors")} title={t("Dristy Eye Hospital Specialist")} />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {doctors?.map((item, idx) => (
               <Reveal key={item.name} delay={(idx % 4) * 0.06}>

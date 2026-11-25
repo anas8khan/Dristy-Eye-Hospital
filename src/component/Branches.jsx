@@ -2,6 +2,7 @@ import React from "react";
 import { FaClock, FaLocationDot, FaPhone } from "react-icons/fa6";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
+import { useLanguage } from "../context/LanguageContext";
 
 const branches = [
   {
@@ -39,10 +40,12 @@ const branches = [
 
 const tel = (n) => `tel:${n.replace(/\s/g, "")}`;
 
-const Branches = () => (
+const Branches = () => {
+  const { t } = useLanguage();
+  return (
   <section className="section bg-slate-50 dark:bg-slate-900/40">
     <div className="container-x">
-      <SectionHeading title="Our Branches" />
+      <SectionHeading title={t("Our Branches")} />
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {branches.map((branch, i) => (
           <Reveal key={branch.name} delay={i * 0.08} className="card card-hover flex flex-col overflow-hidden">
@@ -56,21 +59,21 @@ const Branches = () => (
               ></iframe>
             </div>
             <div className="flex flex-1 flex-col gap-3 p-6">
-              <h3 className="text-base font-extrabold leading-snug">{branch.name}</h3>
-              <p className="text-sm font-medium text-primary-600 dark:text-primary-300">{branch.hospitalName}</p>
+              <h3 className="text-base font-extrabold leading-snug">{t(branch.name)}</h3>
+              <p className="text-sm font-medium text-primary-600 dark:text-primary-300">{t(branch.hospitalName)}</p>
               <ul className="mt-1 space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
                 <li className="flex gap-2.5">
                   <FaClock className="mt-0.5 shrink-0 text-leaf-500" />
-                  <span><strong className="font-semibold text-slate-800 dark:text-slate-100">Timing:</strong> {branch.timing}</span>
+                  <span><strong className="font-semibold text-slate-800 dark:text-slate-100">{t("Timing:")}</strong> {t(branch.timing)}</span>
                 </li>
                 <li className="flex gap-2.5">
                   <FaLocationDot className="mt-0.5 shrink-0 text-leaf-500" />
-                  <span className="capitalize">{branch.address}</span>
+                  <span className="capitalize">{t(branch.address)}</span>
                 </li>
                 <li className="flex gap-2.5">
                   <FaPhone className="mt-0.5 shrink-0 text-leaf-500" />
                   <span>
-                    Call:{" "}
+                    {t("Call:")}{" "}
                     <a href={tel(branch.phone)} className="font-semibold text-primary-600 hover:underline dark:text-primary-300">{branch.phone}</a>
                     {branch.tel && (
                       <>
@@ -87,6 +90,7 @@ const Branches = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Branches;

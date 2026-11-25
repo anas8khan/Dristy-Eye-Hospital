@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { FaUserMd } from "react-icons/fa";
 import { FaStethoscope } from "react-icons/fa6";
 import { MdOutlineMedicalServices } from "react-icons/md";
+import { useLanguage } from "../context/LanguageContext";
 
 const statsData = [
   { icon: <FaUserMd />, value: 9, label: "Expert Doctors" },
@@ -12,6 +13,7 @@ const statsData = [
 ];
 
 const StatsSection = () => {
+  const { t } = useLanguage();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
   return (
@@ -31,7 +33,7 @@ const StatsSection = () => {
                 {inView ? <CountUp start={0} end={stat.value} duration={2.5} separator="," /> : 0}
                 {stat.value > 5 && <span className="text-leaf-400">+</span>}
               </p>
-              <p className="mt-1 font-semibold text-slate-300">{stat.label}</p>
+              <p className="mt-1 font-semibold text-slate-300">{t(stat.label)}</p>
             </div>
           </div>
         ))}

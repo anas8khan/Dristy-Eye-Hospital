@@ -5,11 +5,13 @@ import BackgroundWrapper from "../component/BackgroundWrapper";
 import SectionHeading from "../component/ui/SectionHeading";
 import Lightbox, { useLightbox } from "../component/ui/Lightbox";
 import banner from "../assets/bgwrapper.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const Gallery = () => {
   const { gallery } = useApiData();
   const [visibleImages, setVisibleImages] = useState(18);
   const lightbox = useLightbox();
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.title = "Gallery - Dristy Eye Hospital, Chouparan";
@@ -27,7 +29,7 @@ const Gallery = () => {
       <BackgroundWrapper title1={"Home"} title2={"Gallery"} img={banner} />
       <section className="section">
         <div className="container-x">
-          <SectionHeading title="Explore Our Gallery" />
+          <SectionHeading title={t("Explore Our Gallery")} />
           <div className="mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
             {gallery?.slice(0, visibleImages).map((image, index) => (
               <button
@@ -53,7 +55,7 @@ const Gallery = () => {
           {visibleImages < gallery?.length && (
             <div className="mt-10 flex justify-center">
               <button type="button" onClick={() => setVisibleImages((prev) => prev + 6)} className="btn-primary">
-                View More
+                {t("View More")}
               </button>
             </div>
           )}

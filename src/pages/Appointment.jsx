@@ -5,6 +5,7 @@ import BackgroundWrapper from "../component/BackgroundWrapper";
 import BookingForm from "../component/BookingForm";
 import banner from "../assets/bgwrapper.jpg";
 import { contact } from "../siteConfig";
+import { useLanguage } from "../context/LanguageContext";
 
 const monthNames = [
   "January", "February", "March", "April", "May", "June",
@@ -14,6 +15,7 @@ const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const Appointment = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const { t, isHi } = useLanguage();
 
   useEffect(() => {
     document.title = "Appointment - Dristy Eye Hospital, Chouparan";
@@ -70,12 +72,12 @@ const Appointment = () => {
           <aside className="space-y-6 lg:col-span-2">
             <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-6 shadow-lift sm:p-8">
               <h2 className="text-center font-display text-2xl font-bold !text-white">
-                {monthNames[month]} {year}
+                {isHi ? currentDate.toLocaleDateString("hi-IN", { month: "long", year: "numeric" }) : `${monthNames[month]} ${year}`}
               </h2>
               <div className="mt-6 grid grid-cols-7 gap-1.5 text-center">
                 {dayNames.map((d) => (
                   <div key={d} className="pb-2 text-xs font-bold uppercase tracking-wider text-primary-200">
-                    {d}
+                    {t(d)}
                   </div>
                 ))}
                 {cells}
@@ -93,14 +95,14 @@ const Appointment = () => {
               </li>
               <li className="flex items-center gap-4 p-5">
                 <span className="icon-badge"><FaClock /></span>
-                <span className="font-semibold text-slate-900 dark:text-white">{contact.hours}</span>
+                <span className="font-semibold text-slate-900 dark:text-white">{t(contact.hours)}</span>
               </li>
             </ul>
           </aside>
 
           <div className="card p-6 sm:p-10 lg:col-span-3">
             <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
-              Get in Touch <span className="block text-primary-600 dark:text-primary-300">for Professional Advice</span>
+              {t("Get in Touch")} <span className="block text-primary-600 dark:text-primary-300">{t("for Professional Advice")}</span>
             </h2>
             <BookingForm className="mt-8" />
           </div>

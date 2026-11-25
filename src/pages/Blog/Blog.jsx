@@ -8,12 +8,13 @@ import SectionHeading from "../../component/ui/SectionHeading";
 import Reveal from "../../component/ui/Reveal";
 import img from "../../assets/bgwrapper.jpg";
 import { client } from "../../contentful/client";
+import { useLanguage } from "../../context/LanguageContext";
 
 const blogsPerPage = 6;
 
-const formatDate = (dateString) => {
-  if (!dateString) return "Date not available";
-  return new Date(dateString).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+const formatDate = (dateString, locale) => {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" });
 };
 
 const Blog = () => {
@@ -21,6 +22,7 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const { t, isHi } = useLanguage();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +62,7 @@ const Blog = () => {
       <BackgroundWrapper title1={"Home"} title2={"Blog"} img={img} />
       <section className="section bg-slate-50 dark:bg-slate-900/40">
         <div className="container-x">
-          <SectionHeading title="Our Blogs" />
+          <SectionHeading title={t("Our Blogs")} />
 
           {loading ? (
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -77,9 +79,9 @@ const Blog = () => {
           ) : loadError || !blogs.length ? (
             <div className="card mx-auto mt-12 max-w-xl p-10 text-center">
               <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                {loadError ? "Blogs could not be loaded right now." : "No blogs published yet."}
+                {loadError ? t("Blogs could not be loaded right now.") : t("No blogs published yet.")}
               </p>
-              <p className="mt-2 text-sm">Please check back soon.</p>
+              <p className="mt-2 text-sm">{t("Please check back soon.")}</p>
             </div>
           ) : (
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -101,7 +103,7 @@ const Blog = () => {
                       <div className="flex flex-1 flex-col p-6">
                         <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
                           <FaCalendarAlt className="text-leaf-500" />
-                          {formatDate(date)}
+                          {formatDate(date, isHi ? "hi-IN" : undefined)}
                         </span>
                         <h2 className="mt-3 flex-1 text-xl font-bold leading-snug transition group-hover:text-primary-600 dark:group-hover:text-primary-300">
                           {title || "Untitled Blog"}
@@ -121,7 +123,7 @@ const Blog = () => {
             <nav className="mt-12 flex flex-wrap items-center justify-center gap-2" aria-label="Pagination">
               {currentPage > 1 && (
                 <button type="button" onClick={() => paginate(currentPage - 1)} className="btn-outline !px-4 !py-2">
-                  Prev
+                  {t("Prev")}
                 </button>
               )}
               {Array.from({ length: totalPages }, (_, index) => (
@@ -141,7 +143,7 @@ const Blog = () => {
               ))}
               {currentPage < totalPages && (
                 <button type="button" onClick={() => paginate(currentPage + 1)} className="btn-outline !px-4 !py-2">
-                  Next
+                  {t("Next")}
                 </button>
               )}
             </nav>

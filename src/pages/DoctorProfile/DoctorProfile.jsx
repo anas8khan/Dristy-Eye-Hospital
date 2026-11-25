@@ -5,15 +5,15 @@ import BackgroundWrapper from "../../component/BackgroundWrapper";
 import Consultant from "../../component/Consultant";
 import Reveal from "../../component/ui/Reveal";
 import ImageWithFallback from "../../component/ui/ImageWithFallback";
-import doctorData from "../../doctorData.json";
+import { useDoctors } from "../../localizedData";
 import img from "../../assets/bgwrapper.jpg";
+import { useLanguage } from "../../context/LanguageContext";
 
 const DoctorProfile = () => {
   const { doctorName } = useParams();
-  const doctorDetails = useMemo(
-    () => (doctorData.doctors || []).find((doctor) => doctor.name === doctorName) || null,
-    [doctorName]
-  );
+  const doctors = useDoctors();
+  const { t } = useLanguage();
+  const doctorDetails = useMemo(() => doctors.find((doctor) => doctor.name === doctorName) || null, [doctors, doctorName]);
 
   useEffect(() => {
     document.title = "Doctor Profile - Dristy Eye Hospital, Chouparan";
@@ -29,36 +29,36 @@ const DoctorProfile = () => {
   if (!doctorDetails) {
     return (
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
-        <p className="text-lg text-slate-500 dark:text-slate-300">Doctor details not found.</p>
-        <Link to="/doctor" className="btn-primary">{"Doctor's"} <HiArrowRight /></Link>
+        <p className="text-lg text-slate-500 dark:text-slate-300">{t("Doctor details not found.")}</p>
+        <Link to="/doctor" className="btn-primary">{t("Doctor's")} <HiArrowRight /></Link>
       </div>
     );
   }
 
   const facts = [
-    { icon: <HiOutlineSparkles />, label: "Speciality:", value: doctorDetails.specialization },
-    { icon: <HiOutlineAcademicCap />, label: "Degree:", value: doctorDetails.qualification },
-    { icon: <HiOutlineBuildingOffice2 />, label: "Hospital:", value: doctorDetails.hospital },
+    { icon: <HiOutlineSparkles />, label: t("Speciality:"), value: doctorDetails.specialization },
+    { icon: <HiOutlineAcademicCap />, label: t("Degree:"), value: doctorDetails.qualification },
+    { icon: <HiOutlineBuildingOffice2 />, label: t("Hospital:"), value: doctorDetails.hospital },
   ];
 
   return (
     <>
-      <BackgroundWrapper title1={"Home"} title2={doctorDetails.name} img={img} />
+      <BackgroundWrapper title1={"Home"} title2={doctorDetails.displayName} img={img} />
       <section className="section">
         <div className="container-x grid items-start gap-10 lg:grid-cols-3">
           <Reveal className="card overflow-hidden lg:sticky lg:top-28">
             <div className="aspect-[4/5] bg-gradient-to-b from-primary-50 to-primary-100 dark:from-slate-800 dark:to-slate-900">
-              <ImageWithFallback src={doctorDetails.image} alt={doctorDetails.name} name={doctorDetails.name} className="h-full w-full object-cover object-top" />
+              <ImageWithFallback src={doctorDetails.image} alt={doctorDetails.displayName} name={doctorDetails.displayName} className="h-full w-full object-cover object-top" />
             </div>
             <div className="p-6">
-              <h2 className="text-2xl font-extrabold">{doctorDetails.name}</h2>
+              <h2 className="text-2xl font-extrabold">{doctorDetails.displayName}</h2>
               <p className="mt-1 font-semibold text-leaf-600 dark:text-leaf-400">{doctorDetails.specialization}</p>
               <p className="mt-3 text-sm leading-relaxed">{doctorDetails.description}</p>
             </div>
           </Reveal>
 
           <Reveal delay={0.1} className="card p-6 sm:p-10 lg:col-span-2">
-            <h3 className="text-2xl font-extrabold">Biography</h3>
+            <h3 className="text-2xl font-extrabold">{t("Biography")}</h3>
             <p className="lead mt-4">{doctorDetails.description}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {facts.map((f) => (

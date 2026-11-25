@@ -13,6 +13,7 @@ import grid2 from "../assets/grid2.jpg";
 import grid3 from "../assets/grid3.jpg";
 import grid4 from "../assets/grid4.jpg";
 import banner from "../assets/bgwrapper.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const pillars = [
   { name: "Compassionate Service", details: "Collaborated for advanced AI solutions." },
@@ -78,6 +79,7 @@ const CheckItem = ({ title, text }) => (
 );
 
 const VisionMissionGoals = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     document.title = "Our Mission - Dristy Eye Hospital, Chouparan";
     const meta = document.querySelector("meta[name='description']");
@@ -97,14 +99,13 @@ const VisionMissionGoals = () => {
       <section className="section">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <img src={vision} alt="Our Vision" className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
+            <img src={vision} alt={t("Our Vision")} className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="h-section">Our Vision</h2>
-            <Quote>“A future where no one in Hazaribagh is left in darkness due to a curable condition.”</Quote>
+            <h2 className="h-section">{t("Our Vision")}</h2>
+            <Quote>{t("“A future where no one in Hazaribagh is left in darkness due to a curable condition.”")}</Quote>
             <p className="lead mt-6">
-              Our vision is clear: to ensure that by the year 2030, every individual with a curable eye condition in Hazaribagh,
-              Koderma and Chatra can regain their sight, leading to a brighter and more hopeful community.
+              {t("Our vision is clear: to ensure that by the year 2030, every individual with a curable eye condition in Hazaribagh, Koderma and Chatra can regain their sight, leading to a brighter and more hopeful community.")}
             </p>
           </Reveal>
         </div>
@@ -115,29 +116,28 @@ const VisionMissionGoals = () => {
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="lg:order-2">
             <div className="lg:sticky lg:top-28">
-              <img src={mission} alt="Our Mission" className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
+              <img src={mission} alt={t("Our Mission")} className="aspect-[4/3] w-full rounded-3xl bg-slate-100 object-cover shadow-lift dark:bg-slate-800" />
             </div>
           </Reveal>
           <Reveal className="lg:order-1">
-            <h2 className="h-section">Our Mission</h2>
-            <Quote>“Transforming lives through compassionate and accessible eye care.”</Quote>
+            <h2 className="h-section">{t("Our Mission")}</h2>
+            <Quote>{t("“Transforming lives through compassionate and accessible eye care.”")}</Quote>
             <p className="lead mt-6">
-              We are committed to eradicating curable blindness among rural villagers by delivering high-quality eye care
-              services. Our mission is built on three core pillars:
+              {t("We are committed to eradicating curable blindness among rural villagers by delivering high-quality eye care services. Our mission is built on three core pillars:")}
             </p>
             <ul className="mt-6 grid gap-4">
               {pillars.map((p) => (
-                <CheckItem key={p.name} title={p.name} text={p.details} />
+                <CheckItem key={p.name} title={t(p.name)} text={t(p.details)} />
               ))}
             </ul>
             <h4 className="mt-10 text-lg font-bold">
-              At Dristy Eye Hospital, we go beyond eye care to transform lives holistically. We utilize the funds we receive to:
+              {t("At Dristy Eye Hospital, we go beyond eye care to transform lives holistically. We utilize the funds we receive to:")}
             </h4>
             <ul className="mt-5 grid gap-4 sm:grid-cols-2">
               {fundUses.map((f) => (
                 <li key={f.name} className="card p-5">
-                  <h5 className="font-bold text-slate-900 dark:text-white">{f.name}</h5>
-                  <p className="mt-1.5 text-sm leading-relaxed">{f.description}</p>
+                  <h5 className="font-bold text-slate-900 dark:text-white">{t(f.name)}</h5>
+                  <p className="mt-1.5 text-sm leading-relaxed">{t(f.description)}</p>
                 </li>
               ))}
             </ul>
@@ -148,15 +148,15 @@ const VisionMissionGoals = () => {
       {/* Goals */}
       <section className="section">
         <div className="container-x">
-          <SectionHeading title="Our Goals" subtitle="“Striving to be a beacon of hope for the visually impaired.”" />
+          <SectionHeading title={t("Our Goals")} subtitle={t("“Striving to be a beacon of hope for the visually impaired.”")} />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {goalsData.map((goal, i) => (
               <Reveal key={goal.title} delay={i * 0.06} className="card card-hover p-6">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 text-2xl text-white shadow-lg">
                   {goal.icon}
                 </span>
-                <h3 className="mt-5 text-lg font-bold">{goal.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed">{goal.description}</p>
+                <h3 className="mt-5 text-lg font-bold">{t(goal.title)}</h3>
+                <p className="mt-2 text-sm leading-relaxed">{t(goal.description)}</p>
               </Reveal>
             ))}
           </div>
@@ -167,14 +167,14 @@ const VisionMissionGoals = () => {
       <section className="section bg-navy">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <h3 className="h-section !text-white">Objectives</h3>
+            <h3 className="h-section !text-white">{t("Objectives")}</h3>
             <ul className="mt-8 space-y-4">
               {objectives.map((obj) => (
                 <li key={obj} className="flex gap-4 text-slate-300">
                   <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-leaf text-xs text-white">
                     <FaCheck />
                   </span>
-                  <p className="leading-relaxed">{obj}</p>
+                  <p className="leading-relaxed">{t(obj)}</p>
                 </li>
               ))}
             </ul>
@@ -197,11 +197,11 @@ const VisionMissionGoals = () => {
       <section className="section">
         <div className="container-x">
           <SectionHeading
-            title="Why Choose Us?"
-            subtitle="At Dristy Eye Hospital, we are more than just a healthcare provider; we are a partner in your journey toward better vision. Our commitment to innovation, compassion, and community engagement ensures that every patient receives the care they deserve."
+            title={t("Why Choose Us?")}
+            subtitle={t("At Dristy Eye Hospital, we are more than just a healthcare provider; we are a partner in your journey toward better vision. Our commitment to innovation, compassion, and community engagement ensures that every patient receives the care they deserve.")}
           />
           <Reveal className="mx-auto mt-10 max-w-4xl">
-            <img className="w-full rounded-3xl shadow-lift" src={choose} alt="Why Choose Us" loading="lazy" />
+            <img className="w-full rounded-3xl shadow-lift" src={choose} alt={t("Why Choose Us?")} loading="lazy" />
           </Reveal>
           <Join />
         </div>

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import SectionHeading from "../../component/ui/SectionHeading";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Testimonial = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://widget.tagembed.com/embed.min.js";
@@ -16,7 +18,7 @@ const Testimonial = () => {
   return (
     <section className="section">
       <div className="container-x">
-        <SectionHeading eyebrow="Testimonial" title="What Our Patients Say About Us" />
+        <SectionHeading eyebrow={t("Testimonial")} title={t("What Our Patients Say About Us")} />
         <div className="mt-12">
           <div
             className="tagembed-widget"

@@ -9,6 +9,8 @@ import { HiArrowRight } from "react-icons/hi2";
 import logo from "../assets/logo.png";
 import DarkMode from "./DarkMode";
 import SocialLinks from "./ui/SocialLinks";
+import LanguageToggle from "./ui/LanguageToggle";
+import { useLanguage } from "../context/LanguageContext";
 import {
   aboutSubItems,
   contact,
@@ -23,6 +25,7 @@ const linkIdle = "text-slate-700 hover:text-primary-600 dark:text-slate-200 dark
 const linkActive = "text-primary-600 dark:text-primary-300";
 
 const Dropdown = ({ label, to, items, columns = 1, active }) => {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef(null);
 
@@ -45,7 +48,7 @@ const Dropdown = ({ label, to, items, columns = 1, active }) => {
         aria-expanded={open}
         className={`${linkBase} ${active ? linkActive : linkIdle}`}
       >
-        {label}
+        {t(label)}
         <IoIosArrowDown className={`text-xs transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </Trigger>
 
@@ -70,7 +73,7 @@ const Dropdown = ({ label, to, items, columns = 1, active }) => {
                   }`
                 }
               >
-                {item.name}
+                {t(item.name)}
                 <HiArrowRight className="-translate-x-1 text-xs opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
               </NavLink>
             </li>
@@ -82,6 +85,7 @@ const Dropdown = ({ label, to, items, columns = 1, active }) => {
 };
 
 const MobileGroup = ({ label, items, onNavigate }) => {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   return (
     <li className="border-b border-slate-100 dark:border-slate-800">
@@ -91,7 +95,7 @@ const MobileGroup = ({ label, items, onNavigate }) => {
         aria-expanded={open}
         className="flex w-full items-center justify-between py-3.5 text-left text-base font-semibold text-slate-800 dark:text-slate-100"
       >
-        {label}
+        {t(label)}
         <IoIosArrowDown className={`transition-transform duration-300 ${open ? "rotate-180 text-primary-600" : ""}`} />
       </button>
       <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] pb-3" : "grid-rows-[0fr]"}`}>
@@ -107,7 +111,7 @@ const MobileGroup = ({ label, items, onNavigate }) => {
                   }`
                 }
               >
-                {item.name}
+                {t(item.name)}
               </NavLink>
             </li>
           ))}
@@ -121,6 +125,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
@@ -163,14 +168,17 @@ const Navbar = () => {
               className="flex items-center gap-2 transition hover:text-white"
             >
               <FaLocationDot className="text-leaf-400" />
-              {contact.address}
+              {t(contact.address)}
             </a>
             <a href={contact.phoneHref} className="flex items-center gap-2 transition hover:text-white">
               <FaPhoneAlt className="text-leaf-400" />
-              Call: {contact.phone}
+              {t("Call:")} {contact.phone}
             </a>
           </div>
-          <SocialLinks itemClassName="!h-7 !w-7 text-slate-400 hover:bg-white/10 hover:text-white" />
+          <div className="flex items-center gap-4">
+            <SocialLinks itemClassName="!h-7 !w-7 text-slate-400 hover:bg-white/10 hover:text-white" />
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
@@ -194,7 +202,7 @@ const Navbar = () => {
           <ul className="hidden items-center gap-0.5 lg:flex">
             <li>
               <NavLink to="/" end className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
-                Home
+                {t("Home")}
               </NavLink>
             </li>
             <Dropdown label="About Us" to="/about" items={aboutSubItems} active={isAboutActive} />
@@ -203,16 +211,17 @@ const Navbar = () => {
             {navItems.map((item) => (
               <li key={item.name}>
                 <NavLink to={item.path} className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
-                  {item.name}
+                  {t(item.name)}
                 </NavLink>
               </li>
             ))}
           </ul>
 
           <div className="flex items-center gap-2">
+            <LanguageToggle variant="light" className="lg:hidden" />
             <DarkMode />
             <Link to="/appointment" className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
-              Appointment
+              {t("Appointment")}
               <HiArrowRight />
             </Link>
             <button
@@ -258,7 +267,7 @@ const Navbar = () => {
         <ul className="flex-1 overflow-y-auto px-5">
           <li className="border-b border-slate-100 dark:border-slate-800">
             <NavLink to="/" end onClick={closeSidebar} className={({ isActive }) => `block py-3.5 text-base font-semibold ${isActive ? "text-primary-600" : "text-slate-800 dark:text-slate-100"}`}>
-              Home
+              {t("Home")}
             </NavLink>
           </li>
           <MobileGroup label="About Us" items={aboutSubItems} onNavigate={closeSidebar} />
@@ -271,7 +280,7 @@ const Navbar = () => {
                 onClick={closeSidebar}
                 className={({ isActive }) => `block py-3.5 text-base font-semibold ${isActive ? "text-primary-600" : "text-slate-800 dark:text-slate-100"}`}
               >
-                {item.name}
+                {t(item.name)}
               </NavLink>
             </li>
           ))}
@@ -279,12 +288,12 @@ const Navbar = () => {
 
         <div className="space-y-4 border-t border-slate-100 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
           <Link to="/appointment" onClick={closeSidebar} className="btn-primary w-full">
-            Appointment <HiArrowRight />
+            {t("Appointment")} <HiArrowRight />
           </Link>
           <div>
-            <h3 className="mb-1 text-sm font-bold">Contact Us</h3>
-            <p className="text-sm">Phone: {contact.phone}</p>
-            <p className="text-sm">Email: dristyeyehospital92@gmail.com</p>
+            <h3 className="mb-1 text-sm font-bold">{t("Contact Us")}</h3>
+            <p className="text-sm">{t("Phone:")} {contact.phone}</p>
+            <p className="text-sm">{t("Email:")} dristyeyehospital92@gmail.com</p>
           </div>
           <SocialLinks itemClassName="bg-white text-slate-600 shadow-sm hover:bg-primary-600 hover:text-white dark:bg-slate-800 dark:text-slate-200" />
         </div>

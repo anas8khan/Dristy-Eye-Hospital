@@ -111,6 +111,20 @@
   height: 100%;
 }
 
+/* Hindi: letter-spacing breaks Devanagari conjuncts and the script needs more line height */
+html[lang="hi"] .eyebrow,
+html[lang="hi"] [class*="tracking-"] {
+  letter-spacing: 0 !important;
+}
+html[lang="hi"] h1,
+html[lang="hi"] h2,
+html[lang="hi"] h3 {
+  line-height: 1.35;
+}
+html[lang="hi"] .uppercase {
+  text-transform: none;
+}
+
 /* Hero entrance (CSS-only so text never stays hidden if JS animation is throttled) */
 @keyframes hero-in {
   from {

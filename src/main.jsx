@@ -7,17 +7,20 @@ import "slick-carousel/slick/slick-theme.css";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import ScrollToTop from "./component/ScrollToTop.jsx";
 import { ApiDataProvider } from "./context/ApiDataContext.jsx";
+import { LanguageProvider } from "./context/LanguageContext.jsx";
 import { Toaster } from "react-hot-toast";
 
 
 createRoot(document.getElementById("root")).render(
-  <ApiDataProvider>
-    <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Toaster />
-        <App />
-      </BrowserRouter>
-    </ThemeProvider>
-  </ApiDataProvider>
+  <LanguageProvider>
+    <ApiDataProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Toaster />
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </ApiDataProvider>
+  </LanguageProvider>
 );

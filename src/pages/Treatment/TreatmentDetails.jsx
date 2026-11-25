@@ -3,19 +3,22 @@ import { Link, useParams } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi2";
-import treatmentData from "./treatmentData.json";
+import { useTreatments } from "../../localizedData";
 import BackgroundWrapper from "../../component/BackgroundWrapper";
 import Consultant from "../../component/Consultant";
 import SectionHeading from "../../component/ui/SectionHeading";
 import Reveal from "../../component/ui/Reveal";
+import { useLanguage } from "../../context/LanguageContext";
 
 const TreatmentDetails = () => {
   const { treatmentName } = useParams();
   const [openIndex, setOpenIndex] = useState(0);
+  const treatmentData = useTreatments();
+  const { t } = useLanguage();
 
   const treatment = useMemo(
     () => treatmentData.find((t) => t.name.toLowerCase() === treatmentName.toLowerCase()) || null,
-    [treatmentName]
+    [treatmentData, treatmentName]
   );
 
   useEffect(() => {
@@ -33,15 +36,15 @@ const TreatmentDetails = () => {
   if (!treatment) {
     return (
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
-        <h1 className="text-3xl font-bold text-red-500">Treatment Details Not Found</h1>
-        <Link to="/treatments" className="btn-primary">View All Treatment <HiArrowRight /></Link>
+        <h1 className="text-3xl font-bold text-red-500">{t("Treatment Details Not Found")}</h1>
+        <Link to="/treatments" className="btn-primary">{t("View All Treatment")} <HiArrowRight /></Link>
       </div>
     );
   }
 
   return (
     <>
-      <BackgroundWrapper title1={"Home"} title2={treatmentName} img={treatment.introduction.banner} />
+      <BackgroundWrapper title1={"Home"} title2={treatment.name} img={treatment.introduction.banner} />
 
       {/* Introduction */}
       <section className="section">
@@ -54,11 +57,11 @@ const TreatmentDetails = () => {
             />
           </Reveal>
           <Reveal delay={0.1}>
-            <span className="eyebrow">{treatment.name}</span>
+            <span className="eyebrow">{t(treatment.name)}</span>
             <h2 className="h-section mt-3">{treatment.introduction.title}</h2>
             <p className="lead mt-5">{treatment.introduction.content}</p>
             <Link to="/appointment" className="btn-primary mt-8">
-              Book Appointment <HiArrowRight />
+              {t("Book Appointment")} <HiArrowRight />
             </Link>
           </Reveal>
         </div>
@@ -103,7 +106,7 @@ const TreatmentDetails = () => {
             </ul>
           </Reveal>
           <Reveal delay={0.1}>
-            <img src={treatment.prevention.image} alt="Prevention" loading="lazy" className="w-full rounded-3xl shadow-lift" />
+            <img src={treatment.prevention.image} alt={treatment.prevention.title} loading="lazy" className="w-full rounded-3xl shadow-lift" />
           </Reveal>
         </div>
       </section>

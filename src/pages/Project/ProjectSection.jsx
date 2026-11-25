@@ -3,17 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import { FaCheck } from "react-icons/fa6";
 import { FaQuoteLeft } from "react-icons/fa";
-import data from "../../data.json";
+import { useProjects } from "../../localizedData";
 import BackgroundWrapper from "../../component/BackgroundWrapper";
 import Join from "../../component/Join";
 import SectionHeading from "../../component/ui/SectionHeading";
 import Reveal from "../../component/ui/Reveal";
+import { useLanguage } from "../../context/LanguageContext";
 
 const ProjectSection = () => {
   const { projectName } = useParams();
+  const data = useProjects();
+  const { t } = useLanguage();
   const project = useMemo(
     () => data.find((p) => p.name.toLowerCase() === projectName.toLowerCase()) || null,
-    [projectName]
+    [data, projectName]
   );
 
   useEffect(() => {
@@ -30,8 +33,8 @@ const ProjectSection = () => {
   if (!project) {
     return (
       <div className="container-x flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
-        <h1 className="text-3xl font-bold">Project Not Found</h1>
-        <Link to="/" className="btn-primary">Home</Link>
+        <h1 className="text-3xl font-bold">{t("Project Not Found")}</h1>
+        <Link to="/" className="btn-primary">{t("Home")}</Link>
       </div>
     );
   }
@@ -84,7 +87,7 @@ const ProjectSection = () => {
 
       <section className="container-x">
         <Reveal className="rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-8 shadow-lift md:p-12">
-          <h3 className="text-2xl font-bold !text-white">Key Highlights</h3>
+          <h3 className="text-2xl font-bold !text-white">{t("Key Highlights")}</h3>
           <ul className="mt-6 grid gap-4 md:grid-cols-2">
             {project.keyHighlights?.map((highlight, index) => (
               <li key={index} className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 font-medium text-slate-100">
@@ -100,7 +103,7 @@ const ProjectSection = () => {
 
       <section className="section">
         <div className="container-x">
-          <SectionHeading title="Impact Stories" />
+          <SectionHeading title={t("Impact Stories")} />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {project.impactStories?.map((story, index) => {
               const name = Array.isArray(story.name) ? story.name.join(", ") : story.name;

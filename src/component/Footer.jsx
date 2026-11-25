@@ -4,6 +4,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa"
 import logo from "../assets/logo.png";
 import SocialLinks from "./ui/SocialLinks";
 import { contact } from "../siteConfig";
+import { useLanguage } from "../context/LanguageContext";
 
 const usefulLinks = [
   { label: "Make Appointments", link: "/appointment" },
@@ -47,6 +48,7 @@ const ColumnTitle = ({ children }) => (
 );
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="relative mt-0 overflow-hidden bg-navy text-slate-400">
       <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-primary-600/20 blur-3xl" />
@@ -58,19 +60,18 @@ const Footer = () => {
             <img src={logo} alt="Dristy Eye Hospital logo" className="h-12 w-auto" />
           </div>
           <p className="max-w-sm text-sm leading-relaxed">
-            Founded with a mission to transform lives through vision care, Dristy Eye Hospital has become a beacon of
-            hope for thousands of underprivileged individuals.
+            {t("Founded with a mission to transform lives through vision care, Dristy Eye Hospital has become a beacon of hope for thousands of underprivileged individuals.")}
           </p>
           <SocialLinks className="mt-6" itemClassName="bg-white/5 text-slate-300 hover:bg-primary-600 hover:text-white" />
         </div>
 
         <div className="lg:col-span-2">
-          <ColumnTitle>Useful Links</ColumnTitle>
+          <ColumnTitle>{t("Useful Links")}</ColumnTitle>
           <ul className="space-y-3 text-sm">
             {usefulLinks.map((link) => (
               <li key={link.label}>
                 <Link to={link.link} className="transition hover:pl-1 hover:text-white">
-                  {link.label}
+                  {t(link.label)}
                 </Link>
               </li>
             ))}
@@ -78,12 +79,12 @@ const Footer = () => {
         </div>
 
         <div className="lg:col-span-3">
-          <ColumnTitle>Our Services</ColumnTitle>
+          <ColumnTitle>{t("Our Services")}</ColumnTitle>
           <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
             {services.map((service) => (
               <li key={service.name}>
                 <Link to={service.link} className="transition hover:text-white">
-                  {service.name}
+                  {t(service.name)}
                 </Link>
               </li>
             ))}
@@ -91,7 +92,7 @@ const Footer = () => {
         </div>
 
         <div className="lg:col-span-3">
-          <ColumnTitle>Get In Touch</ColumnTitle>
+          <ColumnTitle>{t("Get In Touch")}</ColumnTitle>
           <ul className="space-y-4 text-sm">
             {contactInfo.map((item) => {
               const body = (
@@ -100,8 +101,8 @@ const Footer = () => {
                     {item.icon}
                   </span>
                   <span>
-                    <strong className="block font-semibold text-slate-200">{item.label}</strong>
-                    {item.details && <span className="mt-0.5 block capitalize">{item.details}</span>}
+                    <strong className="block font-semibold text-slate-200">{t(item.label)}</strong>
+                    {item.details && <span className="mt-0.5 block capitalize">{t(item.details)}</span>}
                   </span>
                 </>
               );
@@ -129,12 +130,12 @@ const Footer = () => {
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-sm md:flex-row">
           <p>
-            Copyright © 2024 <span className="font-semibold text-white">Dristy Eye Hospital</span>. All rights reserved.
+            {t("Copyright ©")} 2024 <span className="font-semibold text-white">{t("Dristy Eye Hospital")}</span>. {t("All rights reserved.")}
           </p>
           <div className="flex gap-6">
             {footerLinks.map((link) => (
               <Link key={link.label} to={link.link} className="transition hover:text-white">
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </div>

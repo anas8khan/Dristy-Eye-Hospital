@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 // Inner-page header with breadcrumb. Props kept compatible with the previous version.
 const BackgroundWrapper = ({ title1, title2, img }) => {
+  const { t } = useLanguage();
   return (
     <section className="relative isolate overflow-hidden bg-navy">
       {img && (
@@ -27,13 +29,13 @@ const BackgroundWrapper = ({ title1, title2, img }) => {
       >
         <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-sm font-medium text-slate-300">
           <Link to="/" className="transition hover:text-white" aria-label={`Navigate to ${title1}`}>
-            {title1}
+            {t(title1)}
           </Link>
           <IoIosArrowForward className="text-slate-500" />
-          <span className="text-leaf-300">{title2}</span>
+          <span className="text-leaf-300">{t(title2)}</span>
         </nav>
         <h1 className="max-w-4xl font-display text-3xl font-extrabold capitalize leading-tight text-white sm:text-4xl md:text-5xl">
-          {title2}
+          {t(title2)}
         </h1>
       </motion.div>
     </section>

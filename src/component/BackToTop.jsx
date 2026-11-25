@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { contact } from "../siteConfig";
+import { useLanguage } from "../context/LanguageContext";
 
 const BackToTop = () => {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const BackToTop = () => {
       >
         <FaWhatsapp className="text-2xl" />
         <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all duration-300 group-hover:max-w-[6rem] sm:inline">
-          Whatsapp
+          {t("Whatsapp")}
         </span>
       </a>
 

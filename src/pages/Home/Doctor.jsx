@@ -4,15 +4,17 @@ import { HiArrowRight } from "react-icons/hi2";
 import DoctorCard from "../../component/DoctorCard";
 import SectionHeading from "../../component/ui/SectionHeading";
 import Reveal from "../../component/ui/Reveal";
-import { useApiData } from "../../context/ApiDataContext";
+import { useDoctors } from "../../localizedData";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Doctor = () => {
-  const { doctors } = useApiData();
+  const doctors = useDoctors();
+  const { t } = useLanguage();
 
   return (
     <section className="section bg-slate-50 dark:bg-slate-900/40">
       <div className="container-x">
-        <SectionHeading eyebrow="Doctors" title="Dristy Eye Hospital Specialist" />
+        <SectionHeading eyebrow={t("Doctors")} title={t("Dristy Eye Hospital Specialist")} />
 
         <div className="mt-12 flex flex-wrap justify-center gap-6">
           {doctors.map((item, idx) => (
@@ -28,7 +30,7 @@ const Doctor = () => {
 
         <div className="mt-12 flex justify-center">
           <NavLink to={"/doctor"} className="btn-outline">
-            View More <HiArrowRight />
+            {t("View More")} <HiArrowRight />
           </NavLink>
         </div>
       </div>

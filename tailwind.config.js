@@ -34,8 +34,8 @@ export default {
         navy: "#0b1640",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "Noto Sans Devanagari", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["Plus Jakarta Sans", "Noto Sans Devanagari", "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
         soft: "0 1px 2px rgba(11,22,64,.04), 0 8px 24px -6px rgba(11,22,64,.10)",

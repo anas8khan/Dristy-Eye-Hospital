@@ -6,6 +6,7 @@ import talib from "../assets/Talib.png";
 import roushan from "../assets/Roushan.png";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
+import { useLanguage } from "../context/LanguageContext";
 
 const leaders = [
   {
@@ -46,10 +47,11 @@ const leaders = [
 ];
 
 const LeadersSection = () => {
+  const { t } = useLanguage();
   return (
     <section className="section bg-slate-50 dark:bg-slate-900/40">
       <div className="container-x">
-        <SectionHeading eyebrow="Key People" title="The unwavering strength and unity of our leaders." />
+        <SectionHeading eyebrow={t("Key People")} title={t("The unwavering strength and unity of our leaders.")} />
         <div className="mt-12 flex flex-wrap justify-center gap-6">
           {leaders.map((leader, i) => (
             <Reveal
@@ -60,16 +62,16 @@ const LeadersSection = () => {
               <div className="flex items-center gap-4">
                 <img
                   src={leader.image}
-                  alt={leader.name}
+                  alt={t(leader.name)}
                   loading="lazy"
                   className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-bold">{leader.name}</h3>
-                  <p className="mt-0.5 text-sm font-semibold text-leaf-600 dark:text-leaf-400">{leader.role}</p>
+                  <h3 className="text-lg font-bold">{t(leader.name)}</h3>
+                  <p className="mt-0.5 text-sm font-semibold text-leaf-600 dark:text-leaf-400">{t(leader.role)}</p>
                 </div>
               </div>
-              <p className="mt-5 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{leader.description}</p>
+              <p className="mt-5 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{t(leader.description)}</p>
             </Reveal>
           ))}
         </div>
