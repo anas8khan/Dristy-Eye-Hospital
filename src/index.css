@@ -7,6 +7,12 @@
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
   }
+  /* Guard against any element (sliders, slide-in animations) widening the page on phones.
+     `clip` (unlike `hidden`) does not create a scroll container, so sticky header keeps working. */
+  html,
+  body {
+    overflow-x: clip;
+  }
   body {
     @apply bg-white font-sans text-slate-600 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300;
   }

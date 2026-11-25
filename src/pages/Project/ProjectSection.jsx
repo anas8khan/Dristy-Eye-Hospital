@@ -65,14 +65,15 @@ const ProjectSection = () => {
 
       <section className="section">
         <div className="container-x grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal variant="left">
+          <Reveal variant="left" className="min-w-0">
             <h3 className="h-section !text-2xl md:!text-3xl">{project.about.heading}</h3>
-            <p className="mt-5 whitespace-pre-line leading-relaxed">{project.about.content}</p>
+            <p className="mt-5 whitespace-pre-line break-words leading-relaxed">{project.about.content}</p>
           </Reveal>
-          <Reveal variant="right" delay={0.1} className="pb-10">
+          {/* min-w-0 + overflow-hidden: react-slick's wide track must not stretch the grid column on mobile */}
+          <Reveal variant="right" delay={0.1} className="min-w-0 overflow-hidden pb-10">
             <Slider {...settings}>
               {project.slider?.map((image, index) => (
-                <div key={index}>
+                <div key={index} className="px-1">
                   <img
                     src={image}
                     alt={`Slide ${index + 1}`}
@@ -108,14 +109,14 @@ const ProjectSection = () => {
             {project.impactStories?.map((story, index) => {
               const name = Array.isArray(story.name) ? story.name.join(", ") : story.name;
               return (
-                <Reveal key={index} delay={(index % 2) * 0.1} variant={index % 2 ? "right" : "left"} className="card card-hover flex flex-col gap-5 p-6 sm:flex-row sm:items-start">
+                <Reveal key={index} delay={(index % 2) * 0.1} variant={index % 2 ? "right" : "left"} className="card card-hover flex min-w-0 flex-col gap-5 p-6 sm:flex-row sm:items-start">
                   <img
                     src={story.image}
                     alt={story.title || name}
                     loading="lazy"
                     className="h-24 w-24 shrink-0 rounded-2xl object-cover ring-4 ring-primary-50 dark:ring-slate-800"
                   />
-                  <div>
+                  <div className="min-w-0">
                     <FaQuoteLeft className="text-xl text-primary-200 dark:text-primary-800" />
                     <p className="mt-2 italic leading-relaxed">&ldquo;{story.description}&rdquo;</p>
                     <h4 className="mt-4 font-bold text-primary-600 dark:text-primary-300">{name}</h4>
