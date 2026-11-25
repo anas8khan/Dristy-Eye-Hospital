@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HiArrowRight } from "react-icons/hi2";
 import { useLanguage } from "../context/LanguageContext";
+import { openDonation } from "./ui/donate";
 
 const Join = () => {
   const { t } = useLanguage();
@@ -12,7 +13,7 @@ const Join = () => {
         <Link to={"/appointment"} className="btn-primary w-full sm:w-auto">
           {t("Book Your Surgery")} <HiArrowRight />
         </Link>
-        <button type="button" className="btn-outline w-full sm:w-auto">
+        <button type="button" onClick={openDonation} className="btn-outline w-full sm:w-auto">
           {t("Contribute to the Initiative")}
         </button>
       </div>

@@ -15,17 +15,23 @@ const DonateButton = () => {
     script.onerror = () => console.error("Failed to load Razorpay script.");
     form.appendChild(script);
 
+    // Keep the hidden Razorpay link out of the keyboard tab order.
+    const observer = new MutationObserver(() => {
+      form.querySelectorAll("a, button").forEach((el) => el.setAttribute("tabindex", "-1"));
+    });
+    observer.observe(form, { childList: true, subtree: true });
+
     return () => {
+      observer.disconnect();
       if (form.contains(script)) form.removeChild(script);
     };
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
-      <form
-        id="razorpay-donation-form"
-        className="rounded-xl bg-white/90 p-1 shadow-lift backdrop-blur dark:bg-slate-900/90"
-      ></form>
+    // Razorpay's own button is kept mounted (it powers the checkout modal) but visually hidden;
+    // branded Donate buttons in the header, top bar and mobile action bar trigger it via openDonation().
+    <div aria-hidden="true" className="pointer-events-none fixed -left-[9999px] top-0 h-px w-px overflow-hidden opacity-0">
+      <form id="razorpay-donation-form" tabIndex={-1}></form>
     </div>
   );
 };

@@ -16,6 +16,7 @@ import VisionMissionGoals from "./pages/VisionMissionGoals";
 import Appointment from "./pages/Appointment";
 import ProjectSection from "./pages/Project/ProjectSection";
 import DonateButton from "./component/DonateButton";
+import MobileActionBar from "./component/MobileActionBar";
 import TreatmentDetails from "./pages/Treatment/TreatmentDetails";
 import BlogDetails from "./pages/Blog/BlogDetails";
 import Blog from "./pages/Blog/Blog";
@@ -58,6 +59,7 @@ const App = () => {
       <Footer />
       <BackToTop />
       <DonateButton />
+      <MobileActionBar />
       <Analytics /> {/* Vercel Analytics for tracking */}
       <SpeedInsights /> {/* Vercel Speed Insights for performance monitoring */}
     </>

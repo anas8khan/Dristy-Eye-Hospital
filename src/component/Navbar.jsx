@@ -4,13 +4,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaHeart, FaPhoneAlt } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi2";
 import logo from "../assets/logo.png";
 import DarkMode from "./DarkMode";
 import SocialLinks from "./ui/SocialLinks";
 import LanguageToggle from "./ui/LanguageToggle";
 import { useLanguage } from "../context/LanguageContext";
+import { openDonation } from "./ui/donate";
 import {
   aboutSubItems,
   contact,
@@ -20,7 +21,7 @@ import {
 } from "../siteConfig";
 
 const linkBase =
-  "relative inline-flex items-center gap-1 rounded-full px-3 py-2 text-[0.92rem] font-semibold transition-colors duration-200";
+  "relative inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 text-[0.85rem] font-semibold transition-colors duration-200 xl:px-3 xl:text-[0.92rem]";
 const linkIdle = "text-slate-700 hover:text-primary-600 dark:text-slate-200 dark:hover:text-primary-300";
 const linkActive = "text-primary-600 dark:text-primary-300";
 
@@ -156,8 +157,8 @@ const Navbar = () => {
       {/* Top contact bar */}
       <div className="hidden bg-navy text-[0.8rem] text-slate-300 lg:block">
         <div className="container-x flex items-center justify-between gap-6 py-2.5">
-          <div className="flex items-center gap-6">
-            <a href={`mailto:${contact.email}`} className="flex items-center gap-2 transition hover:text-white">
+          <div className="flex min-w-0 items-center gap-6">
+            <a href={`mailto:${contact.email}`} className="flex shrink-0 items-center gap-2 whitespace-nowrap transition hover:text-white">
               <MdOutlineMailOutline className="text-base text-leaf-400" />
               {contact.email}
             </a>
@@ -165,19 +166,28 @@ const Navbar = () => {
               href={contact.mapLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition hover:text-white"
+              title={t(contact.address)}
+              className="hidden min-w-0 items-center gap-2 transition hover:text-white xl:flex"
             >
-              <FaLocationDot className="text-leaf-400" />
-              {t(contact.address)}
+              <FaLocationDot className="shrink-0 text-leaf-400" />
+              <span className="truncate">{t(contact.address)}</span>
             </a>
-            <a href={contact.phoneHref} className="flex items-center gap-2 transition hover:text-white">
+            <a href={contact.phoneHref} className="flex shrink-0 items-center gap-2 whitespace-nowrap transition hover:text-white">
               <FaPhoneAlt className="text-leaf-400" />
               {t("Call:")} {contact.phone}
             </a>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex shrink-0 items-center gap-4">
             <SocialLinks itemClassName="!h-7 !w-7 text-slate-400 hover:bg-white/10 hover:text-white" />
             <LanguageToggle />
+            <button
+              type="button"
+              onClick={openDonation}
+              className="inline-flex items-center gap-1.5 rounded-full bg-leaf px-4 py-1.5 text-xs font-bold text-white shadow-[0_6px_16px_-6px_rgba(34,184,58,.8)] transition hover:-translate-y-0.5 hover:bg-leaf-600"
+            >
+              <FaHeart className="text-[0.7rem]" />
+              {t("Donate")}
+            </button>
           </div>
         </div>
       </div>
@@ -220,6 +230,10 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <LanguageToggle variant="light" className="lg:hidden" />
             <DarkMode />
+            <button type="button" onClick={openDonation} className="btn-leaf hidden !px-4 !py-2.5 md:inline-flex lg:hidden">
+              <FaHeart className="text-xs" />
+              {t("Donate")}
+            </button>
             <Link to="/appointment" className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
               {t("Appointment")}
               <HiArrowRight />
@@ -287,9 +301,22 @@ const Navbar = () => {
         </ul>
 
         <div className="space-y-4 border-t border-slate-100 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
-          <Link to="/appointment" onClick={closeSidebar} className="btn-primary w-full">
-            {t("Appointment")} <HiArrowRight />
-          </Link>
+          <div className="grid grid-cols-2 gap-3">
+            <Link to="/appointment" onClick={closeSidebar} className="btn-primary w-full !px-3">
+              {t("Appointment")} <HiArrowRight />
+            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                closeSidebar();
+                openDonation();
+              }}
+              className="btn-leaf w-full !px-3"
+            >
+              <FaHeart className="text-xs" />
+              {t("Donate")}
+            </button>
+          </div>
           <div>
             <h3 className="mb-1 text-sm font-bold">{t("Contact Us")}</h3>
             <p className="text-sm">{t("Phone:")} {contact.phone}</p>

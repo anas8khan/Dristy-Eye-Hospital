@@ -23,6 +23,8 @@ const hi = {
   "Phone:": "फ़ोन:",
   "Email:": "ईमेल:",
   "Call:": "कॉल करें:",
+  "Call": "कॉल करें",
+  "Donate": "दान करें",
   "View More": "और देखें",
   "Show More": "और देखें",
   "Book Appointment": "अपॉइंटमेंट बुक करें",

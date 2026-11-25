@@ -75,6 +75,13 @@
   }
 }
 
+/* Leave room for the fixed mobile action bar */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
