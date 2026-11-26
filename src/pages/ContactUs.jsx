@@ -56,7 +56,7 @@ const ContactUs = () => {
                     </span>
                     <span>
                       <span className="block text-sm font-semibold uppercase tracking-wider text-slate-500">{t(detail.label)}</span>
-                      <span className="mt-1 block font-semibold text-slate-900 dark:text-white">{t(detail.value)}</span>
+                      <span className="mt-1 block font-semibold text-ink dark:text-white">{t(detail.value)}</span>
                     </span>
                   </a>
                 </Reveal>

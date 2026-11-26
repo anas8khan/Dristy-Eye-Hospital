@@ -28,7 +28,7 @@ const Doctor = () => {
       <section className="section">
         <div className="container-x">
           <SectionHeading eyebrow={t("Doctors")} title={t("Dristy Eye Hospital Specialist")} />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {doctors?.map((item, idx) => (
               <Reveal key={item.name} delay={(idx % 4) * 0.06}>
                 <DoctorCard data={item} />

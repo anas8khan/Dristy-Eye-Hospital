@@ -6,6 +6,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    /* Slightly larger base size: easier reading for older patients and small phones */
+    font-size: 106.25%;
   }
   /* Guard against any element (sliders, slide-in animations) widening the page on phones.
      `clip` (unlike `hidden`) does not create a scroll container, so sticky header keeps working. */
@@ -14,13 +16,13 @@
     overflow-x: clip;
   }
   body {
-    @apply bg-white font-sans text-slate-600 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300;
+    @apply bg-cream-50 font-sans text-slate-700 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-slate-900 dark:text-white;
+    @apply font-display text-ink dark:text-white;
   }
   ::selection {
-    @apply bg-primary-100 text-primary-900;
+    @apply bg-sun-200 text-ink;
   }
 }
 
@@ -31,64 +33,72 @@
   .section {
     @apply py-16 md:py-24;
   }
-  .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary-600 dark:text-primary-300;
+  .section-cream {
+    @apply bg-cream-100 dark:bg-slate-900/50;
   }
-  .eyebrow::before {
-    content: "";
-    @apply h-[2px] w-6 rounded-full bg-leaf;
+  /* Small pill label above section titles */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-sun-100 px-3.5 py-1 text-sm font-bold text-sun-800 dark:bg-sun-500/15 dark:text-sun-300;
   }
   .h-section {
-    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-[2.75rem];
+    @apply font-display text-[1.9rem] font-extrabold leading-[1.15] text-ink dark:text-white md:text-[2.5rem] lg:text-[2.75rem];
   }
   .lead {
-    @apply text-base leading-relaxed text-slate-600 dark:text-slate-300 md:text-lg;
+    @apply text-[1.05rem] leading-relaxed text-slate-700 dark:text-slate-300 md:text-lg;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl px-6 py-3 text-base font-bold transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-200 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-primary-600 text-white shadow-[0_8px_20px_-6px_rgba(29,63,209,.55)] hover:-translate-y-0.5 hover:bg-primary-700;
+    @apply btn bg-primary-600 text-white shadow-[0_10px_22px_-8px_rgba(29,63,209,.6)] hover:-translate-y-0.5 hover:bg-primary-700;
   }
   .btn-leaf {
-    @apply btn bg-leaf text-white shadow-[0_8px_20px_-6px_rgba(34,184,58,.55)] hover:-translate-y-0.5 hover:bg-leaf-600;
+    @apply btn bg-leaf-600 text-white shadow-[0_10px_22px_-8px_rgba(22,150,44,.6)] hover:-translate-y-0.5 hover:bg-leaf-700;
+  }
+  .btn-sun {
+    @apply btn bg-sun-400 text-ink shadow-warm hover:-translate-y-0.5 hover:bg-sun-300;
   }
   .btn-outline {
-    @apply btn border border-slate-300 bg-white text-slate-800 hover:border-primary-600 hover:text-primary-600 dark:border-slate-700 dark:bg-transparent dark:text-slate-100 dark:hover:border-primary-400 dark:hover:text-primary-300;
+    @apply btn border-2 border-primary-600/25 bg-white text-primary-700 hover:border-primary-600 hover:bg-primary-50 dark:border-slate-700 dark:bg-transparent dark:text-slate-100 dark:hover:border-primary-400 dark:hover:text-primary-300;
   }
   .btn-light {
-    @apply btn bg-white text-primary-700 hover:-translate-y-0.5 hover:bg-primary-50;
+    @apply btn bg-white text-primary-700 hover:-translate-y-0.5 hover:bg-cream-100;
   }
   .btn-ghost-light {
-    @apply btn border border-white/40 text-white hover:bg-white/10;
+    @apply btn border-2 border-white/50 text-white hover:bg-white/10;
   }
 
   .card {
-    @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900;
+    @apply rounded-3xl border border-cream-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:border-primary-200 hover:shadow-lift dark:hover:border-primary-800;
+    @apply transition-all duration-300 hover:border-sun-300 hover:shadow-lift dark:hover:border-primary-800;
     /* individual translate property composes with framer-motion's inline transform */
   }
   .card-hover:hover {
     translate: 0 -4px;
   }
   .icon-badge {
-    @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary-50 text-xl text-primary-600 dark:bg-primary-900/40 dark:text-primary-300;
+    @apply grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary-50 text-xl text-primary-600 dark:bg-primary-900/40 dark:text-primary-300;
   }
   .input {
-    @apply w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-primary-900/50;
+    @apply w-full rounded-2xl border-2 border-cream-200 bg-white px-4 py-3.5 text-base text-ink placeholder:text-slate-400 transition focus:border-primary-500 focus:outline-none focus:ring-4 focus:ring-primary-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:ring-primary-900/50;
   }
   .check-list li {
     @apply flex gap-3;
+  }
+  /* Soft dotted texture used behind hero and page headers */
+  .bg-dots {
+    background-image: radial-gradient(rgba(29, 63, 209, 0.12) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
   }
 }
 
 /* Leave room for the fixed mobile action bar */
 @media (max-width: 767px) {
   body {
-    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
   }
 }
 
@@ -101,9 +111,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #c3cffd;
+  background-color: #efd9b0;
   border-radius: 10px;
-  border: 2px solid #fff;
+  border: 2px solid #fffdf8;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: #1d3fd1;
@@ -159,14 +169,10 @@ html[lang="hi"] .uppercase {
   animation: page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Section eyebrow uses an animated line element instead of the static ::before */
-.eyebrow--animated::before {
-  display: none;
-}
-
 /* Light sweep across primary buttons on hover */
 .btn-primary,
 .btn-leaf,
+.btn-sun,
 .btn-light {
   position: relative;
   overflow: hidden;
@@ -174,6 +180,7 @@ html[lang="hi"] .uppercase {
 }
 .btn-primary::after,
 .btn-leaf::after,
+.btn-sun::after,
 .btn-light::after {
   content: "";
   position: absolute;
@@ -185,6 +192,7 @@ html[lang="hi"] .uppercase {
 }
 .btn-primary:hover::after,
 .btn-leaf:hover::after,
+.btn-sun:hover::after,
 .btn-light:hover::after {
   transform: translateX(120%);
 }
@@ -226,6 +234,14 @@ html[lang="hi"] .uppercase {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 .hero-in {

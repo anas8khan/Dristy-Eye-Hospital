@@ -61,7 +61,7 @@ const objectives = [
 const images = [grid1, grid2, grid3, grid4];
 
 const Quote = ({ children }) => (
-  <p className="mt-4 border-l-4 border-leaf pl-4 font-display text-lg font-semibold italic text-slate-700 dark:text-slate-200">
+  <p className="mt-5 rounded-r-2xl border-l-4 border-sun-400 bg-sun-50 py-3 pl-4 pr-3 font-display text-xl font-semibold text-ink dark:bg-sun-500/10 dark:text-slate-200">
     {children}
   </p>
 );
@@ -72,7 +72,7 @@ const CheckItem = ({ title, text }) => (
       <FaCheck />
     </span>
     <div>
-      <h5 className="font-bold text-slate-900 dark:text-white">{title}</h5>
+      <h5 className="font-bold text-ink dark:text-white">{title}</h5>
       {text && <p className="mt-0.5 text-sm leading-relaxed">{text}</p>}
     </div>
   </li>
@@ -112,7 +112,7 @@ const VisionMissionGoals = () => {
       </section>
 
       {/* Mission */}
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal variant="right" className="lg:order-2">
             <div className="lg:sticky lg:top-28">
@@ -136,7 +136,7 @@ const VisionMissionGoals = () => {
             <ul className="mt-5 grid gap-4 sm:grid-cols-2">
               {fundUses.map((f, i) => (
                 <Reveal as="li" key={f.name} delay={i * 0.07} variant="zoom" className="card card-hover p-5">
-                  <h5 className="font-bold text-slate-900 dark:text-white">{t(f.name)}</h5>
+                  <h5 className="font-bold text-ink dark:text-white">{t(f.name)}</h5>
                   <p className="mt-1.5 text-sm leading-relaxed">{t(f.description)}</p>
                 </Reveal>
               ))}
@@ -152,7 +152,7 @@ const VisionMissionGoals = () => {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {goalsData.map((goal, i) => (
               <Reveal key={goal.title} delay={i * 0.08} variant="zoom" className="group card card-hover p-6">
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 text-2xl text-white shadow-lg transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sun-100 text-2xl text-sun-700 shadow-soft dark:bg-sun-500/15 dark:text-sun-300 transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
                   {goal.icon}
                 </span>
                 <h3 className="mt-5 text-lg font-bold">{t(goal.title)}</h3>
@@ -164,14 +164,14 @@ const VisionMissionGoals = () => {
       </section>
 
       {/* Objectives */}
-      <section className="section bg-navy">
+      <section className="section bg-primary-700">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <h3 className="h-section !text-white">{t("Objectives")}</h3>
             <ul className="mt-8 space-y-4">
               {objectives.map((obj, i) => (
-                <Reveal as="li" key={obj} delay={i * 0.08} variant="left" className="flex gap-4 text-slate-300">
-                  <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-leaf text-xs text-white">
+                <Reveal as="li" key={obj} delay={i * 0.08} variant="left" className="flex gap-4 text-lg text-primary-50">
+                  <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sun-400 text-xs text-ink">
                     <FaCheck />
                   </span>
                   <p className="leading-relaxed">{t(obj)}</p>

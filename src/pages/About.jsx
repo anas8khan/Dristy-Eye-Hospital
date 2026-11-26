@@ -14,6 +14,7 @@ import trust from "../assets/hospitalImg/IMG_1157.jpg";
 import founder from "../assets/DSC_4342.jpg";
 import banner from "../assets/bgwrapper.jpg";
 import { useLanguage } from "../context/LanguageContext";
+import { partnerships } from "../partnerships";
 
 const hospital = {
   title: "About Dristy Eye Hospital",
@@ -24,23 +25,7 @@ const hospital = {
     "As our efforts grew, we established the Afroj Charitable Trust to institutionalize our mission. We have made a profound impact through our trust, treating countless individuals and bringing hope to families and communities. Our work has been guided by a deep understanding of the complex social and economic factors that affect access to quality eye care. We have worked tirelessly to bridge the gap between those who have access to eye care and those who do not, ensuring that everyone has the opportunity to experience the world in all its beauty and complexity.",
     "Through our journey, we have encountered countless stories of struggle, resilience, and triumph. We have seen individuals who were once unable to see, now able to read, work, and live independently. We have witnessed families reunited, children educated, and communities empowered. These stories have inspired us, motivated us, and reminded us of the profound impact that our work can have on the lives of others.",
   ],
-  partnerships: [
-    {
-      name: "District Blindness Control Society (DBCS)",
-      details:
-        "Through the National Program for Control of Blindness and Visual Impairment (NPCBVI), we receive financial assistance for free cataract surgeries, extending our services to rural communities.",
-    },
-    {
-      name: "Ayushman Bharat Program",
-      details:
-        "Partnering with this government initiative enables us to deliver accessible and affordable eye care to beneficiaries across the region.",
-    },
-    {
-      name: "Corporate Social Responsibility (CSR) Initiatives",
-      details:
-        "Collaborations with corporate partners allow us to organize vision camps and expand our outreach programs, impacting lives far and wide.",
-    },
-  ],
+  partnerships,
 };
 
 const trustInfo = {
@@ -147,9 +132,9 @@ const About = () => {
               <div className="mt-5 grid gap-4">
                 {hospital.partnerships.map((p, i) => (
                   <Reveal key={p.name} delay={i * 0.08} variant="right" className="card card-hover flex gap-4 p-5">
-                    <FaRegCheckCircle className="mt-1 shrink-0 text-lg text-leaf-500" />
+                    <FaRegCheckCircle className="mt-1 shrink-0 text-lg text-leaf-600" />
                     <p className="text-sm leading-relaxed">
-                      <span className="font-bold text-slate-900 dark:text-white">{t(p.name)}:</span> {t(p.details)}
+                      <span className="font-bold text-ink dark:text-white">{t(p.name)}:</span> {t(p.details)}
                     </p>
                   </Reveal>
                 ))}
@@ -160,7 +145,7 @@ const About = () => {
       </section>
 
       {/* About the trust */}
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="order-2 lg:order-1">
             <SectionHeading align="left" title={t(trustInfo.title)} />
@@ -170,7 +155,7 @@ const About = () => {
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {trustInfo.achievements.map((a, i) => (
                   <Reveal as="li" key={a} delay={i * 0.07} variant="zoom" className="card card-hover flex gap-3 p-4 text-sm leading-relaxed">
-                    <FaRegCheckCircle className="mt-0.5 shrink-0 text-lg text-leaf-500" />
+                    <FaRegCheckCircle className="mt-0.5 shrink-0 text-lg text-leaf-600" />
                     {t(a)}
                   </Reveal>
                 ))}
@@ -184,7 +169,7 @@ const About = () => {
                 <span className="icon-badge"><HiOutlineBuildingOffice2 /></span>
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wider text-slate-500">{t("Registration No.")}</p>
-                  <p className="font-bold text-slate-900 dark:text-white">10949/1310</p>
+                  <p className="font-bold text-ink dark:text-white">10949/1310</p>
                 </div>
               </div>
             </div>
@@ -210,7 +195,7 @@ const About = () => {
       </section>
 
       {/* Culture */}
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x">
           <SectionHeading title={t("Culture at Dristy Eye Hospital")} />
           <div className="mt-12 grid items-start gap-10 lg:grid-cols-2">
@@ -231,7 +216,7 @@ const About = () => {
                       aria-expanded={open}
                       className="flex w-full items-center justify-between gap-4 p-5 text-left"
                     >
-                      <span className={`text-lg font-bold ${open ? "text-primary-600 dark:text-primary-300" : "text-slate-900 dark:text-white"}`}>
+                      <span className={`text-lg font-bold ${open ? "text-primary-600 dark:text-primary-300" : "text-ink dark:text-white"}`}>
                         {t(value.title)}
                       </span>
                       <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm transition ${open ? "bg-primary-600 text-white" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>
@@ -261,7 +246,7 @@ const About = () => {
           <div className="mt-14 grid items-center gap-10 lg:grid-cols-12">
             <Reveal variant="zoom" className="lg:col-span-4">
               <div className="relative mx-auto max-w-xs">
-                <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-gradient-to-br from-primary-500 to-leaf" />
+                <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-sun-300" />
                 <img src={founder} alt={t("Md Imran Khan")} className="relative w-full rounded-3xl bg-slate-200 object-cover shadow-lift" />
               </div>
             </Reveal>
@@ -271,31 +256,31 @@ const About = () => {
               {isHi ? (
                 <div className="mt-6 space-y-4 leading-relaxed">
                   <p>
-                    <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> के पीछे की सोच हमारे संस्थापक की है, जो सुलभ और अच्छी नेत्र सेवा से लोगों की ज़िंदगी बदलने के लिए समर्पित हैं। इलाज को सस्ता और सबकी पहुँच में लाने के मिशन के साथ, यह अस्पताल भारतीय ट्रस्ट अधिनियम, 1882 के तहत पंजीकृत एक ट्रस्ट की इकाई के रूप में काम करता है।
+                    <strong className="text-ink dark:text-white">दृष्टि आई हॉस्पिटल</strong> के पीछे की सोच हमारे संस्थापक की है, जो सुलभ और अच्छी नेत्र सेवा से लोगों की ज़िंदगी बदलने के लिए समर्पित हैं। इलाज को सस्ता और सबकी पहुँच में लाने के मिशन के साथ, यह अस्पताल भारतीय ट्रस्ट अधिनियम, 1882 के तहत पंजीकृत एक ट्रस्ट की इकाई के रूप में काम करता है।
                   </p>
                   <p>
-                    संस्थापक के नेतृत्व में <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> ने कई बड़ी उपलब्धियाँ हासिल की हैं, जिनमें हर साल 10,000+ से ज़्यादा मुफ़्त मोतियाबिंद ऑपरेशन शामिल हैं। इलाज के अलावा, संस्थापक ने मुफ़्त नेत्र जाँच, चश्मा वितरण और आँखों की सेहत पर जागरूकता अभियान जैसे असरदार कार्यक्रम भी शुरू किए हैं।
+                    संस्थापक के नेतृत्व में <strong className="text-ink dark:text-white">दृष्टि आई हॉस्पिटल</strong> ने कई बड़ी उपलब्धियाँ हासिल की हैं, जिनमें हर साल 10,000+ से ज़्यादा मुफ़्त मोतियाबिंद ऑपरेशन शामिल हैं। इलाज के अलावा, संस्थापक ने मुफ़्त नेत्र जाँच, चश्मा वितरण और आँखों की सेहत पर जागरूकता अभियान जैसे असरदार कार्यक्रम भी शुरू किए हैं।
                   </p>
                   <p>
-                    उनकी अटूट लगन और दूसरों को प्रेरित करने की क्षमता ने इस अस्पताल को ग़रीब और वंचित समुदायों के लिए उम्मीद की किरण बना दिया है। इसी सोच के साथ <strong className="text-slate-900 dark:text-white">दृष्टि आई हॉस्पिटल</strong> सभी तक आँखों की रोशनी पहुँचाने का अपना मिशन जारी रखे हुए है।
+                    उनकी अटूट लगन और दूसरों को प्रेरित करने की क्षमता ने इस अस्पताल को ग़रीब और वंचित समुदायों के लिए उम्मीद की किरण बना दिया है। इसी सोच के साथ <strong className="text-ink dark:text-white">दृष्टि आई हॉस्पिटल</strong> सभी तक आँखों की रोशनी पहुँचाने का अपना मिशन जारी रखे हुए है।
                   </p>
                 </div>
               ) : (
               <div className="mt-6 space-y-4 leading-relaxed">
                 <p>
-                  The visionary behind <strong className="text-slate-900 dark:text-white">DRISTY EYE HOSPITAL</strong>, our Founder, is
+                  The visionary behind <strong className="text-ink dark:text-white">DRISTY EYE HOSPITAL</strong>, our Founder, is
                   dedicated to transforming lives through accessible and quality eye care. With a mission to bridge the gap between
                   affordability and healthcare, the hospital operates as a unit of a trust registered under the Indian Trust Act of 1882.
                 </p>
                 <p>
-                  Under the Founder’s leadership, <strong className="text-slate-900 dark:text-white">DRISTY EYE HOSPITAL</strong> has achieved
+                  Under the Founder’s leadership, <strong className="text-ink dark:text-white">DRISTY EYE HOSPITAL</strong> has achieved
                   remarkable milestones, including over 10,000+ free cataract surgeries every year. Beyond treatment, the Founder has
                   initiated impactful programs such as free eye check-ups, spectacles distribution, and community awareness campaigns
                   about eye health.
                 </p>
                 <p>
                   Their unwavering commitment and ability to inspire others have made the hospital a beacon of hope for underprivileged
-                  communities. Guided by this vision, <strong className="text-slate-900 dark:text-white">DRISTY EYE HOSPITAL</strong> continues
+                  communities. Guided by this vision, <strong className="text-ink dark:text-white">DRISTY EYE HOSPITAL</strong> continues
                   its mission to bring the gift of sight to all.
                 </p>
               </div>

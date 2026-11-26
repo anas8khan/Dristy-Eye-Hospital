@@ -49,7 +49,7 @@ const leaders = [
 const LeadersSection = () => {
   const { t } = useLanguage();
   return (
-    <section className="section bg-slate-50 dark:bg-slate-900/40">
+    <section className="section section-cream">
       <div className="container-x">
         <SectionHeading eyebrow={t("Key People")} title={t("The unwavering strength and unity of our leaders.")} />
         <div className="mt-12 flex flex-wrap justify-center gap-6">
@@ -57,21 +57,20 @@ const LeadersSection = () => {
             <Reveal
               key={leader.name}
               delay={(i % 3) * 0.08}
-              className="group card card-hover flex w-full flex-col p-6 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              className="group card card-hover flex w-full flex-col items-center p-6 text-center sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
             >
-              <div className="flex items-center gap-4">
+              <div className="relative">
+                <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-full bg-sun-300" aria-hidden="true" />
                 <img
                   src={leader.image}
                   alt={t(leader.name)}
                   loading="lazy"
-                  className="h-20 w-20 shrink-0 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="relative h-28 w-28 rounded-full border-4 border-white bg-gradient-to-br from-primary-500 to-primary-700 object-cover shadow-soft transition-transform duration-500 group-hover:scale-105 dark:border-slate-800"
                 />
-                <div>
-                  <h3 className="text-lg font-bold">{t(leader.name)}</h3>
-                  <p className="mt-0.5 text-sm font-semibold text-leaf-600 dark:text-leaf-400">{t(leader.role)}</p>
-                </div>
               </div>
-              <p className="mt-5 text-sm leading-relaxed text-slate-500 dark:text-slate-400">{t(leader.description)}</p>
+              <h3 className="mt-5 text-xl font-bold">{t(leader.name)}</h3>
+              <p className="mt-1.5 rounded-full bg-primary-50 px-3 py-0.5 text-sm font-bold text-primary-700 dark:bg-primary-900/40 dark:text-primary-200">{t(leader.role)}</p>
+              <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">{t(leader.description)}</p>
             </Reveal>
           ))}
         </div>

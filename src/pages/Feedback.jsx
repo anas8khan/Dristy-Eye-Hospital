@@ -42,7 +42,7 @@ const Feedback = () => {
   return (
     <>
       <BackgroundWrapper title1={"Home"} title2={"Feedback"} img={img} />
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x">
           <SectionHeading title={t("Our Patient Feedback")} />
           <div id="feedback-grid" className="mt-12 grid scroll-mt-28 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +54,7 @@ const Feedback = () => {
                   src={video}
                   ref={(el) => (videoRefs.current[index] = el)}
                   onPlay={() => handlePlay(index)}
-                  className="aspect-video w-full rounded-xl bg-navy object-contain"
+                  className="aspect-video w-full rounded-xl bg-ink object-contain"
                 ></video>
               </Reveal>
             ))}

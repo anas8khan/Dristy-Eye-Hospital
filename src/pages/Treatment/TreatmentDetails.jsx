@@ -68,7 +68,7 @@ const TreatmentDetails = () => {
       </section>
 
       {/* Symptoms */}
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x">
           <SectionHeading title={treatment.symptoms.title} />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -112,7 +112,7 @@ const TreatmentDetails = () => {
       </section>
 
       {/* Treatments */}
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x">
           <SectionHeading title={treatment.treatments.title} />
           <div className="mt-12 space-y-6">
@@ -158,7 +158,7 @@ const TreatmentDetails = () => {
                     aria-expanded={open}
                     className="flex w-full items-center justify-between gap-4 p-5 text-left"
                   >
-                    <span className={`font-semibold ${open ? "text-primary-600 dark:text-primary-300" : "text-slate-900 dark:text-white"}`}>
+                    <span className={`font-semibold ${open ? "text-primary-600 dark:text-primary-300" : "text-ink dark:text-white"}`}>
                       {faq.question}
                     </span>
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs transition ${open ? "bg-primary-600 text-white" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>

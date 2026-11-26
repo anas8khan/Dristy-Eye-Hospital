@@ -14,42 +14,44 @@ const branchPhones = [
 const Book = () => {
   const { t } = useLanguage();
   return (
-    <section className="section relative overflow-hidden">
-      <div className="absolute -right-40 top-0 h-96 w-96 animate-float-slow rounded-full bg-primary-100 blur-3xl dark:bg-primary-900/30" />
-      <div className="container-x relative grid items-start gap-10 lg:grid-cols-5">
-        <Reveal variant="left" className="lg:col-span-2">
-          <span className="eyebrow">{t("Appointment")}</span>
-          <h2 className="h-section mt-3">{t("Need a Doctor for Check-up?")}</h2>
-          <p className="mt-4 text-lg font-medium text-primary-600 dark:text-primary-300">{t("Call us for immediate assistance")}</p>
+    <section className="section">
+      <div className="container-x">
+        <Reveal className="card grid overflow-hidden lg:grid-cols-5">
+          <div className="relative overflow-hidden bg-primary-700 p-6 text-white sm:p-10 lg:col-span-2">
+            <img src={img} alt="Doctor Consultation" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-15" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary-700/70 to-primary-800" />
+            <div className="relative">
+              <span className="eyebrow !bg-white/15 !text-sun-200">{t("Appointment")}</span>
+              <h2 className="h-section mt-3 !text-white">{t("Need a Doctor for Check-up?")}</h2>
+              <p className="mt-3 text-lg font-semibold text-sun-200">{t("Call us for immediate assistance")}</p>
 
-          <ul className="mt-6 space-y-3">
-            {branchPhones.map((b, i) => (
-              <Reveal as="li" key={b.name} delay={0.15 + i * 0.08} variant="left">
-                <a
-                  href={`tel:${b.phone.replace(/\s/g, "")}`}
-                  className="card card-hover flex items-center gap-4 px-5 py-4"
-                >
-                  <span className="icon-badge !h-10 !w-10 !text-base">
-                    <FaPhoneAlt />
-                  </span>
-                  <span className="font-semibold text-slate-900 dark:text-white">
-                    {t(b.name)}: <span className="text-primary-600 dark:text-primary-300">{b.phone}</span>
-                  </span>
-                </a>
-              </Reveal>
-            ))}
-          </ul>
-
-          <div className="mt-6 hidden overflow-hidden rounded-2xl shadow-soft lg:block">
-            <img src={img} alt="Doctor Consultation" loading="lazy" className="h-56 w-full object-cover" />
+              <ul className="mt-6 space-y-3">
+                {branchPhones.map((b, i) => (
+                  <Reveal as="li" key={b.name} delay={0.15 + i * 0.08} variant="left">
+                    <a
+                      href={`tel:${b.phone.replace(/\s/g, "")}`}
+                      className="flex items-center gap-4 rounded-2xl bg-white px-4 py-3.5 text-ink shadow-soft transition hover:-translate-y-0.5"
+                    >
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-leaf-600 text-white">
+                        <FaPhoneAlt />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-semibold text-slate-500">{t(b.name)}</span>
+                        <span className="block text-lg font-extrabold">{b.phone}</span>
+                      </span>
+                    </a>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
           </div>
-        </Reveal>
 
-        <Reveal variant="right" delay={0.1} className="card p-6 sm:p-10 lg:col-span-3">
-          <h3 className="font-display text-2xl font-extrabold sm:text-3xl">
-            {t("Get in Touch")} <span className="block text-primary-600 dark:text-primary-300">{t("for Professional Advice")}</span>
-          </h3>
-          <BookingForm className="mt-8" />
+          <div className="p-6 sm:p-10 lg:col-span-3">
+            <h3 className="font-display text-2xl font-extrabold sm:text-3xl">
+              {t("Get in Touch")} <span className="text-primary-600 dark:text-primary-300">{t("for Professional Advice")}</span>
+            </h3>
+            <BookingForm className="mt-6" />
+          </div>
         </Reveal>
       </div>
     </section>

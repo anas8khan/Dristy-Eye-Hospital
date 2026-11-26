@@ -53,7 +53,7 @@ const Appointment = () => {
           key={day}
           className={`grid aspect-square place-items-center rounded-xl text-sm font-semibold ${
             isToday
-              ? "bg-leaf text-white shadow-lg ring-4 ring-leaf/30 animate-pulse [animation-duration:2.5s]"
+              ? "bg-sun-400 text-ink shadow-lg ring-4 ring-sun-300/40 animate-pulse [animation-duration:2.5s]"
               : isSunday
               ? "text-white/40"
               : "text-white/90 hover:bg-white/10"
@@ -71,7 +71,7 @@ const Appointment = () => {
       <section className="section">
         <div className="container-x grid items-start gap-8 lg:grid-cols-5">
           <Reveal as="aside" variant="left" className="space-y-6 lg:col-span-2">
-            <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-6 shadow-lift sm:p-8">
+            <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 to-primary-800 p-6 shadow-lift sm:p-8">
               <h2 className="text-center font-display text-2xl font-bold !text-white">
                 {isHi ? currentDate.toLocaleDateString("hi-IN", { month: "long", year: "numeric" }) : `${monthNames[month]} ${year}`}
               </h2>
@@ -96,7 +96,7 @@ const Appointment = () => {
               </li>
               <li className="flex items-center gap-4 p-5">
                 <span className="icon-badge"><FaClock /></span>
-                <span className="font-semibold text-slate-900 dark:text-white">{t(contact.hours)}</span>
+                <span className="font-semibold text-ink dark:text-white">{t(contact.hours)}</span>
               </li>
             </ul>
           </Reveal>

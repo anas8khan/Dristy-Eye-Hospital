@@ -12,16 +12,16 @@ const Doctor = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="section bg-slate-50 dark:bg-slate-900/40">
+    <section className="section">
       <div className="container-x">
         <SectionHeading eyebrow={t("Doctors")} title={t("Dristy Eye Hospital Specialist")} />
 
-        <div className="mt-12 flex flex-wrap justify-center gap-6">
+        <div className="mt-12 flex flex-wrap justify-center gap-3 sm:gap-6">
           {doctors.map((item, idx) => (
             <Reveal
               key={item.name}
               delay={(idx % 5) * 0.06}
-              className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
+              className="w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(20%-1.2rem)]"
             >
               <DoctorCard data={item} />
             </Reveal>

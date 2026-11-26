@@ -62,10 +62,10 @@ const DoctorProfile = () => {
             <p className="lead mt-4">{doctorDetails.description}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {facts.map((f, i) => (
-                <Reveal key={f.label} delay={0.2 + i * 0.08} variant="zoom" className="group flex gap-4 rounded-2xl bg-slate-50 p-5 transition hover:[translate:0_-2px] hover:shadow-soft dark:bg-slate-800/60">
+                <Reveal key={f.label} delay={0.2 + i * 0.08} variant="zoom" className="group flex gap-4 rounded-2xl bg-cream-100 p-5 transition hover:[translate:0_-2px] hover:shadow-soft dark:bg-slate-800/60">
                   <span className="icon-badge">{f.icon}</span>
                   <div>
-                    <p className="font-semibold text-slate-900 dark:text-white">{f.label}</p>
+                    <p className="font-semibold text-ink dark:text-white">{f.label}</p>
                     <p className="mt-0.5 text-sm">{f.value}</p>
                   </div>
                 </Reveal>

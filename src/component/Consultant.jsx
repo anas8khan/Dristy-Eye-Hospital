@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiPhoneCall } from "react-icons/fi";
-import { HiArrowRight } from "react-icons/hi2";
+import { HiArrowRight, HiOutlineEye } from "react-icons/hi2";
 import Reveal from "./ui/Reveal";
 import { contact } from "../siteConfig";
 import { useLanguage } from "../context/LanguageContext";
@@ -10,31 +10,27 @@ const Consultant = () => {
   const { t } = useLanguage();
   return (
     <section className="container-x py-12 md:py-16">
-      <Reveal variant="zoom" className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 px-6 py-12 text-white shadow-lift md:px-14 md:py-14">
-        <div className="absolute -right-16 -top-16 h-64 w-64 animate-float-slow rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute -bottom-20 left-1/3 h-64 w-64 animate-float-slower rounded-full bg-leaf/30 blur-3xl" />
-        <svg className="absolute right-0 top-0 h-full animate-[spin_60s_linear_infinite] opacity-[0.07]" viewBox="0 0 200 200" aria-hidden="true">
-          <circle cx="150" cy="50" r="120" fill="none" stroke="white" strokeWidth="30" />
-        </svg>
+      <Reveal variant="zoom" className="relative overflow-hidden rounded-[2rem] bg-sun-400 px-6 py-10 shadow-warm md:px-12 md:py-12">
+        <div className="absolute inset-0 bg-dots opacity-40" />
+        <div className="absolute -right-10 -top-16 h-56 w-56 rounded-full bg-sun-200/70 blur-2xl" />
+        <HiOutlineEye className="absolute -bottom-10 -left-6 text-[11rem] text-sun-500/40" aria-hidden="true" />
 
         <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
-          <h2 className="max-w-xl font-display text-2xl font-extrabold leading-tight !text-white sm:text-3xl lg:text-4xl">
+          <h2 className="max-w-xl font-display text-[1.75rem] font-extrabold leading-tight !text-ink sm:text-3xl lg:text-4xl">
             {t("Are You Looking For Eye Care Consultation?")}
           </h2>
 
-          <div className="flex flex-col items-center gap-6 sm:flex-row">
-            <Link to="/appointment" className="btn-light !px-7 !py-3.5">
+          <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+            <Link to="/appointment" className="btn-primary !px-7 !py-4">
               {t("Book Appointment")} <HiArrowRight />
             </Link>
-            <a href={contact.emergencyHref} className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-white/15 text-xl">
+            <a href={contact.emergencyHref} className="flex items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-soft transition hover:-translate-y-0.5">
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-red-600 text-lg text-white">
                 <FiPhoneCall className="animate-pulse" />
               </span>
               <span className="text-left">
-                <span className="block text-xs font-medium uppercase tracking-wider text-primary-100">
-                  {t("For Emergency Services")}
-                </span>
-                <span className="block text-xl font-bold">{contact.emergency}</span>
+                <span className="block text-sm font-semibold text-slate-600">{t("For Emergency Services")}</span>
+                <span className="block whitespace-nowrap text-lg font-extrabold text-ink">{contact.emergency}</span>
               </span>
             </a>
           </div>

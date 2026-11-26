@@ -11,6 +11,10 @@ import StatsSection from "../component/StatsSection";
 import Testimonial from "./Home/Testimonial";
 import ImageCarousel from "../component/ImageCarousel";
 import Branches from "../component/Branches";
+import HowItWorks from "../component/HowItWorks";
+import CareSchemes from "../component/CareSchemes";
+import ProjectsShowcase from "../component/ProjectsShowcase";
+import CataractFaq from "../component/CataractFaq";
 import SectionHeading from "../component/ui/SectionHeading";
 import Reveal from "../component/ui/Reveal";
 import { useApiData } from "../context/ApiDataContext";
@@ -39,9 +43,13 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <Features />
+      <HowItWorks />
+      <CareSchemes />
+      <StatsSection />
 
       {/* About */}
-      <section className="section">
+      <section className="section section-cream">
         <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal variant="left" className="relative">
             <div className="grid grid-cols-5 gap-4">
@@ -49,18 +57,18 @@ const Home = () => {
                 src={aboutImg}
                 alt={t("Dristy Eye Hospital")}
                 loading="lazy"
-                className="col-span-3 h-80 w-full rounded-3xl object-cover shadow-lift md:h-[26rem]"
+                className="col-span-3 h-80 w-full rounded-[2rem] border-4 border-white object-cover shadow-lift md:h-[26rem] dark:border-slate-800"
               />
               <img
                 src={aboutImg2}
                 alt={t("Afroj Charitable Trust")}
                 loading="lazy"
-                className="col-span-2 mt-12 h-64 w-full rounded-3xl object-cover shadow-lift md:h-80"
+                className="col-span-2 mt-12 h-64 w-full rounded-[2rem] border-4 border-white object-cover shadow-lift md:h-80 dark:border-slate-800"
               />
             </div>
-            <div className="absolute -bottom-6 left-6 animate-float-y rounded-2xl bg-leaf px-6 py-4 text-white shadow-lift">
-              <p className="font-display text-3xl font-extrabold">10,000+</p>
-              <p className="text-sm font-medium text-leaf-50">{t("free cataract surgeries every year")}</p>
+            <div className="absolute -bottom-6 left-6 animate-float-y rounded-2xl bg-sun-400 px-6 py-4 text-ink shadow-warm">
+              <p className="font-display text-3xl font-extrabold leading-none">10,000+</p>
+              <p className="mt-1 text-sm font-bold">{t("free cataract surgeries every year")}</p>
             </div>
           </Reveal>
 
@@ -77,14 +85,15 @@ const Home = () => {
       </section>
 
       <Benefits />
-      <Features />
-      <Consultant />
       <Doctor />
-      <Book />
-      <StatsSection />
+      <ProjectsShowcase />
       <Testimonial />
+      <Consultant />
+      <CataractFaq />
+      <Book />
+      <Branches />
 
-      <section className="pb-16">
+      <section className="section">
         <div className="container-x">
           <SectionHeading eyebrow={t("Gallery")} title={t("Explore Our Gallery")} className="mb-10" />
           <ImageCarousel images={gallery} isLoading={isLoading} error={error} />
@@ -95,8 +104,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <Branches />
     </>
   );
 };

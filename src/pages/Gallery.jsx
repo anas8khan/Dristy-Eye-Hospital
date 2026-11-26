@@ -46,7 +46,7 @@ const Gallery = () => {
                   loading="lazy"
                   className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="absolute inset-0 grid place-items-center bg-navy/50 text-3xl text-white opacity-0 transition group-hover:opacity-100">
+                <span className="absolute inset-0 grid place-items-center bg-ink/50 text-3xl text-white opacity-0 transition group-hover:opacity-100">
                   <HiOutlineArrowsPointingOut />
                 </span>
               </button>

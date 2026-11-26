@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 import SectionHeading from "../../component/ui/SectionHeading";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -27,6 +29,11 @@ const Testimonial = () => {
             data-tags="false"
             view-url="https://widget.tagembed.com/2142643"
           ></div>
+        </div>
+        <div className="mt-8 flex justify-center">
+          <Link to="/feedback" className="btn-outline">
+            {t("Our Patient Feedback")} <HiArrowRight />
+          </Link>
         </div>
       </div>
     </section>

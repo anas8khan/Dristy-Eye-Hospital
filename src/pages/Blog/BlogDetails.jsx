@@ -30,7 +30,7 @@ const richTextOptions = {
     [BLOCKS.OL_LIST]: (node, children) => <ol className="my-5 list-decimal space-y-2 pl-6 marker:font-bold marker:text-primary-600">{children}</ol>,
     [BLOCKS.LIST_ITEM]: (node, children) => <li className="pl-1 leading-7 [&>p]:my-0">{children}</li>,
     [BLOCKS.QUOTE]: (node, children) => (
-      <blockquote className="my-6 border-l-4 border-leaf bg-slate-50 py-2 pl-5 italic dark:bg-slate-900">{children}</blockquote>
+      <blockquote className="my-6 border-l-4 border-sun-400 bg-cream-100 py-2 pl-5 italic dark:bg-slate-900">{children}</blockquote>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
       <img
@@ -107,18 +107,19 @@ const BlogDetails = () => {
   return (
     <>
       {/* Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700">
-        <div className="absolute -right-24 -top-24 h-72 w-72 animate-float-slow rounded-full bg-primary-500/30 blur-3xl" />
-        <div className="container-x relative py-16 md:py-24">
-          <nav className="mb-5 flex flex-wrap items-center gap-2 text-sm font-medium text-slate-300">
-            <Link to="/" className="hover:text-white">{t("Home")}</Link>
-            <span className="text-slate-500">/</span>
-            <Link to="/blog" className="hover:text-white">{t("Blog")}</Link>
+      <section className="relative isolate overflow-hidden border-b border-cream-200 bg-cream-100 dark:border-slate-800 dark:bg-slate-900">
+        <div className="absolute inset-0 -z-10 bg-dots opacity-60" />
+        <div className="absolute -left-24 -top-24 -z-10 h-72 w-72 rounded-full bg-sun-200/60 blur-3xl dark:bg-sun-500/10" />
+        <div className="container-x relative py-12 md:py-16">
+          <nav className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-slate-600 shadow-soft dark:bg-slate-800 dark:text-slate-300">
+            <Link to="/" className="hover:text-primary-700">{t("Home")}</Link>
+            <span className="text-slate-400">/</span>
+            <Link to="/blog" className="text-sun-700 hover:text-primary-700 dark:text-sun-300">{t("Blog")}</Link>
           </nav>
-          <h1 className="max-w-4xl font-display text-3xl font-extrabold leading-tight !text-white sm:text-4xl md:text-5xl">{title}</h1>
-          <div className="mt-6 flex flex-wrap items-center gap-5 text-sm text-slate-300">
-            <span className="flex items-center gap-2"><FaCalendarAlt className="text-leaf-400" /> {formatDate(date, locale)}</span>
-            <span className="flex items-center gap-2"><FaClock className="text-leaf-400" /> {formatTime(date, locale)}</span>
+          <h1 className="max-w-4xl font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl md:text-5xl">{title}</h1>
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <span className="flex items-center gap-2 rounded-full bg-white px-3 py-1 shadow-soft dark:bg-slate-800"><FaCalendarAlt className="text-sun-600" /> {formatDate(date, locale)}</span>
+            <span className="flex items-center gap-2 rounded-full bg-white px-3 py-1 shadow-soft dark:bg-slate-800"><FaClock className="text-sun-600" /> {formatTime(date, locale)}</span>
           </div>
         </div>
       </section>
@@ -162,7 +163,7 @@ const BlogDetails = () => {
                     <li key={recentBlog.sys.id} className="py-4 first:pt-0">
                       <Link
                         to={`/blogs/${rId}`}
-                        className={`font-semibold leading-snug transition hover:text-primary-600 dark:hover:text-primary-300 ${active ? "text-primary-600 dark:text-primary-300" : "text-slate-900 dark:text-white"}`}
+                        className={`font-semibold leading-snug transition hover:text-primary-600 dark:hover:text-primary-300 ${active ? "text-primary-600 dark:text-primary-300" : "text-ink dark:text-white"}`}
                       >
                         {rTitle}
                       </Link>

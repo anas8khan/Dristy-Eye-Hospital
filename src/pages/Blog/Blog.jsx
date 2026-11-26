@@ -60,7 +60,7 @@ const Blog = () => {
       </Helmet>
 
       <BackgroundWrapper title1={"Home"} title2={"Blog"} img={img} />
-      <section className="section bg-slate-50 dark:bg-slate-900/40">
+      <section className="section section-cream">
         <div className="container-x">
           <SectionHeading title={t("Our Blogs")} />
 
@@ -78,7 +78,7 @@ const Blog = () => {
             </div>
           ) : loadError || !blogs.length ? (
             <div className="card mx-auto mt-12 max-w-xl p-10 text-center">
-              <p className="text-lg font-semibold text-slate-900 dark:text-white">
+              <p className="text-lg font-semibold text-ink dark:text-white">
                 {loadError ? t("Blogs could not be loaded right now.") : t("No blogs published yet.")}
               </p>
               <p className="mt-2 text-sm">{t("Please check back soon.")}</p>
@@ -102,7 +102,7 @@ const Blog = () => {
                       </div>
                       <div className="flex flex-1 flex-col p-6">
                         <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                          <FaCalendarAlt className="text-leaf-500" />
+                          <FaCalendarAlt className="text-leaf-600" />
                           {formatDate(date, isHi ? "hi-IN" : undefined)}
                         </span>
                         <h2 className="mt-3 flex-1 text-xl font-bold leading-snug transition group-hover:text-primary-600 dark:group-hover:text-primary-300">

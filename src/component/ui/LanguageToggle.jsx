@@ -1,13 +1,13 @@
 import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
 
-// Pill switch styled like the Afroj Charitable Trust site.
+// Pill switch; kept large so first-time users notice they can read the site in Hindi.
 const LanguageToggle = ({ className = "", variant = "dark" }) => {
   const { lang, setLang } = useLanguage();
   const base =
     variant === "dark"
-      ? "bg-white/10 text-slate-300"
-      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300";
+      ? "bg-white/15 text-primary-50 ring-1 ring-white/20"
+      : "bg-cream-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300";
 
   return (
     <div role="group" aria-label="Language" className={`inline-flex shrink-0 rounded-full p-0.5 ${base} ${className}`}>
@@ -23,8 +23,8 @@ const LanguageToggle = ({ className = "", variant = "dark" }) => {
             lang={opt.code}
             aria-pressed={active}
             onClick={() => setLang(opt.code)}
-            className={`rounded-full px-3 py-1 text-xs font-bold transition ${
-              active ? "bg-leaf text-white shadow" : "hover:text-primary-600 dark:hover:text-white"
+            className={`rounded-full px-3.5 py-1 text-sm font-bold transition ${
+              active ? "bg-sun-400 text-ink shadow" : "hover:text-primary-700 dark:hover:text-white"
             } ${variant === "dark" && !active ? "hover:!text-white" : ""}`}
           >
             {opt.label}

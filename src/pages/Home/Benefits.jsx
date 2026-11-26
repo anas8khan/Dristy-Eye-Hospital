@@ -1,28 +1,26 @@
 import React from "react";
-import { FaCheck } from "react-icons/fa";
+import { FaUserDoctor, FaMicroscope, FaHandHoldingHeart, FaEye, FaGlasses, FaMagnifyingGlassPlus } from "react-icons/fa6";
 import about from "../../assets/about.png";
 import Reveal from "../../component/ui/Reveal";
 import { useLanguage } from "../../context/LanguageContext";
 
 const benefits = [
-  "Qualified Doctors",
-  "Modern Equipment",
-  "Individual Approach",
-  "Special Eye Exam",
-  "Contact Lens Service",
-  "Special Retina Exam",
+  { label: "Qualified Doctors", icon: <FaUserDoctor />, cls: "bg-primary-50 text-primary-700 dark:bg-primary-900/40 dark:text-primary-200" },
+  { label: "Modern Equipment", icon: <FaMicroscope />, cls: "bg-leaf-50 text-leaf-700 dark:bg-leaf-700/20 dark:text-leaf-300" },
+  { label: "Individual Approach", icon: <FaHandHoldingHeart />, cls: "bg-sun-100 text-sun-700 dark:bg-sun-500/15 dark:text-sun-300" },
+  { label: "Special Eye Exam", icon: <FaEye />, cls: "bg-primary-50 text-primary-700 dark:bg-primary-900/40 dark:text-primary-200" },
+  { label: "Contact Lens Service", icon: <FaGlasses />, cls: "bg-leaf-50 text-leaf-700 dark:bg-leaf-700/20 dark:text-leaf-300" },
+  { label: "Special Retina Exam", icon: <FaMagnifyingGlassPlus />, cls: "bg-sun-100 text-sun-700 dark:bg-sun-500/15 dark:text-sun-300" },
 ];
 
 const Benefits = () => {
   const { t } = useLanguage();
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-primary-900 to-primary-700 py-16 md:py-24">
-      <div className="absolute -left-20 top-10 h-72 w-72 animate-float-slow rounded-full bg-primary-500/30 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-80 w-80 animate-float-slower rounded-full bg-leaf/20 blur-3xl" />
-
-      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
+    <section className="section relative overflow-hidden bg-white dark:bg-slate-950">
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1fr_1.15fr]">
         <Reveal variant="zoom" className="relative mx-auto w-full max-w-md">
-          <div className="absolute inset-6 animate-pulse rounded-full bg-gradient-to-br from-leaf/40 to-primary-400/40 blur-2xl [animation-duration:4s]" />
+          <div className="absolute inset-6 rounded-full bg-sun-200 dark:bg-sun-500/15" />
+          <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary-200 dark:border-primary-800" />
           <img
             className="relative w-full animate-float-y transition-transform duration-500 [animation-duration:6s] hover:scale-[1.03]"
             src={about}
@@ -34,25 +32,25 @@ const Benefits = () => {
 
         <div>
           <Reveal variant="right">
-            <span className="eyebrow !text-leaf-300">{t("Why Choose Us?")}</span>
-            <h2 className="h-section mt-3 !text-white">{t("Benefits with Dristy Eye Hospital")}</h2>
-            <p className="mt-5 text-base leading-relaxed text-slate-300 md:text-lg">
+            <span className="eyebrow">{t("Why Choose Us?")}</span>
+            <h2 className="h-section mt-3">{t("Benefits with Dristy Eye Hospital")}</h2>
+            <p className="lead mt-4">
               {t("We pledge to make your visit at all of our locations an opportunity to provide timely and appropriate care for you and your family members.")}
             </p>
           </Reveal>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {benefits.map((benefit, i) => (
+          <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+            {benefits.map((b, i) => (
               <Reveal
                 as="li"
-                key={benefit}
+                key={b.label}
                 delay={i * 0.05}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur transition hover:border-leaf/40 hover:bg-white/10"
+                className="card card-hover group flex flex-col items-center gap-3 p-4 text-center sm:p-5"
               >
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-leaf text-sm text-white">
-                  <FaCheck />
+                <span className={`grid h-14 w-14 place-items-center rounded-2xl text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${b.cls}`}>
+                  {b.icon}
                 </span>
-                <span className="font-semibold text-slate-100">{t(benefit)}</span>
+                <span className="font-bold leading-snug text-ink dark:text-slate-100">{t(b.label)}</span>
               </Reveal>
             ))}
           </ul>

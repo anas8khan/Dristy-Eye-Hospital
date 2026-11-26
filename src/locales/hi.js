@@ -365,6 +365,23 @@ const hi = {
   "Please check back soon.": "कृपया कुछ समय बाद फिर देखें।",
   "Blog not found": "ब्लॉग नहीं मिला",
   "Recent Blogs": "हाल के ब्लॉग",
+
+  // ---------- Village-friendly redesign ----------
+  "View Profile": "प्रोफ़ाइल देखें",
+  "Get Directions": "रास्ता देखें",
+  "Simple Steps": "आसान कदम",
+  "How to Get Treatment at Dristy": "दृष्टि में इलाज कैसे पाएँ",
+  "Call or Visit": "कॉल करें या आएँ",
+  "Call us or walk in at any of our three centres.": "हमें कॉल करें या हमारे तीनों केंद्रों में से किसी पर भी सीधे आएँ।",
+  "Eye Check-up": "आँखों की जाँच",
+  "Our specialists examine your eyes and explain the problem in simple words.": "हमारे विशेषज्ञ आपकी आँखों की जाँच करते हैं और समस्या आसान शब्दों में समझाते हैं।",
+  "Treatment or Surgery": "इलाज या ऑपरेशन",
+  "Get the right treatment with modern equipment and experienced doctors.": "आधुनिक उपकरणों और अनुभवी डॉक्टरों के साथ सही इलाज पाएँ।",
+  "Follow-up Care": "फ़ॉलो-अप देखभाल",
+  "We stay with you after treatment so your vision stays clear.": "इलाज के बाद भी हम आपके साथ रहते हैं, ताकि आपकी नज़र साफ़ बनी रहे।",
+  "Free & Affordable Care": "मुफ़्त और किफ़ायती इलाज",
+  "Care Beyond the Hospital": "अस्पताल से आगे की सेवा",
+  "Common Questions About Cataract": "मोतियाबिंद से जुड़े आम सवाल",
 };
 
 export default hi;

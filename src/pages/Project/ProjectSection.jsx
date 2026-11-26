@@ -87,12 +87,12 @@ const ProjectSection = () => {
       </section>
 
       <section className="container-x">
-        <Reveal className="rounded-3xl bg-gradient-to-br from-navy via-primary-900 to-primary-700 p-8 shadow-lift md:p-12">
+        <Reveal className="rounded-3xl bg-gradient-to-br from-primary-700 to-primary-800 p-8 shadow-lift md:p-12">
           <h3 className="text-2xl font-bold !text-white">{t("Key Highlights")}</h3>
           <ul className="mt-6 grid gap-4 md:grid-cols-2">
             {project.keyHighlights?.map((highlight, index) => (
               <Reveal as="li" key={index} delay={0.15 + index * 0.08} variant="zoom" className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 font-medium text-slate-100 transition hover:border-leaf/40 hover:bg-white/10">
-                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-leaf text-xs text-white">
+                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-leaf-600 text-xs text-white">
                   <FaCheck />
                 </span>
                 {highlight}
@@ -114,7 +114,7 @@ const ProjectSection = () => {
                     src={story.image}
                     alt={story.title || name}
                     loading="lazy"
-                    className="h-24 w-24 shrink-0 rounded-2xl object-cover ring-4 ring-primary-50 dark:ring-slate-800"
+                    className="h-24 w-24 shrink-0 rounded-2xl object-cover ring-4 ring-sun-100 dark:ring-slate-800"
                   />
                   <div className="min-w-0">
                     <FaQuoteLeft className="text-xl text-primary-200 dark:text-primary-800" />

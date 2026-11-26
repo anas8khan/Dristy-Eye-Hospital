@@ -1,5 +1,5 @@
 import React from "react";
-import { FaClock, FaLocationDot, FaPhone } from "react-icons/fa6";
+import { FaClock, FaLocationDot, FaPhone, FaDiamondTurnRight } from "react-icons/fa6";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
 import { useLanguage } from "../context/LanguageContext";
@@ -39,57 +39,59 @@ const branches = [
 ];
 
 const tel = (n) => `tel:${n.replace(/\s/g, "")}`;
+const directions = (b) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${b.name} ${b.address}`)}`;
 
 const Branches = () => {
   const { t } = useLanguage();
   return (
-  <section className="section bg-slate-50 dark:bg-slate-900/40">
-    <div className="container-x">
-      <SectionHeading title={t("Our Branches")} />
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {branches.map((branch, i) => (
-          <Reveal key={branch.name} delay={i * 0.08} className="card card-hover flex flex-col overflow-hidden">
-            <div className="aspect-[16/10] w-full bg-slate-200 dark:bg-slate-800">
-              <iframe
-                src={branch.mapSrc}
-                className="h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={branch.mapTitle}
-              ></iframe>
-            </div>
-            <div className="flex flex-1 flex-col gap-3 p-6">
-              <h3 className="text-base font-extrabold leading-snug">{t(branch.name)}</h3>
-              <p className="text-sm font-medium text-primary-600 dark:text-primary-300">{t(branch.hospitalName)}</p>
-              <ul className="mt-1 space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
-                <li className="flex gap-2.5">
-                  <FaClock className="mt-0.5 shrink-0 text-leaf-500" />
-                  <span><strong className="font-semibold text-slate-800 dark:text-slate-100">{t("Timing:")}</strong> {t(branch.timing)}</span>
-                </li>
-                <li className="flex gap-2.5">
-                  <FaLocationDot className="mt-0.5 shrink-0 text-leaf-500" />
+    <section className="section section-cream">
+      <div className="container-x">
+        <SectionHeading title={t("Our Branches")} />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {branches.map((branch, i) => (
+            <Reveal key={branch.name} delay={i * 0.08} className="card card-hover flex flex-col overflow-hidden">
+              <div className="flex items-start gap-3 border-b border-cream-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary-600 text-lg text-white shadow-soft">
+                  <FaLocationDot />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-extrabold leading-snug">{t(branch.name)}</h3>
+                  <p className="text-sm font-semibold text-primary-700 dark:text-primary-300">{t(branch.hospitalName)}</p>
+                </div>
+              </div>
+              <div className="aspect-[16/9] w-full bg-cream-200 dark:bg-slate-800">
+                <iframe
+                  src={branch.mapSrc}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={branch.mapTitle}
+                ></iframe>
+              </div>
+              <div className="flex flex-1 flex-col gap-4 p-5">
+                <span className="inline-flex items-center gap-2 self-start rounded-full bg-leaf-50 px-3 py-1 text-sm font-bold text-leaf-700 dark:bg-leaf-700/20 dark:text-leaf-300">
+                  <FaClock /> {t("Timing:")} {t(branch.timing)}
+                </span>
+                <p className="flex gap-2.5 leading-relaxed">
+                  <FaLocationDot className="mt-1 shrink-0 text-sun-600" />
                   <span className="capitalize">{t(branch.address)}</span>
-                </li>
-                <li className="flex gap-2.5">
-                  <FaPhone className="mt-0.5 shrink-0 text-leaf-500" />
-                  <span>
-                    {t("Call:")}{" "}
-                    <a href={tel(branch.phone)} className="font-semibold text-primary-600 hover:underline dark:text-primary-300">{branch.phone}</a>
-                    {branch.tel && (
-                      <>
-                        ,{" "}
-                        <a href={tel(branch.tel)} className="font-semibold text-primary-600 hover:underline dark:text-primary-300">{branch.tel}</a>
-                      </>
-                    )}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </Reveal>
-        ))}
+                </p>
+                <div className="mt-auto grid gap-2">
+                  {[branch.phone, branch.tel].filter(Boolean).map((n) => (
+                    <a key={n} href={tel(n)} className="btn-leaf w-full !justify-start !py-3">
+                      <FaPhone className="text-sm" /> {t("Call:")} {n}
+                    </a>
+                  ))}
+                  <a href={directions(branch)} target="_blank" rel="noopener noreferrer" className="btn-outline w-full !py-3">
+                    <FaDiamondTurnRight /> {t("Get Directions")}
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };
 

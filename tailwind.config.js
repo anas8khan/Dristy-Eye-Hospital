@@ -32,14 +32,34 @@ export default {
           700: "#157626",
         },
         navy: "#0b1640",
+        ink: "#13204a",
+        // Warm neutrals and a saffron accent for a friendly, local feel
+        cream: {
+          50: "#fffdf8",
+          100: "#fdf7ec",
+          200: "#f7ead2",
+          300: "#efd9b0",
+        },
+        sun: {
+          50: "#fff8e6",
+          100: "#ffefc2",
+          200: "#ffdf85",
+          300: "#ffcb47",
+          400: "#fdb515",
+          500: "#f59e0b",
+          600: "#d97706",
+          700: "#b45309",
+          800: "#8a4008",
+        },
       },
       fontFamily: {
-        sans: ["Inter", "Noto Sans Devanagari", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["Plus Jakarta Sans", "Noto Sans Devanagari", "Inter", "system-ui", "sans-serif"],
+        sans: ["Mukta", "Noto Sans Devanagari", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["'Baloo 2'", "Mukta", "Noto Sans Devanagari", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(11,22,64,.04), 0 8px 24px -6px rgba(11,22,64,.10)",
-        lift: "0 2px 4px rgba(11,22,64,.05), 0 20px 40px -12px rgba(11,22,64,.22)",
+        soft: "0 1px 2px rgba(19,32,74,.05), 0 10px 28px -10px rgba(19,32,74,.14)",
+        lift: "0 2px 4px rgba(19,32,74,.05), 0 24px 48px -16px rgba(19,32,74,.26)",
+        warm: "0 18px 40px -18px rgba(217,119,6,.45)",
       },
       keyframes: {
         float: {
